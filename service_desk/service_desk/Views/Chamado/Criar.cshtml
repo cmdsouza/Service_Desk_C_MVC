@@ -1,0 +1,53 @@
+﻿@model ChamadoModel;
+
+@{
+    ViewData["Title"] = "Criar Chamado";
+}
+
+<div class="text-center">
+    <h1>Criar Chamado</h1>
+</div>
+    
+<form asp-controller="Chamado" asp-action="Criar" method="post">
+    <div class="mb-3">
+        <label for="Observadores" class="form-label">Observadores</label>
+        <input type="text" asp-for="Observadores" class="form-control" placeholder="Digite a Observadores do chamado">
+    </div>
+
+   <div class="mb-3">
+        <label for="Titulo" class="form-label">Titulo</label>
+        <input type="text" asp-for="Titulo" class="form-control" placeholder="Digite a Titulo do chamado">
+        @Html.ValidationMessageFor(x => x.Titulo)
+    </div>
+
+    <div class="mb-3">
+        <label for="Status" class="form-label">Status</label>
+        <input type="text" asp-for="Status" class="form-control" placeholder="Digite a Status do chamado">
+        @Html.ValidationMessageFor(x => x.Status)
+    </div>
+
+    <div class="mb-3">
+        <label for="Origem" class="form-label">Origem</label>
+        <input type="text" asp-for="Origem" class="form-control" placeholder="Digite a Origem do chamado">
+        @Html.ValidationMessageFor(x => x.Origem)
+    </div>
+
+    <div class="mb-3">
+        <label for="Localizacao" class="form-label">Localizacao</label>
+        <input type="text" asp-for="Localizacao" class="form-control" placeholder="Digite a Localizacao do chamado">
+        @Html.ValidationMessageFor(x => x.Localizacao)
+    </div>
+
+    <div class="mb-3">
+        <label for="IdUsuario" class="form-label">IdUsuario</label>
+        <input type="text" asp-for="IdUsuario" class="form-control" placeholder="Digite a IdUsuario do chamado">
+    </div>
+
+    <div class="mb-3">
+        <label for="IdCategoria" class="form-label">IdCategoria</label>
+        <input type="text" asp-for="IdCategoria" class="form-control" placeholder="Digite a IdCategoria do chamado">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Adicionar</button>
+    <a class="btn btn-secondary" asp-controller="Chamado" asp-action="Index" role="button">Voltar</a>
+</form>

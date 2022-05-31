@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using service_desk.Data;
+using service_desk.Repositorio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,16 @@ namespace service_desk
             services.AddControllersWithViews();
             services.AddEntityFrameworkSqlServer()
                 .AddDbContext<BancoContext>(o => o.UseSqlServer(Configuration.GetConnectionString("DataBase")));
+
+            services.AddScoped<IAcompanhamentoRepositorio, AcompanhamentoRepositorio>();
+            services.AddScoped<IAlertaRepositorio, AlertaRepositorio>();
+            services.AddScoped<IAnexoRepositorio, AnexoRepositorio>();
+            services.AddScoped<IAvaliacaoRepositorio, AvaliacaoRepositorio>();
+            services.AddScoped<ICategoriaRepositorio, CategoriaRepositorio>();
+            services.AddScoped<IChamadoRepositorio, ChamadoRepositorio>();
+            services.AddScoped<IContatoRepositorio, ContatoRepositorio>();
+            services.AddScoped<IDocumentacaoRepositorio, DocumentacaoRepositorio>();
+            services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

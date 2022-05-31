@@ -1,0 +1,13 @@
+﻿@model AcompanhamentoModel;
+
+@{
+    ViewData["Title"] = "Confirmação para excluir o acompanhamento";
+}
+
+<div class="text-center">
+    <h1>Você tem certeza que deseja excluir o acompanhamento abaixo?</h1>
+    <p>@Model.Descricao</p>
+</div>
+
+<a class="btn btn-primary" role="button" asp-controller="Acompanhamento" asp-action="Index">Cancelar</a>
+<a class="btn btn-danger" role="button" asp-controller="Acompanhamento" asp-action="Apagar" asp-route-id="@Model.Id">Confirmar</a>

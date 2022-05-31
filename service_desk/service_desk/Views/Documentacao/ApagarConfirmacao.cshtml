@@ -1,0 +1,13 @@
+﻿@model DocumentacaoModel;
+
+@{
+    ViewData["Title"] = "Confirmação para excluir o documentacao";
+}
+
+<div class="text-center">
+    <h1>Você tem certeza que deseja excluir o documentacao abaixo?</h1>
+    <p>@Model.TituloLink</p>
+</div>
+
+<a class="btn btn-primary" role="button" asp-controller="Documentacao" asp-action="Index">Cancelar</a>
+<a class="btn btn-danger" role="button" asp-controller="Documentacao" asp-action="Apagar" asp-route-id="@Model.Id">Confirmar</a>

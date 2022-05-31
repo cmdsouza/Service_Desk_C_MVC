@@ -1,0 +1,13 @@
+﻿@model AlertaModel;
+
+@{
+    ViewData["Title"] = "Confirmação para excluir o alerta";
+}
+
+<div class="text-center">
+    <h1>Você tem certeza que deseja excluir o alerta abaixo?</h1>
+    <p>@Model.Titulo</p>
+</div>
+
+<a class="btn btn-primary" role="button" asp-controller="Alerta" asp-action="Index">Cancelar</a>
+<a class="btn btn-danger" role="button" asp-controller="Alerta" asp-action="Apagar" asp-route-id="@Model.Id">Confirmar</a>

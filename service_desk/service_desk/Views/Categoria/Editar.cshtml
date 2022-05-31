@@ -1,0 +1,22 @@
+﻿@model CategoriaModel;
+
+@{
+    ViewData["Title"] = "Editar Categoria";
+}
+
+<div class="text-center">
+    <h1>Editar Categoria</h1>
+</div>
+    
+<form asp-controller="Categoria" asp-action="Alterar" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="mb-3">
+        <label for="Nome" class="form-label">Nome</label>
+        <input type="text" asp-for="Nome" class="form-control" placeholder="Digite a Nome do categoria">
+        @Html.ValidationMessageFor(x => x.Nome)
+    </div>
+
+    <button type="submit" class="btn btn-primary">Alterar</button>
+    <a class="btn btn-secondary" asp-controller="Categoria" asp-action="Index" role="button">Voltar</a>
+</form>

@@ -1,0 +1,69 @@
+﻿@model List<AcompanhamentoModel>;
+
+@{
+    ViewData["Title"] = "Lista de Acompanhamentos";
+}
+
+<div class="text-center">
+    <h1>Lista de Acompanhamentos</h1>
+</div>
+
+    @if(TempData["MensagemSucesso"] != null){
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="btn btn-success btn-sm close-alert" arial-label="Close">X</button>
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+
+    @if(TempData["MensagemErro"] != null){
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+            @TempData["MensagemErro"]
+        </div>
+    }
+
+    <br />
+    <div class="text-right">
+        <a class="btn btn-success" role='button' asp-controller="Acompanhamento" asp-action="Criar">Adicionar</a>
+    </div>
+    <br />
+
+    <table class="table" id="myTable">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Descrição</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">Id Chamado</th>
+          <th scope="col">Id Usuario</th>
+          <th scope="col">Data de Criação</th>
+          <th scope="col">Data de Atualização</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        @if(Model != null && Model.Any())
+        {
+            foreach(AcompanhamentoModel acompanhamento in Model)
+            {
+                <tr>
+                  <th scope="row">@acompanhamento.Id</th>
+                  <td>@acompanhamento.Descricao</td>
+                  <td>@acompanhamento.Tipo</td>
+                  <td>@acompanhamento.IdChamado</td>
+                  <td>@acompanhamento.IdUsuario</td>
+                  <td>@acompanhamento.DataCriacao</td>
+                  <td>@acompanhamento.DataAtualizacao</td>
+                  <td>
+                       <div class="btn-group" role="group">
+                         <a role="button" class="btn btn-primary" asp-route-id="@acompanhamento.Id" asp-controller="Acompanhamento" asp-action="Editar">Editar</a>
+                         <a role="button" class="btn btn-danger" asp-route-id="@acompanhamento.Id" asp-controller="Acompanhamento" asp-action="ApagarConfirmacao">Excluir</a>
+                       </div>
+                  </td>
+                </tr>
+            }
+        }
+        
+        
+      </tbody>
+    </table>

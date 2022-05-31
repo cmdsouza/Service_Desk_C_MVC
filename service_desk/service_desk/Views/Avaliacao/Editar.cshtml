@@ -1,0 +1,32 @@
+﻿@model AvaliacaoModel;
+
+@{
+    ViewData["Title"] = "Editar Avaliacao";
+}
+
+<div class="text-center">
+    <h1>Editar Avaliacao</h1>
+</div>
+    
+<form asp-controller="Avaliacao" asp-action="Alterar" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="mb-3">
+        <label for="Valor" class="form-label">Valor</label>
+        <input type="text" asp-for="Valor" class="form-control" placeholder="Digite a Valor do avaliacao">
+        @Html.ValidationMessageFor(x => x.Valor)
+    </div>
+
+    <div class="mb-3">
+        <label for="Texto" class="form-label">Texto</label>
+        <input type="text" asp-for="Texto" class="form-control" placeholder="Digite o Texto do avaliacao">
+    </div>
+
+    <div class="mb-3">
+        <label for="IdChamado" class="form-label">Id Chamado</label>
+        <input type="text" asp-for="IdChamado" class="form-control" placeholder="Digite o IdChamado do avaliacao">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Alterar</button>
+    <a class="btn btn-secondary" asp-controller="Avaliacao" asp-action="Index" role="button">Voltar</a>
+</form>

@@ -1,0 +1,43 @@
+﻿@model AlertaModel;
+
+@{
+    ViewData["Title"] = "Criar Alerta";
+}
+
+<div class="text-center">
+    <h1>Criar Alerta</h1>
+</div>
+    
+<form asp-controller="Alerta" asp-action="Criar" method="post">
+    <div class="mb-3">
+        <label for="Titulo" class="form-label">Título</label>
+        <input type="text" asp-for="Titulo" class="form-control" placeholder="Digite a descrição do título">
+        @Html.ValidationMessageFor(x => x.Titulo)
+    </div>
+
+    <div class="mb-3">
+        <label for="Descricao" class="form-label">Descrição</label>
+        <input type="text" asp-for="Descricao" class="form-control" placeholder="Digite a descrição do alerta">
+        @Html.ValidationMessageFor(x => x.Descricao)
+    </div>
+
+    <div class="mb-3">
+        <label for="Status" class="form-label">Status</label>
+        <input type="text" asp-for="Status" class="form-control" placeholder="Digite a status do alerta">
+        @Html.ValidationMessageFor(x => x.Status)
+    </div>
+
+    <div class="mb-3">
+        <label for="Cor" class="form-label">Cor</label>
+        <input type="text" asp-for="Cor" class="form-control" placeholder="Digite a cor do alerta">
+        @Html.ValidationMessageFor(x => x.Cor)
+    </div>
+
+    <div class="mb-3">
+        <label for="IdUsuario" class="form-label">Id Usuario</label>
+        <input type="text" asp-for="IdUsuario" class="form-control" placeholder="Digite o IdUsuario do alerta">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Adicionar</button>
+    <a class="btn btn-secondary" asp-controller="Alerta" asp-action="Index" role="button">Voltar</a>
+</form>

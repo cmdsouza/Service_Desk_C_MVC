@@ -1,0 +1,71 @@
+﻿@model List<AlertaModel>;
+
+@{
+    ViewData["Title"] = "Lista de Alertas";
+}
+
+<div class="text-center">
+    <h1>Lista de Alertas</h1>
+</div>
+
+    @if(TempData["MensagemSucesso"] != null){
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="btn btn-success btn-sm close-alert" arial-label="Close">X</button>
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+
+    @if(TempData["MensagemErro"] != null){
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+            @TempData["MensagemErro"]
+        </div>
+    }
+
+    <br />
+    <div class="text-right">
+        <a class="btn btn-success" role='button' asp-controller="Alerta" asp-action="Criar">Adicionar</a>
+    </div>
+    <br />
+
+    <table class="table" id="myTable">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Título</th>
+          <th scope="col">Descrição</th>
+          <th scope="col">Status</th>
+          <th scope="col">Cor</th>
+          <th scope="col">Id Usuario</th>
+          <th scope="col">Data de Criação</th>
+          <th scope="col">Data de Atualização</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        @if(Model != null && Model.Any())
+        {
+            foreach(AlertaModel alerta in Model)
+            {
+                <tr>
+                  <th scope="row">@alerta.Id</th>
+                  <td>@alerta.Titulo</td>
+                  <td>@alerta.Descricao</td>
+                  <td>@alerta.Status</td>
+                  <td>@alerta.Cor</td>
+                  <td>@alerta.IdUsuario</td>
+                  <td>@alerta.DataCriacao</td>
+                  <td>@alerta.DataAtualizacao</td>
+                  <td>
+                       <div class="btn-group" role="group">
+                         <a role="button" class="btn btn-primary" asp-route-id="@alerta.Id" asp-controller="Alerta" asp-action="Editar">Editar</a>
+                         <a role="button" class="btn btn-danger" asp-route-id="@alerta.Id" asp-controller="Alerta" asp-action="ApagarConfirmacao">Excluir</a>
+                       </div>
+                  </td>
+                </tr>
+            }
+        }
+        
+        
+      </tbody>
+    </table>
