@@ -30,14 +30,12 @@ namespace service_desk
             services.AddEntityFrameworkSqlServer()
                 .AddDbContext<BancoContext>(o => o.UseSqlServer(Configuration.GetConnectionString("DataBase")));
 
-            services.AddScoped<IAcompanhamentoRepositorio, AcompanhamentoRepositorio>();
             services.AddScoped<IAlertaRepositorio, AlertaRepositorio>();
-            services.AddScoped<IAnexoRepositorio, AnexoRepositorio>();
-            services.AddScoped<IAvaliacaoRepositorio, AvaliacaoRepositorio>();
             services.AddScoped<ICategoriaRepositorio, CategoriaRepositorio>();
-            services.AddScoped<IChamadoRepositorio, ChamadoRepositorio>();
             services.AddScoped<IContatoRepositorio, ContatoRepositorio>();
             services.AddScoped<IDocumentacaoRepositorio, DocumentacaoRepositorio>();
+            services.AddScoped<ILocalizacaoRepositorio, LocalizacaoRepositorio>();
+            services.AddScoped<ITipoContatoRepositorio, TipoContatoRepositorio>();
             services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
         }
 

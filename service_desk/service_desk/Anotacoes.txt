@@ -1,2 +1,2 @@
-﻿Criar migrations: Add-Migration CriandoTabelas -Context BancoContext
+﻿Criar migrations: Add-Migration AtualizandoTabelas -Context BancoContext
 Cria a estrutura no banco: Update-Database -Context BancoContext

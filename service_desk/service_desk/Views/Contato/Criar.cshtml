@@ -10,14 +10,14 @@
     
 <form asp-controller="Contato" asp-action="Criar" method="post">
     <div class="mb-3">
-        <label for="Contato" class="form-label">Contato</label>
-        <input type="text" asp-for="Contato" class="form-control" placeholder="Digite a Contato do contato">
-        @Html.ValidationMessageFor(x => x.Contato)
+        <label for="Descricao" class="form-label">Descricao</label>
+        <input type="text" asp-for="Descricao" class="form-control" placeholder="Digite a Descricao do contato">
+        @Html.ValidationMessageFor(x => x.Descricao)
     </div>
 
     <div class="mb-3">
-        <label for="Tipo" class="form-label">Tipo</label>
-        <input type="text" asp-for="Tipo" class="form-control" placeholder="Digite o tipo do contato">
+        <label for="IdTipoContato" class="form-label">Id TipoContato</label>
+        <input type="text" asp-for="IdTipoContato" class="form-control" placeholder="Digite o IdTipoContato do contato">
     </div>
 
     <div class="mb-3">

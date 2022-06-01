@@ -1,0 +1,13 @@
+﻿@model TipoContatoModel;
+
+@{
+    ViewData["Title"] = "Confirmação para excluir o tipoContato";
+}
+
+<div class="text-center">
+    <h1>Você tem certeza que deseja excluir o tipoContato abaixo?</h1>
+    <p>@Model.Icone</p>
+</div>
+
+<a class="btn btn-primary" role="button" asp-controller="TipoContato" asp-action="Index">Cancelar</a>
+<a class="btn btn-danger" role="button" asp-controller="TipoContato" asp-action="Apagar" asp-route-id="@Model.Id">Confirmar</a>

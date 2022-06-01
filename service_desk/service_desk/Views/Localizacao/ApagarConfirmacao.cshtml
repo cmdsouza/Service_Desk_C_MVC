@@ -1,0 +1,13 @@
+﻿@model LocalizacaoModel;
+
+@{
+    ViewData["Title"] = "Confirmação para excluir o localizacao";
+}
+
+<div class="text-center">
+    <h1>Você tem certeza que deseja excluir o localizacao abaixo?</h1>
+    <p>@Model.Lugar</p>
+</div>
+
+<a class="btn btn-primary" role="button" asp-controller="Localizacao" asp-action="Index">Cancelar</a>
+<a class="btn btn-danger" role="button" asp-controller="Localizacao" asp-action="Apagar" asp-route-id="@Model.Id">Confirmar</a>

@@ -10,6 +10,8 @@ namespace service_desk.Models
         [Required(ErrorMessage = "Campo 'Nome' obrigatório!")]
         public string Nome { get; set; }
 
+        public int IdUsuario { get; set; }
+
         public DateTime DataCriacao { get; set; }
 
         public DateTime? DataAtualizacao { get; set; }

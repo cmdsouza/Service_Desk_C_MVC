@@ -41,8 +41,7 @@ namespace service_desk.Repositorio
             ContatoModel contatoDB = ListarPorId(contato.Id);
             if (contatoDB == null) throw new System.Exception("Erro: não foi possível atualizar, pois o contato não existe no banco de dados");
 
-            contatoDB.Contato = contato.Contato;
-            contatoDB.Tipo = contato.Tipo;
+            contatoDB.Descricao = contato.Descricao;
             contatoDB.DataAtualizacao = System.DateTime.Now;
 
             _bancoContext.Contatos.Update(contatoDB);

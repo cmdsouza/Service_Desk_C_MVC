@@ -1,0 +1,27 @@
+﻿@model LocalizacaoModel;
+
+@{
+    ViewData["Title"] = "Editar Localizacao";
+}
+
+<div class="text-center">
+    <h1>Editar Localizacao</h1>
+</div>
+    
+<form asp-controller="Localizacao" asp-action="Alterar" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="mb-3">
+        <label for="Lugar" class="form-label">Lugar</label>
+        <input type="text" asp-for="Lugar" class="form-control" placeholder="Digite a Lugar do localizacao">
+        @Html.ValidationMessageFor(x => x.Lugar)
+    </div>
+
+    <div class="mb-3">
+        <label for="IdUsuario" class="form-label">Id Usuario</label>
+        <input type="text" asp-for="IdUsuario" class="form-control" placeholder="Digite o IdUsuario do localizacao">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Alterar</button>
+    <a class="btn btn-secondary" asp-controller="Localizacao" asp-action="Index" role="button">Voltar</a>
+</form>

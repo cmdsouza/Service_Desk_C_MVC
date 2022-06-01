@@ -60,18 +60,18 @@ namespace service_desk.Controllers
         }
 
         [HttpPost]
-        public IActionResult Criar(ContatoModel contatoControl)
+        public IActionResult Criar(ContatoModel contato)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _contatoRepositorio.Adicionar(contatoControl);
+                    _contatoRepositorio.Adicionar(contato);
                     TempData["MensagemSucesso"] = "Contato cadastrado com sucesso!";
                     return RedirectToAction("Index");
                 }
 
-                return View(contatoControl);
+                return View(contato);
             }
             catch (System.Exception erro)
             {
@@ -82,23 +82,23 @@ namespace service_desk.Controllers
         }
 
         [HttpPost]
-        public IActionResult Alterar(ContatoModel contatoControl)
+        public IActionResult Alterar(ContatoModel contato)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _contatoRepositorio.Atualizar(contatoControl);
+                    _contatoRepositorio.Atualizar(contato);
                     TempData["MensagemSucesso"] = "Contato atualizado com sucesso!";
                     return RedirectToAction("Index");
                 }
 
-                return View("Editar", contatoControl);
+                return View("Editar", contato);
             }
             catch (System.Exception erro)
             {
                 TempData["MensagemErro"] = $"Erro ao editar o contato. Detalhes do erro {erro.Message}";
-                return View("Editar", contatoControl);
+                return View("Editar", contato);
             }
         }
     }
