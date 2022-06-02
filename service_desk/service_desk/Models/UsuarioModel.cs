@@ -1,4 +1,5 @@
-﻿using System;
+﻿using service_desk.Helper;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace service_desk.Models
@@ -28,5 +29,22 @@ namespace service_desk.Models
         public DateTime DataCriacao { get; set; }
 
         public DateTime? DataAtualizacao { get; set; }
+
+        public bool SenhaValida(string senha)
+		{
+            return Senha == senha.GerarHash();
+		}
+
+        public void SetSenhaHash()
+		{
+            Senha = Senha.GerarHash();
+		}
+
+        public string GerarNovaSenha()
+		{
+            string novaSenha = Guid.NewGuid().ToString().Substring(0, 8);
+            Senha = novaSenha.GerarHash();
+            return novaSenha;
+		}
     }
 }

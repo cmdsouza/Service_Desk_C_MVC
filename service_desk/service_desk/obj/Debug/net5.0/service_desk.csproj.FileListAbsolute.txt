@@ -412,3 +412,7 @@ C:\Users\Carlos Matheus\Desktop\TCC\Service_Desk_C_MVC\service_desk\service_desk
 C:\Users\Carlos Matheus\Desktop\TCC\Service_Desk_C_MVC\service_desk\service_desk\obj\Debug\net5.0\Razor\Views\TipoContato\Criar.cshtml.g.cs
 C:\Users\Carlos Matheus\Desktop\TCC\Service_Desk_C_MVC\service_desk\service_desk\obj\Debug\net5.0\Razor\Views\TipoContato\Editar.cshtml.g.cs
 C:\Users\Carlos Matheus\Desktop\TCC\Service_Desk_C_MVC\service_desk\service_desk\obj\Debug\net5.0\Razor\Views\TipoContato\Index.cshtml.g.cs
+C:\Users\Carlos Matheus\Desktop\TCC\Service_Desk_C_MVC\service_desk\service_desk\obj\Debug\net5.0\Razor\Views\Login\Index.cshtml.g.cs
+C:\Users\Carlos Matheus\Desktop\TCC\Service_Desk_C_MVC\service_desk\service_desk\obj\Debug\net5.0\Razor\Views\Shared\_LayoutDeslogado.cshtml.g.cs
+C:\Users\Carlos Matheus\Desktop\TCC\Service_Desk_C_MVC\service_desk\service_desk\obj\Debug\net5.0\Razor\Views\Shared\Components\Menu\Default.cshtml.g.cs
+C:\Users\Carlos Matheus\Desktop\TCC\Service_Desk_C_MVC\service_desk\service_desk\obj\Debug\net5.0\Razor\Views\Login\RedefinirSenha.cshtml.g.cs

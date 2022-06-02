@@ -19,6 +19,7 @@ namespace service_desk.Repositorio
         {
             // gravar no banco de dados
             usuario.DataCriacao = System.DateTime.Now;
+            usuario.SetSenhaHash();
             _bancoContext.Usuarios.Add(usuario);
             _bancoContext.SaveChanges();
 
@@ -55,7 +56,17 @@ namespace service_desk.Repositorio
             return usuarioDB;
         }
 
-        public List<UsuarioModel> BuscarTodos()
+		public UsuarioModel BuscarPorEmailELogin(string email, string login)
+		{
+            return _bancoContext.Usuarios.FirstOrDefault(x => x.Email.ToUpper() == email.ToUpper() && x.Matricula.ToUpper() == login.ToUpper());
+        }
+
+		public UsuarioModel BuscarPorLogin(string login)
+		{
+            return _bancoContext.Usuarios.FirstOrDefault(x => x.Matricula.ToUpper() == login.ToUpper());
+        }
+
+		public List<UsuarioModel> BuscarTodos()
         {
             return _bancoContext.Usuarios.ToList();
         }
