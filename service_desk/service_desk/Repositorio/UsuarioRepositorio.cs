@@ -56,11 +56,6 @@ namespace service_desk.Repositorio
             return usuarioDB;
         }
 
-		public UsuarioModel BuscarPorEmailELogin(string email, string login)
-		{
-            return _bancoContext.Usuarios.FirstOrDefault(x => x.Email.ToUpper() == email.ToUpper() && x.Matricula.ToUpper() == login.ToUpper());
-        }
-
 		public UsuarioModel BuscarPorLogin(string login)
 		{
             return _bancoContext.Usuarios.FirstOrDefault(x => x.Matricula.ToUpper() == login.ToUpper());

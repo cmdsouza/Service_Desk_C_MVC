@@ -5,8 +5,6 @@ namespace service_desk.Repositorio
 {
     public interface IUsuarioRepositorio
     {
-        UsuarioModel BuscarPorEmailELogin(string email, string login);
-
         UsuarioModel BuscarPorLogin(string login);
         
         UsuarioModel ListarPorId(int id);

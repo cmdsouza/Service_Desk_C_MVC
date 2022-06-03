@@ -65,35 +65,5 @@ namespace service_desk.Controllers
 				return RedirectToAction("Index");
 			}
 		}
-
-		
-		[HttpPost]
-		public IActionResult EnviarLinkParaRedefinirSenha(RedefinirSenhaModel redefinirSenhaModel)
-		{
-			try
-			{
-				if (ModelState.IsValid)
-				{
-					UsuarioModel usuario = _usuarioRepositorio.BuscarPorEmailELogin(redefinirSenhaModel.Email, redefinirSenhaModel.Login);
-					if (usuario != null)
-					{
-						string novaSenha = usuario.GerarNovaSenha();
-
-						
-						TempData["MensagemSucesso"] = $"Enviamos o link de redefinição para o seu e-mail.";
-						return RedirectToAction("Index", "Login");
-					}
-
-					TempData["MensagemErro"] = $"Erro ao redefinir senha. Verifique os dados digitados.";
-				}
-
-				return View("Index");
-			}
-			catch (Exception erro)
-			{
-				TempData["MensagemErro"] = $"Erro ao redefinir senha. Detalhes do erro {erro.Message}";
-				return RedirectToAction("Index");
-			}
-		}
 	}
 }
