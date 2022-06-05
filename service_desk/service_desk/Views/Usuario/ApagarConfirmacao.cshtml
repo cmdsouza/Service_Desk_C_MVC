@@ -1,13 +1,86 @@
 ﻿@model UsuarioModel;
 
 @{
-    ViewData["Title"] = "Confirmação para excluir o usuario";
+	ViewData["Title"] = "[ADM] Gestão de Tipos de Contato";
+	Layout = "_LayoutAdministrador";
 }
 
-<div class="text-center">
-    <h1>Você tem certeza que deseja excluir o usuario abaixo?</h1>
-    <p>@Model.Matricula</p>
-</div>
+<div class="row">
+	<div class="col-sm-12">
+		<div class="card mb-4">
+			<p class="card-header" style="font-weight: bold; color: #1B5F9D; font-size: 16px; margin-bottom:-1%;">Excluir usuário!</p>
+			<div class="card-body">
+				<p>Você tem certeza que deseja excluir o usuário abaixo?</p>
+				<div class="row">
+						<div class="row">
+							<div class="col-sm-4">
+								<div>
+									<label for="Descricao" class="form-label">Matrícula</label>
+									<input
+										   type="text"
+										   class="form-control"
+										   id="defaultFormControlInput"
+										   aria-describedby="defaultFormControlHelp"
+										   asp-for="Matricula" disabled>
+								</div>
+							</div>
+							<div class="col-sm-8">
+								<div>
+									<label for="Descricao" class="form-label">Nome</label>
+									<input
+										   type="text"
+										   class="form-control"
+										   id="defaultFormControlInput"
+										   aria-describedby="defaultFormControlHelp"
+										   asp-for="Nome" disabled>
+								</div>
+							</div>
+						</div>
 
-<a class="btn btn-primary" role="button" asp-controller="Usuario" asp-action="Index">Cancelar</a>
-<a class="btn btn-danger" role="button" asp-controller="Usuario" asp-action="Apagar" asp-route-id="@Model.Id">Confirmar</a>
+						<div class="row" style="margin-top: 2%;">
+							<div class="col-sm">
+								<div>
+									<label for="Autorizacao" class="form-label">Autorização</label>
+									<select
+										   type="text"
+										   class="form-control"
+										   id="defaultFormControlInput"
+										   aria-describedby="defaultFormControlHelp"
+										   asp-for="Autorizacao" disabled>
+										   <option value="Usuario">Usuário</option>
+										   <option value="Administrador">Administrador</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-sm">
+								<div>
+									<label for="Email" class="form-label">E-mail</label>
+									<input
+										   type="text"
+										   class="form-control"
+										   id="defaultFormControlInput"
+										   aria-describedby="defaultFormControlHelp"
+										   asp-for="Email" disabled>
+								</div>
+							</div>
+							<div class="col-sm">
+								<div>
+									<label for="Telefone" class="form-label">Telefone</label>
+									<input
+										   type="text"
+										   class="form-control"
+										   id="defaultFormControlInput"
+										   aria-describedby="defaultFormControlHelp"
+										   asp-for="Telefone" disabled>
+								</div>
+							</div>
+						</div>
+					</div>
+			</div>
+			<div class="col-sm" style="margin-bottom: 3%; margin-left: -1%;">
+				<a class="btn btn-danger" role="button" asp-controller="TipoContato" asp-action="Usuario" asp-route-id="@Model.Id" style="margin-left:2%;">Confirmar exclusão</a>
+				<a class="btn btn-secondary" asp-controller="Usuario" asp-action="Index" role="button">Voltar</a>
+			</div>
+		</div>
+	</div>
+</div>

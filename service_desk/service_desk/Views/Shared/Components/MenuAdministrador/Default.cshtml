@@ -1,0 +1,131 @@
+﻿@model UsuarioModel
+
+<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+	<div class="app-brand demo" style="margin-bottom:5%; margin-top:10%;">
+		<a href="#" class="app-brand-link">
+			<center>
+				<img style="width:90%;" src="https://localhost:44356/assets/img/logo.svg">
+			</center>
+		</a>
+
+		<a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+			<i class="bx bx-chevron-left bx-sm align-middle"></i>
+		</a>
+	</div>
+
+	<div class="menu-inner-shadow"></div>
+	
+	<center>
+		<span style="color: #1B5F9D; font-weight: bold; margin-top: 3%;">Olá, @Model.Nome!</span>
+	</center>
+
+	<ul class="menu-inner py-1">
+	  <li class="menu-item" id='pagina-inicial'>
+		<a asp-controller="Administrador" asp-action="Index" class="menu-link" style="text-decoration: none;">
+		  <i class="menu-icon tf-icons bx bx-home-circle"></i>
+		  <div data-i18n="Analytics">Página Inicial</div>
+		</a>
+	  </li>
+
+	  <li class="menu-item" id="alerta">
+		<a asp-controller="Alerta" asp-action="Index" class="menu-link" style="text-decoration: none;">
+		  <i class="menu-icon tf-icons bx bx-bell"></i>
+		  <div data-i18n="Vertical Form">Alerta</div>
+		</a>
+	  </li>
+
+	  <li class="menu-item" id="categoria">
+		<a asp-controller="Categoria" asp-action="Index" class="menu-link" style="text-decoration: none;">
+		  <i class="menu-icon tf-icons bx bx-category"></i>
+		  <div data-i18n="Vertical Form">Categorias</div>
+		</a>
+	  </li>
+
+	  <li class="menu-item" id="contato">
+		<a asp-controller="Contato" asp-action="Index" class="menu-link" style="text-decoration: none;">
+		  <i class="menu-icon tf-icons bx bx-phone"></i>
+		  <div data-i18n="Vertical Form">Contato</div>
+		</a>
+	  </li>
+
+	  <li class="menu-item" id="documentacao">
+		<a asp-controller="Documentacao" asp-action="Index" class="menu-link" style="text-decoration: none;">
+		  <i class="menu-icon tf-icons bx bx-book"></i>
+		  <div data-i18n="Vertical Form">Documentação</div>
+		</a>
+	  </li>
+
+	  <li class="menu-item" id="localizacao">
+		<a asp-controller="Localizacao" asp-action="Index" class="menu-link" style="text-decoration: none;">
+		  <i class="menu-icon tf-icons bx bx-current-location"></i>
+		  <div data-i18n="Vertical Form">Localização</div>
+		</a>
+	  </li>
+
+	  <li class="menu-item" id="tipo-contato">
+		<a asp-controller="TipoContato" asp-action="Index" class="menu-link" style="text-decoration: none;">
+		  <i class="menu-icon tf-icons bx bx-headphone"></i>
+		  <div data-i18n="Vertical Form">Tipo de Contato</div>
+		</a>
+	  </li>
+
+	  <li class="menu-item" id="usuarios">
+		<a asp-controller="Usuario" asp-action="Index" class="menu-link" style="text-decoration: none;">
+		  <i class="menu-icon tf-icons bx bx-user"></i>
+		  <div data-i18n="Vertical Form">Usuários</div>
+		</a>
+	  </li>
+
+	  <li class="menu-item">
+		<a asp-controller="Login" asp-action="Sair" class="menu-link" style="text-decoration: none;">
+		  <i class="menu-icon tf-icons bx bx-log-out"></i>
+		  <div data-i18n="Analytics">Sair</div>
+		</a>
+	  </li>
+	</ul>
+</aside>
+
+<script>
+
+    var url = window.location.pathname;
+
+    if (url.includes('/Administrador')) {
+		var element = document.getElementById("pagina-inicial");
+		element.classList.add("active");
+	}
+
+	if (url.includes('/Alerta')) {
+		var element = document.getElementById("alerta");
+		element.classList.add("active");
+	}
+
+	if (url.includes('/Documentacao')) {
+		var element = document.getElementById("documentacao");
+		element.classList.add("active");
+	}
+
+	if (url.includes('/Contato')) {
+		var element = document.getElementById("contato");
+		element.classList.add("active");
+	}
+
+	if (url.includes('/Categoria')) {
+		var element = document.getElementById("categoria");
+		element.classList.add("active");
+	}
+
+	if (url.includes('/TipoContato')) {
+		var element = document.getElementById("tipo-contato");
+		element.classList.add("active");
+	}
+
+	if (url.includes('/Usuario')) {
+		var element = document.getElementById("usuarios");
+		element.classList.add("active");
+	}
+
+	if (url.includes('/Localizacao')) {
+		var element = document.getElementById("localizacao");
+		element.classList.add("active");
+	}
+</script>

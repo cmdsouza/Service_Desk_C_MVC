@@ -48,7 +48,15 @@ namespace service_desk.Controllers
 						if (usuario.SenhaValida(loginModel.Senha))
 						{
 							_sessao.CriarSessaoDoUsuario(usuario);
-							return RedirectToAction("Index", "Home");
+
+                            if (usuario.Autorizacao == "Administrador")
+                            {
+								return RedirectToAction("Index", "Administrador");
+							}
+                            else
+                            {
+								return RedirectToAction("Index", "Home");
+							}
 						}
 						
 						TempData["MensagemErro"] = $"Senha incorreta.";

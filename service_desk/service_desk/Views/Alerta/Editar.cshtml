@@ -1,45 +1,67 @@
 ﻿@model AlertaModel;
 
 @{
-    ViewData["Title"] = "Editar Alerta";
+    ViewData["Title"] = "[ADM] Gestão de Alertas";
+    Layout = "_LayoutAdministrador";
 }
 
-<div class="text-center">
-    <h1>Editar Alerta</h1>
-</div>
-    
 <form asp-controller="Alerta" asp-action="Alterar" method="post">
-    <input type="hidden" asp-for="Id" />
+	<input type="hidden" asp-for="Id" />
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card mb-4">
+				<p class="card-header" style="font-weight: bold; color: #1B5F9D; font-size: 16px; margin-bottom:-1%;">Editar alerta!</p>
+				<div class="card-body">
+					<div class="row">
+						<div class="row">
+							<div class="col-sm">
+								<div>
+									<label for="Titulo" class="form-label">Título</label>
+									<input type="text"
+										   class="form-control"
+										   id="defaultFormControlInput"
+										   placeholder="Título do alerta"
+										   aria-describedby="defaultFormControlHelp"
+										   asp-for="Titulo" />
+								</div>
+								@Html.ValidationMessageFor(x => x.Titulo)
+							</div>
+						</div>
+						<div class="row" style="margin-top: 2%;">
+							<div class="col-sm">
+								<div>
+									<label for="exampleFormControlTextarea1" class="form-label">Descrição</label>
+									<textarea class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Descreva o alerta!"
+											  asp-for="Descricao"></textarea>
+								</div>
+								@Html.ValidationMessageFor(x => x.Descricao)
+							</div>
+						</div>
+						<div class="row" style="margin-top: 2%;">
+							<div class="col-sm">
+								<div>
+									<label for="exampleFormControlSelect1" class="form-label">Cor</label>
+									<select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example" asp-for="Cor">
+										<option value="primary" style="color: #007bff;">Azul</option>
+										<option value="secondary" style="color: #6c757d;">Cinza</option>
+										<option value="success" style="color: #28a745;">Verde</option>
+										<option value="danger" style="color: #dc3545;">Vermelho</option>
+										<option value="warning" style="color: #ffc107;">Amarelo</option>
+									</select>
+								</div>
+								@Html.ValidationMessageFor(x => x.Cor)
+							</div>
+						</div>
+						<input type="hidden" asp-for="Status" class="form-control" placeholder="Digite a status do alerta">
+						<input type="hidden" asp-for="IdUsuario" class="form-control" placeholder="Digite o IdUsuario do alerta">
+					</div>
+				</div>
+				<div class="col-sm" style="margin-bottom: 3%; margin-left: -1%;">
+					<button type="submit" class="btn btn-primary" style="margin-left: 2%;">Alterar</button>
+					<a class="btn btn-secondary" asp-controller="Alerta" asp-action="Index" role="button">Voltar</a>
+				</div>
+			</div>
+		</div>
+	</div>
 
-    <div class="mb-3">
-        <label for="Titulo" class="form-label">Título</label>
-        <input type="text" asp-for="Titulo" class="form-control" placeholder="Digite a descrição do título">
-        @Html.ValidationMessageFor(x => x.Titulo)
-    </div>
-
-    <div class="mb-3">
-        <label for="Descricao" class="form-label">Descrição</label>
-        <input type="text" asp-for="Descricao" class="form-control" placeholder="Digite a descrição do alerta">
-        @Html.ValidationMessageFor(x => x.Descricao)
-    </div>
-
-    <div class="mb-3">
-        <label for="Status" class="form-label">Status</label>
-        <input type="text" asp-for="Status" class="form-control" placeholder="Digite a status do alerta">
-        @Html.ValidationMessageFor(x => x.Status)
-    </div>
-
-    <div class="mb-3">
-        <label for="Cor" class="form-label">Cor</label>
-        <input type="text" asp-for="Cor" class="form-control" placeholder="Digite a cor do alerta">
-        @Html.ValidationMessageFor(x => x.Cor)
-    </div>
-
-    <div class="mb-3">
-        <label for="IdUsuario" class="form-label">Id Usuario</label>
-        <input type="text" asp-for="IdUsuario" class="form-control" placeholder="Digite o IdUsuario do alerta">
-    </div>
-
-    <button type="submit" class="btn btn-primary">Alterar</button>
-    <a class="btn btn-secondary" asp-controller="Alerta" asp-action="Index" role="button">Voltar</a>
 </form>

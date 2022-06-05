@@ -1,2 +1,20 @@
 ﻿Criar migrations: Add-Migration AtualizandoTabelas -Context BancoContext
 Cria a estrutura no banco: Update-Database -Context BancoContext
+
+### Pendências ###
+
+~ Geral ~
+-  Ao entrar em uma página com sessão vazia, dá erro
+
+~ Alerta ~
+- Ativar/desativar alerta
+- Pegar o usuário pela sessão
+
+~ Contato ~
+- Pegar o usuário pela sessão
+
+~ Documentação ~
+- Pegar o usuário pela sessão
+
+~ Localização ~
+- Pegar o usuário pela sessão

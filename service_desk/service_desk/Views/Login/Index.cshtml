@@ -5,34 +5,61 @@
 	ViewData["Title"] = "Login";
 }
 
-<h4>Minha página de login</h4>
-
-@if(TempData["MensagemSucesso"] != null)
-{
-        <div class="alert alert-success" role="alert">
-            <button type="button" class="btn btn-success btn-sm close-alert" arial-label="Close">X</button>
-            @TempData["MensagemSucesso"]
-        </div>
-    }
-
 @if (TempData["MensagemErro"] != null)
 {
-	<div class="alert alert-danger" role="alert">
+	<div class="alert alert-danger" id="MensagemErro" role="alert">
 		<button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
 		@TempData["MensagemErro"]
 	</div>
 }
 
-<form asp-controller="Login" asp-action="Entrar" method="post">
-	<div class="form-group">
-		<label for="login">Login</label>
-		<input type="text" asp-for="Login" class="form-control" id="login">
+<!-- Logo -->
+<div class="app-brand justify-content-center">
+	<img class="logo-login" src="../assets/img/logo-login.png">
+</div>
+<!-- /Logo -->
+<form id="formAuthentication" class="mb-3" asp-controller="Login" asp-action="Entrar" method="post">
+	<input type="hidden" name="tipoLogin" value="usuario">
+	<div class="mb-3 margin-altura-input">
+		<label for="login" class="form-label">Login</label>
+		<input type="text"
+			   asp-for="Login"
+			   class="form-control"
+			   id="login"
+			   name="login"
+			   placeholder="Digite o seu login"
+			   autofocus />
 		@Html.ValidationMessageFor(x => x.Login)
 	</div>
-	<div class="form-group">
-		<label for="senha">Senha</label>
-		<input type="password" asp-for="Senha" class="form-control" id="senha">
+	<div class="mb-3 form-password-toggle">
+		<div class="d-flex justify-content-between">
+			<label class="form-label" for="password">Senha</label>
+		</div>
+		<div class="input-group input-group-merge">
+			<input type="password"
+				   asp-for="Senha"
+				   id="senha"
+				   class="form-control"
+				   name="senha"
+				   placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+				   aria-describedby="password" />
+			<span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+		</div>
 		@Html.ValidationMessageFor(x => x.Senha)
 	</div>
-	<button type="submit" class="btn btn-primary">Entrar</button>
+	<div class="mb-3">
+		<div class="row">
+			<div class="col-sm">
+				<button class="btn btn-primary btn-block d-grid w-40 entrar-login" type="submit">Entrar</button>
+			</div>
+		</div>
+	</div>
 </form>
+
+<div class="alert alert-primary" id="alert-primary" role="alert" style="">
+	<span id="alert-primary-titulo">Indisponibilidade do sistema</span>
+	<br>
+	<span id="alert-primary-conteudo">
+	  O Portal Insitucional ficará indisponível no dia 31/03/2022 por aproximadamente 2 horas. A manutenção evolutiva será iniciada às 19 horas.
+	</span>
+</div>

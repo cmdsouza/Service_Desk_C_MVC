@@ -1,32 +1,52 @@
 ﻿@model ContatoModel;
 
 @{
-    ViewData["Title"] = "Editar Contato";
+	ViewData["Title"] = "[ADM] Gestão de Contatos";
+	Layout = "_LayoutAdministrador";
 }
 
-<div class="text-center">
-    <h1>Editar Contato</h1>
-</div>
-    
 <form asp-controller="Contato" asp-action="Alterar" method="post">
-    <input type="hidden" asp-for="Id" />
-
-    <div class="mb-3">
-        <label for="Descricao" class="form-label">Descricao</label>
-        <input type="text" asp-for="Descricao" class="form-control" placeholder="Digite a Descricao do contato">
-        @Html.ValidationMessageFor(x => x.Descricao)
-    </div>
-
-    <div class="mb-3">
-        <label for="IdTipoContato" class="form-label">Id TipoContato</label>
-        <input type="text" asp-for="IdTipoContato" class="form-control" placeholder="Digite o IdTipoContato do contato">
-    </div>
-
-    <div class="mb-3">
-        <label for="IdUsuario" class="form-label">Id Usuario</label>
-        <input type="text" asp-for="IdUsuario" class="form-control" placeholder="Digite o IdUsuario do contato">
-    </div>
-
-    <button type="submit" class="btn btn-primary">Alterar</button>
-    <a class="btn btn-secondary" asp-controller="Contato" asp-action="Index" role="button">Voltar</a>
+	<input type="hidden" asp-for="Id" />
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card mb-4">
+				<p class="card-header" style="font-weight: bold; color: #1B5F9D; font-size: 16px; margin-bottom:-1%;">Editar alerta!</p>
+				<div class="card-body">
+					<div class="row">
+						<div class="row">
+							<div class="col-sm">
+								<div>
+									<label for="Descricao" class="form-label">Título</label>
+									<input type="text"
+										   class="form-control"
+										   id="defaultFormControlInput"
+										   placeholder="Título da categoria"
+										   aria-describedby="defaultFormControlHelp"
+										   asp-for="Descricao" />
+								</div>
+								@Html.ValidationMessageFor(x => x.Descricao)
+							</div>
+						</div>
+						<div class="row" style="margin-top:2%;">
+							<div class="col-sm">
+								<div>
+									<label for="IdTipoContato" class="form-label">Tipo de Contato</label>
+									<input type="text"
+										   class="form-control"
+										   id="defaultFormControlInput"
+										   placeholder="Título da categoria"
+										   aria-describedby="defaultFormControlHelp"
+										   asp-for="IdTipoContato" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm" style="margin-bottom: 3%; margin-left: -1%;">
+					<button type="submit" class="btn btn-primary" style="margin-left: 2%;">Alterar</button>
+					<a class="btn btn-secondary" asp-controller="Categoria" asp-action="Index" role="button">Voltar</a>
+				</div>
+			</div>
+		</div>
+	</div>
 </form>

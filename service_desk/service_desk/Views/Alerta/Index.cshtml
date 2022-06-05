@@ -1,71 +1,118 @@
 ﻿@model List<AlertaModel>;
 
 @{
-    ViewData["Title"] = "Lista de Alertas";
+	ViewData["Title"] = "[ADM] Gestão de Alertas";
+	Layout = "_LayoutAdministrador";
 }
 
-<div class="text-center">
-    <h1>Lista de Alertas</h1>
+<!-- Striped Rows -->
+<div class="container">
+	@if (TempData["MensagemSucesso"] != null)
+	{
+		<div class="alert alert-success" role="alert">
+			@TempData["MensagemSucesso"]
+		</div>
+	}
+
+	@if (TempData["MensagemErro"] != null)
+	{
+		<div class="alert alert-danger" role="alert">
+			@TempData["MensagemErro"]
+		</div>
+	}
+
+	<div class="card">
+		<div class="row">
+			<div class="col-sm">
+				<h5 class="card-header">Lista de Alertas</h5>
+			</div>
+			<div class="col-sm text-end" style="margin-top: 2%; margin-right: 3%;">
+				<a class="btn btn-sm btn-primary" role='button' asp-controller="Alerta" asp-action="Criar">Adicionar</a>
+			</div>
+		</div>
+		<div class="table-responsive text-nowrap">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th scope="col">Status</th>
+						<th scope="col">Título</th>
+						<th scope="col"><center>Cor</center></th>
+						<th scope="col"><center>Última Atualização</center></th>
+						<th scope="col"><center>Ações</center></th>
+					</tr>
+				</thead>
+				<tbody class="table-border-bottom-0">
+					@if (Model != null && Model.Any())
+					{
+						foreach (AlertaModel alerta in Model)
+						{
+
+							<tr>
+								<td>
+									@if (alerta.Status == "Ativo")
+									{
+										<b style="color: #28a745">@alerta.Status</b>
+									}
+									else
+									{
+										<b style="color: #dc3545">@alerta.Status</b>
+									}
+								</td>
+								<td>@alerta.Titulo</td>
+								<td>
+									<center>
+										@if (alerta.Cor == "primary")
+										{
+											<div style="background-color: #007bff; width: 20px; height: 20px;"></div>
+										}  @if (alerta.Cor == "secondary")
+										{
+											<div style="background-color: #6c757d; width: 20px; height: 20px;"></div>
+										} @if (alerta.Cor == "success")
+										{
+											<div style="background-color: #28a745; width: 20px; height: 20px;"></div>
+										} @if (alerta.Cor == "danger")
+										{
+											<div style="background-color: #dc3545; width: 20px; height: 20px;"></div>
+										} @if (alerta.Cor == "warning")
+										{
+											<div style="background-color: #ffc107; width: 20px; height: 20px;"></div>
+										}
+									</center>
+								</td>
+								<td>
+									<center>
+										@if (alerta.DataAtualizacao == null)
+										{
+											@alerta.DataCriacao
+										}
+										else
+										{
+											@alerta.DataAtualizacao
+										}
+									</center>
+								</td>
+								<td>
+									<center>
+										<a asp-route-id="@alerta.Id" asp-controller="Alerta" asp-action="Editar" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Editar"><i class='bx bx-edit' style="margin-top: -2%;"></i></a>
+										<a asp-route-id="@alerta.Id" asp-controller="Alerta" asp-action="ApagarConfirmacao" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Excluir</span>"><i class='bx bx-trash' style="margin-top: -2%;"></i></a>
+
+										@if (alerta.Status == "Ativo")
+										{
+											<a asp-route-id="@alerta.Id" asp-controller="Alerta" asp-action="Desativar" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Desativar"><i class='bx bx-task-x' style="margin-top: -2%;"></i></a>
+										}
+										else
+										{
+											<a asp-route-id="@alerta.Id" asp-controller="Alerta" asp-action="Ativar" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Ativar</span>"><i class='bx bx-calendar-exclamation' style="margin-top: -2%;"></i></a>
+										}
+									</center>
+								</td>
+							</tr>
+						}
+					}
+
+				</tbody>
+			</table>
+		</div>
+	</div>
 </div>
-
-    @if(TempData["MensagemSucesso"] != null){
-        <div class="alert alert-success" role="alert">
-            <button type="button" class="btn btn-success btn-sm close-alert" arial-label="Close">X</button>
-            @TempData["MensagemSucesso"]
-        </div>
-    }
-
-    @if(TempData["MensagemErro"] != null){
-        <div class="alert alert-danger" role="alert">
-            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
-            @TempData["MensagemErro"]
-        </div>
-    }
-
-    <br />
-    <div class="text-right">
-        <a class="btn btn-success" role='button' asp-controller="Alerta" asp-action="Criar">Adicionar</a>
-    </div>
-    <br />
-
-    <table class="table" id="myTable">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Título</th>
-          <th scope="col">Descrição</th>
-          <th scope="col">Status</th>
-          <th scope="col">Cor</th>
-          <th scope="col">Id Usuario</th>
-          <th scope="col">Data de Criação</th>
-          <th scope="col">Data de Atualização</th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      <tbody>
-        @if(Model != null && Model.Any())
-        {
-            foreach(AlertaModel alerta in Model)
-            {
-                <tr>
-                  <th scope="row">@alerta.Id</th>
-                  <td>@alerta.Titulo</td>
-                  <td>@alerta.Descricao</td>
-                  <td>@alerta.Status</td>
-                  <td>@alerta.Cor</td>
-                  <td>@alerta.IdUsuario</td>
-                  <td>@alerta.DataCriacao</td>
-                  <td>@alerta.DataAtualizacao</td>
-                  <td>
-                       <div class="btn-group" role="group">
-                         <a role="button" class="btn btn-primary" asp-route-id="@alerta.Id" asp-controller="Alerta" asp-action="Editar">Editar</a>
-                         <a role="button" class="btn btn-danger" asp-route-id="@alerta.Id" asp-controller="Alerta" asp-action="ApagarConfirmacao">Excluir</a>
-                       </div>
-                  </td>
-                </tr>
-            }
-        }
-        
-        
-      </tbody>
-    </table>
+<!--/ Striped Rows -->

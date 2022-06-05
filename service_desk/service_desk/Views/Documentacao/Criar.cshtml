@@ -1,25 +1,38 @@
 ﻿@model DocumentacaoModel;
 
+<!-- Título1;link1&Título2;link2&Título3;link3&Título4;link4&Título5;link5&Título6;link6&Título7;link7&Título8;link8&Título9;link9 -->
 @{
-    ViewData["Title"] = "Criar Documentacao";
+	ViewData["Title"] = "[ADM] Gestão de Documentações";
+	Layout = "_LayoutAdministrador";
 }
 
-<div class="text-center">
-    <h1>Criar Documentacao</h1>
-</div>
-    
 <form asp-controller="Documentacao" asp-action="Criar" method="post">
-    <div class="mb-3">
-        <label for="TituloLink" class="form-label">TituloLink</label>
-        <input type="text" asp-for="TituloLink" class="form-control" placeholder="Digite a TituloLink do documentacao">
-        @Html.ValidationMessageFor(x => x.TituloLink)
-    </div>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card mb-4">
+				<p class="card-header" style="font-weight: bold; color: #1B5F9D; font-size: 16px; margin-bottom:-1%;">Criar alerta!</p>
+				<div class="card-body">
+					<div class="row">
+						<div class="row">
+							<div>
+								<label for="Descricao" class="form-label">Títulos e Links</label>
+								<textarea class="form-control"
+										  id="defaultFormControlInput"
+										  aria-describedby="defaultFormControlHelp"
+										  asp-for="TituloLink">
 
-    <div class="mb-3">
-        <label for="IdUsuario" class="form-label">Id Usuario</label>
-        <input type="text" asp-for="IdUsuario" class="form-control" placeholder="Digite o IdUsuario do documentacao">
-    </div>
-
-    <button type="submit" class="btn btn-primary">Adicionar</button>
-    <a class="btn btn-secondary" asp-controller="Documentacao" asp-action="Index" role="button">Voltar</a>
+									</textarea>
+							</div>
+							@Html.ValidationMessageFor(x => x.TituloLink)
+						</div>
+						<input type="hidden" value="1" asp-for="IdUsuario" />
+					</div>
+				</div>
+				<div class="col-sm" style="margin-bottom: 3%; margin-left: -1%;">
+					<button type="submit" class="btn btn-primary" style="margin-left: 2%;">Criar</button>
+					<a class="btn btn-secondary" asp-controller="Documentacao" asp-action="Index" role="button">Voltar</a>
+				</div>
+			</div>
+		</div>
+	</div>
 </form>

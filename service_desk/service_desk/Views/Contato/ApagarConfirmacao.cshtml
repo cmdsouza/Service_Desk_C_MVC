@@ -1,13 +1,75 @@
 ﻿@model ContatoModel;
 
 @{
-    ViewData["Title"] = "Confirmação para excluir o contato";
+	ViewData["Title"] = "[ADM] Gestão de Contatos";
+	Layout = "_LayoutAdministrador";
 }
 
-<div class="text-center">
-    <h1>Você tem certeza que deseja excluir o contato abaixo?</h1>
-    <p>@Model.Descricao</p>
-</div>
+<div class="row">
+	<div class="col-sm-12">
+		<div class="card mb-4">
+			<p class="card-header" style="font-weight: bold; color: #1B5F9D; font-size: 16px; margin-bottom:-1%;">Excluir contato!</p>
+			<div class="card-body">
+				<p>Você tem certeza que deseja excluir o contato abaixo?</p>
+				<div class="row">
+					<div class="row">
+						<div class="col-sm">
+							<div>
+								<label for="Descricao" class="form-label">Título</label>
+								<input type="text"
+									   class="form-control"
+									   id="defaultFormControlInput"
+									   placeholder="Título da categoria"
+									   aria-describedby="defaultFormControlHelp"
+									   asp-for="Descricao" />
+							</div>
+							@Html.ValidationMessageFor(x => x.Descricao)
+						</div>
+					</div>
+					<div class="row" style="margin-top:2%;">
+						<div class="col-sm">
+							<div>
+								<label for="IdTipoContato" class="form-label">Tipo de Contato</label>
+								<input type="text"
+									   class="form-control"
+									   id="defaultFormControlInput"
+									   placeholder="Título da categoria"
+									   aria-describedby="defaultFormControlHelp"
+									   asp-for="IdTipoContato" />
+							</div>
+						</div>
+					</div>
 
-<a class="btn btn-primary" role="button" asp-controller="Contato" asp-action="Index">Cancelar</a>
-<a class="btn btn-danger" role="button" asp-controller="Contato" asp-action="Apagar" asp-route-id="@Model.Id">Confirmar</a>
+					<div class="row" style="margin-top: 2%;">
+						<div class="col-sm">
+							<div>
+								<label for="Titulo" class="form-label">Criação</label>
+								<input type="text"
+									   class="form-control"
+									   id="defaultFormControlInput"
+									   placeholder="Título do alerta"
+									   aria-describedby="defaultFormControlHelp"
+									   asp-for="DataCriacao" disabled />
+							</div>
+						</div>
+						<div class="col-sm">
+							<div>
+								<label for="Titulo" class="form-label">Última Atualização</label>
+								<input type="text"
+									   class="form-control"
+									   id="defaultFormControlInput"
+									   placeholder=""
+									   aria-describedby="defaultFormControlHelp"
+									   asp-for="DataAtualizacao" disabled />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm" style="margin-bottom: 3%; margin-left: -1%;">
+				<a class="btn btn-danger" role="button" asp-controller="Contato" asp-action="Apagar" asp-route-id="@Model.Id" style="margin-left:2%;">Confirmar exclusão</a>
+				<a class="btn btn-secondary" asp-controller="Contato" asp-action="Index" role="button">Voltar</a>
+			</div>
+		</div>
+	</div>
+</div>

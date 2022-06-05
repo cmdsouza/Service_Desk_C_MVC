@@ -39,5 +39,6 @@ namespace service_desk.Models
 		{
             Senha = Senha.GerarHash();
 		}
+
     }
 }

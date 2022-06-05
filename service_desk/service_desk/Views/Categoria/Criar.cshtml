@@ -1,20 +1,38 @@
 ﻿@model CategoriaModel;
 
 @{
-    ViewData["Title"] = "Criar Categoria";
+    ViewData["Title"] = "[ADM] Gestão de Categorias";
+    Layout = "_LayoutAdministrador";
 }
-
-<div class="text-center">
-    <h1>Criar Categoria</h1>
-</div>
     
 <form asp-controller="Categoria" asp-action="Criar" method="post">
-    <div class="mb-3">
-        <label for="Nome" class="form-label">Nome</label>
-        <input type="text" asp-for="Nome" class="form-control" placeholder="Digite a Nome do categoria">
-        @Html.ValidationMessageFor(x => x.Nome)
-    </div>
-
-    <button type="submit" class="btn btn-primary">Adicionar</button>
-    <a class="btn btn-secondary" asp-controller="Categoria" asp-action="Index" role="button">Voltar</a>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card mb-4">
+				<p class="card-header" style="font-weight: bold; color: #1B5F9D; font-size: 16px; margin-bottom:-1%;">Criar alerta!</p>
+				<div class="card-body">
+					<div class="row">
+						<div class="row">
+							<div class="col-sm">
+								<div>
+									<label for="Nome" class="form-label">Título</label>
+									<input type="text"
+										   class="form-control"
+										   id="defaultFormControlInput"
+										   placeholder="Título da categoria"
+										   aria-describedby="defaultFormControlHelp"
+										   asp-for="Nome" />
+								</div>
+								@Html.ValidationMessageFor(x => x.Nome)
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm" style="margin-bottom: 3%; margin-left: -1%;">
+					<button type="submit" class="btn btn-primary" style="margin-left: 2%;">Criar</button>
+					<a class="btn btn-secondary" asp-controller="Categoria" asp-action="Index" role="button">Voltar</a>
+				</div>
+			</div>
+		</div>
+	</div>
 </form>

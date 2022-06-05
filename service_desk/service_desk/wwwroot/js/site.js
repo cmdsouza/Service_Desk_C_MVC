@@ -1,5 +1,5 @@
 ﻿$('.close-alert').click(function () {
-    $('.alert').hide('hide');
+    $('#MensagemErro').hide('hide');
 })
 
 $(document).ready(function () {

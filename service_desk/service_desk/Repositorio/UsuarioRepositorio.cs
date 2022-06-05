@@ -44,7 +44,6 @@ namespace service_desk.Repositorio
 
             usuarioDB.Matricula = usuario.Matricula;
             usuarioDB.Nome = usuario.Nome;
-            usuarioDB.Senha = usuario.Senha;
             usuarioDB.Autorizacao = usuario.Autorizacao;
             usuarioDB.Email = usuario.Email;
             usuarioDB.Telefone = usuario.Telefone;
@@ -56,7 +55,7 @@ namespace service_desk.Repositorio
             return usuarioDB;
         }
 
-		public UsuarioModel BuscarPorLogin(string login)
+        public UsuarioModel BuscarPorLogin(string login)
 		{
             return _bancoContext.Usuarios.FirstOrDefault(x => x.Matricula.ToUpper() == login.ToUpper());
         }

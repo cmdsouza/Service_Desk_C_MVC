@@ -1,26 +1,47 @@
 ﻿@model TipoContatoModel;
 
 @{
-    ViewData["Title"] = "Criar TipoContato";
+	ViewData["Title"] = "[ADM] Gestão de tipos de contato";
+	Layout = "_LayoutAdministrador";
 }
 
-<div class="text-center">
-    <h1>Criar TipoContato</h1>
-</div>
-    
 <form asp-controller="TipoContato" asp-action="Criar" method="post">
-    <div class="mb-3">
-        <label for="Icone" class="form-label">Icone</label>
-        <input type="text" asp-for="Icone" class="form-control" placeholder="Digite a Icone do tipoContato">
-        @Html.ValidationMessageFor(x => x.Icone)
-    </div>
-
-    <div class="mb-3">
-        <label for="Descricao" class="form-label">Descrição</label>
-        <input type="text" asp-for="Descricao" class="form-control" placeholder="Digite a descrição do tipoContato">
-        @Html.ValidationMessageFor(x => x.Descricao)
-    </div>
-
-    <button type="submit" class="btn btn-primary">Adicionar</button>
-    <a class="btn btn-secondary" asp-controller="TipoContato" asp-action="Index" role="button">Voltar</a>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card mb-4">
+				<p class="card-header" style="font-weight: bold; color: #1B5F9D; font-size: 16px; margin-bottom:-1%;">Criar tipo de contato!</p>
+				<div class="card-body">
+					<div class="row">
+						<div class="col-sm">
+							<div>
+								<label for="Descricao" class="form-label">Ícone</label>
+								<input type="text"
+									   class="form-control"
+									   id="defaultFormControlInput"
+									   aria-describedby="defaultFormControlHelp"
+									   asp-for="Icone">
+								<div class="form-text">Referência de Class: <a href="https://boxicons.com/" target="_blank">BoxIcons</a></div>
+							</div>
+							@Html.ValidationMessageFor(x => x.Icone)
+						</div>
+						<div class="col-sm">
+							<div>
+								<label for="Descricao" class="form-label">Descrição</label>
+								<input type="text"
+									   class="form-control"
+									   id="defaultFormControlInput"
+									   aria-describedby="defaultFormControlHelp"
+									   asp-for="Descricao">
+							</div>
+							@Html.ValidationMessageFor(x => x.Descricao)
+						</div>
+					</div>
+				</div>
+				<div class="col-sm" style="margin-bottom: 3%; margin-left: -1%;">
+					<button type="submit" class="btn btn-primary" style="margin-left: 2%;">Criar</button>
+					<a class="btn btn-secondary" asp-controller="TipoContato" asp-action="Index" role="button">Voltar</a>
+				</div>
+			</div>
+		</div>
+	</div>
 </form>
