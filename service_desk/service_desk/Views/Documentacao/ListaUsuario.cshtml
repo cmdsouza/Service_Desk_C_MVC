@@ -1,0 +1,139 @@
+﻿@model List<DocumentacaoModel>;
+
+@{
+	ViewData["Title"] = "Lista de Documentações";
+	Layout = "_Layout";
+}
+
+<div class="layout-page">
+	<div class="container-xxl container-p-y">
+
+		<div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+			<div class="row">
+				<a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)" style="margin-left: 1.5%;">
+					<i class="bx bx-menu bx-sm"></i>
+				</a>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-7">
+				<h6 style="color: #3A3A3A; font-weight: bold;">
+					@if (DateTime.Now.Hour < 12)
+					{
+						<span>Bom dia!</span>
+					}
+					else if (DateTime.Now.Hour < 17)
+					{
+						<span>Boa tarde!</span>
+					}
+					else
+					{
+						<span>Boa noite!</span>
+					}
+				</h6>
+			</div>
+			<div class="col text-end">
+				<p style="color: #AFAFAF; font-size: 12px; ">50% dos chamados resolvidos</p>
+			</div>
+			<div class="col col-lg-2">
+				<div class="demo-vertical-spacing" style="margin-top:-7%;">
+					<div class="progress" style="height: 8px;">
+						<div class="progress-bar"
+							 role="progressbar"
+							 style="width: 50%"
+							 aria-valuenow="50"
+							 aria-valuemin="0"
+							 aria-valuemax="100"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Alertas de sucesso ou erro-->
+		@if (TempData["MensagemSucesso"] != null)
+		{
+			<div class="alert alert-success" role="alert">
+				@TempData["MensagemSucesso"]
+			</div>
+		}
+
+		@if (TempData["MensagemErro"] != null)
+		{
+			<div class="alert alert-danger" role="alert">
+				@TempData["MensagemErro"]
+			</div>
+		}
+
+	</div>
+
+	<!-- Content wrapper -->
+	<div class="content-wrapper" style="margin-top:-4%;">
+		<!-- Content -->
+
+		<div class="container-xxl flex-grow-1 container-p-y">
+			<div class="row">
+				<div class="col-lg-12 mb-4 order-0">
+					<a href="https://www.tcees.tc.br/ajuda" target=_blank>
+						<div class="col-lg-6 mb-4 order-0">
+							<div class="card" style="background-image:url('../assets/img/card01-fundo.svg'); background-repeat: no-repeat;  background-size: cover; background-color: #1B5F9D;">
+								<div class="d-flex align-items-center row">
+									<div class="col-sm-6 text-center text-sm-left">
+										<div class="card-body pb-0 ">
+											<img src="../assets/img/card-base.svg"
+												 alt="View Badge User"
+												 style="margin-bottom:-11.1%;" />
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="card-body mt-2" style="color:white;">
+											<div style="margin-top: -10%; margin-left: 1%;">
+												<span style="font-size: 35px; font-family: Bebas Neue; line-height: 80%;">ACESSE O <span style="color: #FFC727;">PORTAL DE AJUDA</span>!</span>
+												<br>
+												<span style="">tcees.tc.br/ajuda</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</a>
+
+					<div class="row">
+						<div class="col col-lg-7">
+							<h6 style="color: #3A3A3A; font-weight: bold; font-size: 18px;">Documentações em destaque</h6>
+						</div>
+					</div>
+
+					<div class="col-12">
+						<div class="list-group list-group-flush">
+						@{
+							if (Model != null && Model.Any())
+							{
+								foreach (DocumentacaoModel documentacao in Model)
+								{
+									var variavel = documentacao.TituloLink;
+									string[] A = variavel.Split(new char[] { '&' }, StringSplitOptions.RemoveEmptyEntries);
+									var quantidade = A.Length;
+									for (int i = 0; i < quantidade; i++)
+									{
+										string[] B = A[i].Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
+										<a href="https://@B[1]" target="_blank" class="list-group-item list-group-item-action">@B[0] <i class='bx bx-link-external' style="font-size: 12px; margin-top:-0.2%; color: #1B5F9D"></i></a>
+										
+									}
+								}
+							}
+						}
+						</div>
+					</div>
+
+					
+                          
+                    </div>
+
+				</div>
+			</div>
+		</div>
+		<div class="content-backdrop fade"></div>
+		<!-- / Layout page -->
+	</div>

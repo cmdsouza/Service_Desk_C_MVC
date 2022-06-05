@@ -369,7 +369,6 @@ C:\Users\Carlos Matheus\Desktop\TCC\Service_Desk_C_MVC\service_desk\service_desk
 C:\Users\Carlos Matheus\Desktop\TCC\Service_Desk_C_MVC\service_desk\service_desk\obj\Debug\net5.0\service_desk.TagHelpers.output.cache
 C:\Users\Carlos Matheus\Desktop\TCC\Service_Desk_C_MVC\service_desk\service_desk\obj\Debug\net5.0\service_desk.RazorCoreGenerate.cache
 C:\Users\Carlos Matheus\Desktop\TCC\Service_Desk_C_MVC\service_desk\service_desk\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
-C:\Users\Carlos Matheus\Desktop\TCC\Service_Desk_C_MVC\service_desk\service_desk\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\Carlos Matheus\Desktop\TCC\Service_Desk_C_MVC\service_desk\service_desk\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\Carlos Matheus\Desktop\TCC\Service_Desk_C_MVC\service_desk\service_desk\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\Carlos Matheus\Desktop\TCC\Service_Desk_C_MVC\service_desk\service_desk\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
@@ -417,3 +416,7 @@ C:\Users\Carlos Matheus\Desktop\TCC\Service_Desk_C_MVC\service_desk\service_desk
 C:\Users\Carlos Matheus\Desktop\TCC\Service_Desk_C_MVC\service_desk\service_desk\obj\Debug\net5.0\Razor\Views\Administrador\Index.cshtml.g.cs
 C:\Users\Carlos Matheus\Desktop\TCC\Service_Desk_C_MVC\service_desk\service_desk\obj\Debug\net5.0\Razor\Views\Shared\_LayoutAdministrador.cshtml.g.cs
 C:\Users\Carlos Matheus\Desktop\TCC\Service_Desk_C_MVC\service_desk\service_desk\obj\Debug\net5.0\Razor\Views\Shared\Components\MenuAdministrador\Default.cshtml.g.cs
+C:\Users\Carlos Matheus\Desktop\TCC\Service_Desk_C_MVC\service_desk\service_desk\obj\Debug\net5.0\Razor\Views\Shared\Components\MenuUsuario\Default.cshtml.g.cs
+C:\Users\Carlos Matheus\Desktop\TCC\Service_Desk_C_MVC\service_desk\service_desk\obj\Debug\net5.0\Razor\Views\Documentacao\ListaUsuario.cshtml.g.cs
+C:\Users\Carlos Matheus\Desktop\TCC\Service_Desk_C_MVC\service_desk\service_desk\bin\Debug\net5.0\RestSharp.dll
+C:\Users\Carlos Matheus\Desktop\TCC\Service_Desk_C_MVC\service_desk\service_desk\obj\Debug\net5.0\Razor\Views\Chamado\Index.cshtml.g.cs

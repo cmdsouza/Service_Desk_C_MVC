@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "I8B8AzCf9LfN4fKhz/4l19KG7ONixHcPukQ3ycfriY/Ae8KXA+Mg4kJTB+aO2VO4hxdrTp887AkhiK4ZV1NvFg==",
+  "dgSpecHash": "UmKP0zd9kdLkXEIEokZM6RPEn3Qe04xaaxBvGkwWsLiwE5qZ8pMpM+xcuTJhWg531nlb6dGjPDPSJCiqYd7kUQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Carlos Matheus\\Desktop\\TCC\\Service_Desk_C_MVC\\service_desk\\service_desk\\service_desk.csproj",
   "expectedPackageFiles": [
@@ -43,6 +43,7 @@
     "C:\\Users\\Carlos Matheus\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\Carlos Matheus\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\Carlos Matheus\\.nuget\\packages\\newtonsoft.json\\10.0.1\\newtonsoft.json.10.0.1.nupkg.sha512",
+    "C:\\Users\\Carlos Matheus\\.nuget\\packages\\restsharp\\107.3.0\\restsharp.107.3.0.nupkg.sha512",
     "C:\\Users\\Carlos Matheus\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Users\\Carlos Matheus\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
     "C:\\Users\\Carlos Matheus\\.nuget\\packages\\system.collections.concurrent\\4.3.0\\system.collections.concurrent.4.3.0.nupkg.sha512",
@@ -103,6 +104,7 @@
     "C:\\Users\\Carlos Matheus\\.nuget\\packages\\system.text.encoding\\4.3.0\\system.text.encoding.4.3.0.nupkg.sha512",
     "C:\\Users\\Carlos Matheus\\.nuget\\packages\\system.text.encoding.codepages\\4.7.0\\system.text.encoding.codepages.4.7.0.nupkg.sha512",
     "C:\\Users\\Carlos Matheus\\.nuget\\packages\\system.text.encoding.extensions\\4.3.0\\system.text.encoding.extensions.4.3.0.nupkg.sha512",
+    "C:\\Users\\Carlos Matheus\\.nuget\\packages\\system.text.json\\5.0.0\\system.text.json.5.0.0.nupkg.sha512",
     "C:\\Users\\Carlos Matheus\\.nuget\\packages\\system.text.regularexpressions\\4.3.0\\system.text.regularexpressions.4.3.0.nupkg.sha512",
     "C:\\Users\\Carlos Matheus\\.nuget\\packages\\system.threading\\4.3.0\\system.threading.4.3.0.nupkg.sha512",
     "C:\\Users\\Carlos Matheus\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",

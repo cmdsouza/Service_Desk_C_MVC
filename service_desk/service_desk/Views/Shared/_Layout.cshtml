@@ -1,36 +1,126 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿<html lang="en"
+	  class="light-style layout-menu-fixed"
+	  dir="ltr"
+	  data-theme="theme-default"
+	  data-assets-path="~/assets/"
+	  data-template="vertical-menu-template-free">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - service_desk</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.css"/>
-</head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                @await Component.InvokeAsync("MenuAdministrador")
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+	<meta charset="utf-8" />
+	<meta name="viewport"
+		  content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - service_desk - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.js"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+	<title>GLPI: Abertura de Chamados</title>
+
+	<meta name="description" content="" />
+
+	<!-- Favicon -->
+	<link rel="icon" type="image/x-icon" href="~/assets/img/favicon/favicon.ico" />
+
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+		  rel="stylesheet" />
+
+	<!-- Icons. Uncomment required icon fonts -->
+	<link rel="stylesheet" href="~/assets/vendor/fonts/boxicons.css" />
+
+	<!-- Core CSS -->
+	<link rel="stylesheet" href="~/assets/vendor/css/core.css" class="template-customizer-core-css" />
+	<link rel="stylesheet" href="~/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+	<link rel="stylesheet" href="~/assets/css/demo.css" />
+
+	<!-- Vendors CSS -->
+	<link rel="stylesheet" href="~/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+
+	<link rel="stylesheet" href="~/assets/vendor/libs/apex-charts/apex-charts.css" />
+
+	<!-- Page CSS -->
+	<!-- Helpers -->
+	<script src="~/assets/vendor/js/helpers.js"></script>
+
+	<!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+	<!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+	<script src="~/assets/js/config.js"></script>
+
+	<link rel="stylesheet" href="~/css/site.css" />
+	<link rel="stylesheet" href="~/js/site.js" />
+</head>
+
+<body>
+	<!-- Layout wrapper -->
+	<div class="layout-wrapper layout-content-navbar">
+		<div class="layout-container">
+			
+			<!-- Menu -->
+			@await Component.InvokeAsync("MenuUsuario")
+			<!-- / Menu -->
+
+			<!--  Body -->
+			@RenderBody()
+			<!-- / Body -->
+
+		</div>
+
+		<!-- Overlay -->
+		<div class="layout-overlay layout-menu-toggle"></div>
+	</div>
+	<!-- / Layout wrapper -->
+	<!-- Core JS -->
+	<!-- build:js assets/vendor/js/core.js -->
+	<script src="../assets/vendor/libs/jquery/jquery.js"></script>
+	<script src="../assets/vendor/libs/popper/popper.js"></script>
+	<script src="../assets/vendor/js/bootstrap.js"></script>
+	<script src="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+
+	<script src="../assets/vendor/js/menu.js"></script>
+	<!-- endbuild -->
+	<!-- Vendors JS -->
+	<script src="../assets/vendor/libs/apex-charts/apexcharts.js"></script>
+
+	<!-- Main JS -->
+	<script src="../assets/js/main.js"></script>
+
+	<!-- Page JS -->
+	<script src="../assets/js/dashboards-analytics.js"></script>
+
+	<!-- Place this tag in your head or just before your close body tag. -->
+	<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+
+	<!-- Contatos -->
+	<div class="offcanvas offcanvas-end"
+		 tabindex="-1"
+		 id="offcanvasEnd"
+		 aria-labelledby="offcanvasEndLabel">
+		<div class="offcanvas-header">
+			<h5 id="offcanvasEndLabel" class="offcanvas-title">Contatos</h5>
+			<button type="button"
+					class="btn-close text-reset"
+					data-bs-dismiss="offcanvas"
+					aria-label="Close"></button>
+		</div>
+		<div class="offcanvas-body">
+			<div class="demo-inline-spacing">
+				<div class="list-group list-group-flush">
+					<a href="https://www.atendimento.tcees.tc.br" class="list-group-item list-group-item-action"><i class="bx bx-desktop me-2" style="margin-top: -1%"></i>atendimento.tcees.tc.br</a>
+					<a href="mailto:atendimento@tcees.tc.br" class="list-group-item list-group-item-action"><i class="bx bx-envelope me-2" style="margin-top: -1%"></i>atendimento@tcees.tc.br</a>
+					<a href="tel:02733347709" class="list-group-item list-group-item-action"><i class="bx bx-phone me-2" style="margin-top: -1%"></i>(27) 3334-7709</a>
+					<a href="tel:027000000000" class="list-group-item list-group-item-action"><i class="bx bxl-whatsapp me-2" style="margin-top: -1%"></i>(27) 00000-0000</a>
+				</div>
+
+				<br>
+				<h5 id="offcanvasEndLabel" class="offcanvas-title">Atenção!</h5>
+				<div class="alert alert-primary" id="alert-primary" role="alert" style="">
+					<span id="alert-primary-titulo">Indisponibilidade do sistema</span>
+					<br>
+					<span id="alert-primary-conteudo">
+					  O Portal Insitucional ficará indisponível no dia 31/03/2022 por aproximadamente 2 horas. A manutenção evolutiva será iniciada às 19 horas.
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
 </body>
 </html>

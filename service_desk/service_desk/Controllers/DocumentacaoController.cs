@@ -20,6 +20,12 @@ namespace service_desk.Controllers
             return View(documentacaos);
         }
 
+        public IActionResult ListaUsuario()
+        {
+            List<DocumentacaoModel> documentacaos = _documentacaoRepositorio.BuscarTodos();
+            return View(documentacaos);
+        }
+
         public IActionResult Criar()
         {
             return View();

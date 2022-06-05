@@ -1,0 +1,110 @@
+﻿@model UsuarioModel
+
+<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+	<div class="app-brand demo" style="margin-bottom:5%; margin-top:10%;">
+		<a href="#" class="app-brand-link">
+			<center>
+				<img style="width:90%;" src="https://localhost:44356/assets/img/logo.svg">
+			</center>
+		</a>
+
+		<a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+			<i class="bx bx-chevron-left bx-sm align-middle"></i>
+		</a>
+	</div>
+
+	<div class="menu-inner-shadow"></div>
+
+	<center>
+		<span style="color: #1B5F9D; font-weight: bold; margin-top: 3%;">Olá, @Model.Nome!</span>
+	</center>
+
+	<ul class="menu-inner py-1">
+		<li class="menu-item" id='pagina-inicial'>
+			<a asp-controller="Home" asp-action="Index" class="menu-link" style="text-decoration: none;">
+				<i class="menu-icon tf-icons bx bx-home-circle"></i>
+				<div data-i18n="Analytics">Página Inicial</div>
+			</a>
+		</li>
+
+		<li class="menu-item" id="novo-chamado">
+			<a asp-controller="Chamado" asp-action="Criar" class="menu-link" style="text-decoration: none;">
+				<i class="menu-icon tf-icons bx bx-message-alt-add"></i>
+				<div data-i18n="Analytics">Novo Chamado</div>
+			</a>
+		</li>
+
+		<li class="menu-item" id="meus-chamado">
+			<a asp-controller="Chamado" asp-action="Index" class="menu-link" style="text-decoration: none;">
+				<i class="menu-icon tf-icons bx bx-user-pin"></i>
+				<div data-i18n="Analytics">Meus Chamados</div>
+			</a>
+		</li>
+
+		<li class="menu-item" id="duvidas">
+			<a asp-controller="Documentacao" asp-action="ListaUsuario" class="menu-link" style="text-decoration: none;">
+				<i class="menu-icon tf-icons bx bx-question-mark"></i>
+				<div data-i18n="Analytics">Dúvidas</div>
+			</a>
+		</li>
+
+		<li class="menu-item" id='contato' style="text-decoration: none;">
+			<a asp-controller="Home" asp-action="Index" class="menu-link" data-bs-toggle="offcanvas" data-bs-target="#offcanvasEnd" aria-controls="offcanvasEnd">
+				<i class="menu-icon tf-icons bx bx-phone-call"></i>
+				<div data-i18n="Analytics">Contatos</div>
+			</a>
+		</li>
+
+		<li class="menu-item" style="text-decoration: none;">
+			<a asp-controller="Login" asp-action="Sair" class="menu-link" style="text-decoration: none;">
+				<i class="menu-icon tf-icons bx bx-log-out"></i>
+				<div data-i18n="Analytics">Sair</div>
+			</a>
+		</li>
+	</ul>
+</aside>
+
+<script>
+
+	var url = window.location.pathname;
+
+	if (url.includes('/Home')) {
+		var element = document.getElementById("pagina-inicial");
+		element.classList.add("active");
+	}
+
+	if (url.includes('/Alerta')) {
+		var element = document.getElementById("alerta");
+		element.classList.add("active");
+	}
+
+	if (url.includes('/Documentacao')) {
+		var element = document.getElementById("documentacao");
+		element.classList.add("active");
+	}
+
+	if (url.includes('/Contato')) {
+		var element = document.getElementById("contato");
+		element.classList.add("active");
+	}
+
+	if (url.includes('/Categoria')) {
+		var element = document.getElementById("categoria");
+		element.classList.add("active");
+	}
+
+	if (url.includes('/TipoContato')) {
+		var element = document.getElementById("tipo-contato");
+		element.classList.add("active");
+	}
+
+	if (url.includes('/Usuario')) {
+		var element = document.getElementById("usuarios");
+		element.classList.add("active");
+	}
+
+	if (url.includes('/Localizacao')) {
+		var element = document.getElementById("localizacao");
+		element.classList.add("active");
+	}
+</script>
