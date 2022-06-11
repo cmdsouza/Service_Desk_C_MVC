@@ -5,61 +5,73 @@
 	Layout = "_LayoutAdministrador";
 }
 
-<form asp-controller="Alerta" asp-action="Criar" method="post">
-	<div class="row">
-		<div class="col-sm-12">
-			<div class="card mb-4">
-				<p class="card-header" style="font-weight: bold; color: #1B5F9D; font-size: 16px; margin-bottom:-1%;">Criar alerta!</p>
-				<div class="card-body">
-					<div class="row">
-						<div class="row">
-							<div class="col-sm">
-								<div>
-									<label for="Titulo" class="form-label">Título</label>
-									<input type="text"
-										   class="form-control"
-										   id="defaultFormControlInput"
-										   placeholder="Título do alerta"
-										   aria-describedby="defaultFormControlHelp"
-										   asp-for="Titulo" />
-								</div>
-								@Html.ValidationMessageFor(x => x.Titulo)
-							</div>
-						</div>
-						<div class="row" style="margin-top: 2%;">
-							<div class="col-sm">
-								<div>
-									<label for="exampleFormControlTextarea1" class="form-label">Descrição</label>
-									<textarea class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Descreva o alerta!"
-											  asp-for="Descricao"></textarea>
-								</div>
-								@Html.ValidationMessageFor(x => x.Descricao)
-							</div>
-						</div>
-						<div class="row" style="margin-top: 2%;">
-							<div class="col-sm">
-								<div>
-									<label for="exampleFormControlSelect1" class="form-label">Cor</label>
-									<select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example" asp-for="Cor">
-										<option value="primary" style="color: #007bff;">Azul</option>
-										<option value="secondary" style="color: #6c757d;">Cinza</option>
-										<option value="success" style="color: #28a745;">Verde</option>
-										<option value="danger" style="color: #dc3545;">Vermelho</option>
-										<option value="warning" style="color: #ffc107;">Amarelo</option>
-									</select>
-								</div>
-								@Html.ValidationMessageFor(x => x.Cor)
-							</div>
-						</div>
-						<input type="hidden" asp-for="Status" value="Inativo" class="form-control" placeholder="Digite a status do alerta">
-					</div>
-				</div>
-				<div class="col-sm" style="margin-bottom: 3%; margin-left: -1%;">
-					<button type="submit" class="btn btn-primary" style="margin-left: 2%;">Criar</button>
-					<a class="btn btn-secondary" asp-controller="Alerta" asp-action="Index" role="button">Voltar</a>
-				</div>
+<div class="layout-page">
+	<div class="container-xxl container-p-y">
+
+		<div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+			<div class="row">
+				<a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)" style="margin-left: 1.5%;">
+					<i class="bx bx-menu bx-sm"></i>
+				</a>
 			</div>
 		</div>
-	</div>
 
-</form>
+		<form asp-controller="Alerta" asp-action="Criar" method="post">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="card mb-4">
+						<p class="card-header" style="font-weight: bold; color: #1B5F9D; font-size: 16px; margin-bottom:-1%;">Criar alerta!</p>
+						<div class="card-body">
+							<div class="row">
+								<div class="row">
+									<div class="col-sm">
+										<div>
+											<label for="Titulo" class="form-label">Título</label>
+											<input type="text"
+												   class="form-control"
+												   id="defaultFormControlInput"
+												   placeholder="Título do alerta"
+												   aria-describedby="defaultFormControlHelp"
+												   asp-for="Titulo" />
+										</div>
+										@Html.ValidationMessageFor(x => x.Titulo)
+									</div>
+								</div>
+								<div class="row" style="margin-top: 2%;">
+									<div class="col-sm">
+										<div>
+											<label for="exampleFormControlTextarea1" class="form-label">Descrição</label>
+											<textarea class="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Descreva o alerta!"
+													  asp-for="Descricao"></textarea>
+										</div>
+										@Html.ValidationMessageFor(x => x.Descricao)
+									</div>
+								</div>
+								<div class="row" style="margin-top: 2%;">
+									<div class="col-sm">
+										<div>
+											<label for="exampleFormControlSelect1" class="form-label">Cor</label>
+											<select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example" asp-for="Cor">
+												<option value="primary" style="color: #007bff;">Azul</option>
+												<option value="secondary" style="color: #6c757d;">Cinza</option>
+												<option value="success" style="color: #28a745;">Verde</option>
+												<option value="danger" style="color: #dc3545;">Vermelho</option>
+												<option value="warning" style="color: #ffc107;">Amarelo</option>
+											</select>
+										</div>
+										@Html.ValidationMessageFor(x => x.Cor)
+									</div>
+								</div>
+								<input type="hidden" asp-for="Status" value="Inativo" class="form-control" placeholder="Digite a status do alerta">
+							</div>
+						</div>
+						<div class="col-sm" style="margin-bottom: 3%; margin-left: -1%;">
+							<button type="submit" class="btn btn-primary" style="margin-left: 2%;">Criar</button>
+							<a class="btn btn-secondary" asp-controller="Alerta" asp-action="Index" role="button">Voltar</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

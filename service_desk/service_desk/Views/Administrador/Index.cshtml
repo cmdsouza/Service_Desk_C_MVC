@@ -2,83 +2,96 @@
 	Layout = "_LayoutAdministrador";
 }
 
-<div class="row mb-5">
-	<div class="col-md-6 col-lg-4 mb-3">
-		<div class="card h-100">
-			<img class="card-img-top" src="../assets/img/alerta.svg" alt="Card image cap" />
-			<div class="card-body">
-				<h5 class="card-title">Alerta</h5>
-				<p class="card-text">
-					Gestão dos alertas exibidos na tela de login e na aba "Contatos" (no perfil dos usuários). Só pode haver 1 alerta ativo.
-				</p>
-				<a asp-controller="Alerta" asp-action="Index" class="btn btn-outline-primary">Acessar módulo</a>
+<div class="layout-page">
+	<div class="container-xxl container-p-y">
+
+		<div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+			<div class="row">
+				<a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)" style="margin-left: 1.5%;">
+					<i class="bx bx-menu bx-sm"></i>
+				</a>
 			</div>
 		</div>
-	</div>
 
-	<div class="col-md-6 col-lg-4 mb-3">
-		<div class="card h-100">
-			<img class="card-img-top" src="../assets/img/categorias.svg" alt="Card image cap" />
-			<div class="card-body">
-				<h5 class="card-title">Categorias</h5>
-				<p class="card-text">
-					Realize a gestão das categorias dos chamados. A lógica dos campos que aparecem para determinadas categorias está no código (por enquanto).
-				</p>
-				<a asp-controller="Categoria" asp-action="Index" class="btn btn-outline-primary">Acessar módulo</a>
+		<div class="row mb-5">
+			<div class="col-md-6 col-lg-4 mb-3">
+				<div class="card h-100">
+					<img class="card-img-top" src="../assets/img/alerta.svg" alt="Card image cap" />
+					<div class="card-body">
+						<h5 class="card-title">Alerta</h5>
+						<p class="card-text">
+							Gestão dos alertas exibidos na tela de login e na aba "Contatos" (no perfil dos usuários). Só pode haver 1 alerta ativo.
+						</p>
+						<a asp-controller="Alerta" asp-action="Index" class="btn btn-outline-primary">Acessar módulo</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-6 col-lg-4 mb-3">
+				<div class="card h-100">
+					<img class="card-img-top" src="../assets/img/categorias.svg" alt="Card image cap" />
+					<div class="card-body">
+						<h5 class="card-title">Categorias</h5>
+						<p class="card-text">
+							Realize a gestão das categorias dos chamados. A lógica dos campos que aparecem para determinadas categorias está no código (por enquanto).
+						</p>
+						<a asp-controller="Categoria" asp-action="Index" class="btn btn-outline-primary">Acessar módulo</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-6 col-lg-4 mb-3">
+				<div class="card h-100">
+					<img class="card-img-top" src="../assets/img/contato.svg" alt="Card image cap" />
+					<div class="card-body">
+						<h5 class="card-title">Contato</h5>
+						<p class="card-text">
+							Cadastre, edite ou exclua os contatos exibidos no perfil dos usuários. Utilize o menu  <a asp-controller="TipoContato" asp-action="Index">tipo de contato</a> para cadastrar novos ícones.
+						</p>
+						<a asp-controller="Contato" asp-action="Index" class="btn btn-outline-primary">Acessar módulo</a>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
 
-	<div class="col-md-6 col-lg-4 mb-3">
-		<div class="card h-100">
-			<img class="card-img-top" src="../assets/img/contato.svg" alt="Card image cap" />
-			<div class="card-body">
-				<h5 class="card-title">Contato</h5>
-				<p class="card-text">
-					Cadastre, edite ou exclua os contatos exibidos no perfil dos usuários. Utilize o menu  <a asp-controller="TipoContato" asp-action="Index">tipo de contato</a> para cadastrar novos ícones.
-				</p>
-				<a asp-controller="Contato" asp-action="Index" class="btn btn-outline-primary">Acessar módulo</a>
+		<div class="row mb-5">
+			<div class="col-md-6 col-lg-4 mb-3">
+				<div class="card h-100">
+					<img class="card-img-top" src="../assets/img/documentacao.svg" alt="Card image cap" />
+					<div class="card-body">
+						<h5 class="card-title">Documentação</h5>
+						<p class="card-text">
+							Disponibilize os links das documentações do <a href="https://www.tcees.tc.br/ajuda/" target="_blank">Portal de Ajuda</a>. A gestão do conteúdo das documentações deve ser realizado no Portal.
+						</p>
+						<a asp-controller="Documentacao" asp-action="Index" class="btn btn-outline-primary">Acessar módulo</a>
+					</div>
+				</div>
 			</div>
-		</div>
-	</div>
-</div>
 
-<div class="row mb-5">
-	<div class="col-md-6 col-lg-4 mb-3">
-		<div class="card h-100">
-			<img class="card-img-top" src="../assets/img/documentacao.svg" alt="Card image cap" />
-			<div class="card-body">
-				<h5 class="card-title">Documentação</h5>
-				<p class="card-text">
-					Disponibilize os links das documentações do <a href="https://www.tcees.tc.br/ajuda/" target="_blank">Portal de Ajuda</a>. A gestão do conteúdo das documentações deve ser realizado no Portal.
-				</p>
-				<a asp-controller="Documentacao" asp-action="Index"  class="btn btn-outline-primary">Acessar módulo</a>
+			<div class="col-md-6 col-lg-4 mb-3">
+				<div class="card h-100">
+					<img class="card-img-top" src="../assets/img/localizacao.svg" alt="Card image cap" />
+					<div class="card-body">
+						<h5 class="card-title">Localização</h5>
+						<p class="card-text">
+							Cadastre os setores que que serão exibidos no formulário de abertura de chamados.
+						</p>
+						<a asp-controller="Localizacao" asp-action="Index" class="btn btn-outline-primary">Acessar módulo</a>
+					</div>
+				</div>
 			</div>
-		</div>
-	</div>
 
-	<div class="col-md-6 col-lg-4 mb-3">
-		<div class="card h-100">
-			<img class="card-img-top" src="../assets/img/localizacao.svg" alt="Card image cap" />
-			<div class="card-body">
-				<h5 class="card-title">Localização</h5>
-				<p class="card-text">
-					Cadastre os setores que que serão exibidos no formulário de abertura de chamados.
-				</p>
-				<a asp-controller="Localizacao" asp-action="Index" class="btn btn-outline-primary">Acessar módulo</a>
-			</div>
-		</div>
-	</div>
-
-	<div class="col-md-6 col-lg-4 mb-3">
-		<div class="card h-100">
-			<img class="card-img-top" src="../assets/img/usuario.svg" alt="Card image cap" />
-			<div class="card-body">
-				<h5 class="card-title">Usuários</h5>
-				<p class="card-text">
-					Gerencie os usuários que podem utilizar o sistema de abertura de chamados. Antes de cadastrá-los, verifique se eles possuem cadastro no TCE-ES.
-				</p>
-				<a asp-controller="Usuario" asp-action="Index" class="btn btn-outline-primary">Acessar módulo</a>
+			<div class="col-md-6 col-lg-4 mb-3">
+				<div class="card h-100">
+					<img class="card-img-top" src="../assets/img/usuario.svg" alt="Card image cap" />
+					<div class="card-body">
+						<h5 class="card-title">Usuários</h5>
+						<p class="card-text">
+							Gerencie os usuários que podem utilizar o sistema de abertura de chamados. Antes de cadastrá-los, verifique se eles possuem cadastro no TCE-ES.
+						</p>
+						<a asp-controller="Usuario" asp-action="Index" class="btn btn-outline-primary">Acessar módulo</a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

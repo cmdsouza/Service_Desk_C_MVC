@@ -6,33 +6,45 @@
 	Layout = "_LayoutAdministrador";
 }
 
-<form asp-controller="Documentacao" asp-action="Criar" method="post">
-	<div class="row">
-		<div class="col-sm-12">
-			<div class="card mb-4">
-				<p class="card-header" style="font-weight: bold; color: #1B5F9D; font-size: 16px; margin-bottom:-1%;">Criar alerta!</p>
-				<div class="card-body">
-					<div class="row">
-						<div class="row">
-							<div>
-								<label for="Descricao" class="form-label">Títulos e Links</label>
-								<textarea class="form-control"
-										  id="defaultFormControlInput"
-										  aria-describedby="defaultFormControlHelp"
-										  asp-for="TituloLink">
+<div class="layout-page">
+	<div class="container-xxl container-p-y">
 
-									</textarea>
-							</div>
-							@Html.ValidationMessageFor(x => x.TituloLink)
-						</div>
-						<input type="hidden" value="1" asp-for="IdUsuario" />
-					</div>
-				</div>
-				<div class="col-sm" style="margin-bottom: 3%; margin-left: -1%;">
-					<button type="submit" class="btn btn-primary" style="margin-left: 2%;">Criar</button>
-					<a class="btn btn-secondary" asp-controller="Documentacao" asp-action="Index" role="button">Voltar</a>
-				</div>
+		<div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+			<div class="row">
+				<a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)" style="margin-left: 1.5%;">
+					<i class="bx bx-menu bx-sm"></i>
+				</a>
 			</div>
 		</div>
+		<form asp-controller="Documentacao" asp-action="Criar" method="post">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="card mb-4">
+						<p class="card-header" style="font-weight: bold; color: #1B5F9D; font-size: 16px; margin-bottom:-1%;">Criar alerta!</p>
+						<div class="card-body">
+							<div class="row">
+								<div class="row">
+									<div>
+										<label for="Descricao" class="form-label">Títulos e Links</label>
+										<textarea class="form-control"
+												  id="defaultFormControlInput"
+												  aria-describedby="defaultFormControlHelp"
+												  asp-for="TituloLink">
+
+									</textarea>
+									</div>
+									@Html.ValidationMessageFor(x => x.TituloLink)
+								</div>
+								<input type="hidden" value="1" asp-for="IdUsuario" />
+							</div>
+						</div>
+						<div class="col-sm" style="margin-bottom: 3%; margin-left: -1%;">
+							<button type="submit" class="btn btn-primary" style="margin-left: 2%;">Criar</button>
+							<a class="btn btn-secondary" asp-controller="Documentacao" asp-action="Index" role="button">Voltar</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
 	</div>
-</form>
+</div>

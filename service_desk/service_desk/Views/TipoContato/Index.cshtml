@@ -3,97 +3,118 @@
 @{
 	ViewData["Title"] = "Lista de Tipos de Contatos";
 	Layout = "_LayoutAdministrador";
+	var contador = 0;
 }
 
-<!-- Striped Rows -->
-<div class="container">
-	@if (TempData["MensagemSucesso"] != null)
-	{
-		<div class="alert alert-success" role="alert">
-			@TempData["MensagemSucesso"]
-		</div>
-	}
+<div class="layout-page">
+	<div class="container-xxl container-p-y">
 
-	@if (TempData["MensagemErro"] != null)
-	{
-		<div class="alert alert-danger" role="alert">
-			@TempData["MensagemErro"]
-		</div>
-	}
-
-	<div class="card">
-		<div class="row">
-			<div class="col-sm">
-				<h5 class="card-header">Lista de Tipos de Contatos</h5>
-			</div>
-			<div class="col-sm text-end" style="margin-top: 2%; margin-right: 3%;">
-				<a class="btn btn-sm btn-primary" role='button' asp-controller="TipoContato" asp-action="Criar">Adicionar</a>
+		<div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+			<div class="row">
+				<a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)" style="margin-left: 1.5%;">
+					<i class="bx bx-menu bx-sm"></i>
+				</a>
 			</div>
 		</div>
-		<div class="table-responsive text-nowrap">
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						<td><center>Ícone</center></td>
-						<td>Descrição</td>
-						<th scope="col"><center>Última Atualização</center></th>
-						<th scope="col"><center>Ações</center></th>
-					</tr>
-				</thead>
-				<tbody class="table-border-bottom-0">
-					@if (Model != null && Model.Any())
-					{
-						foreach(TipoContatoModel tipoContato in Model)
-						{
+		<!-- Striped Rows -->
+		<div class="container">
+			@if (TempData["MensagemSucesso"] != null)
+			{
+				<div class="alert alert-success" role="alert">
+					@TempData["MensagemSucesso"]
+				</div>
+			}
 
+			@if (TempData["MensagemErro"] != null)
+			{
+				<div class="alert alert-danger" role="alert">
+					@TempData["MensagemErro"]
+				</div>
+			}
+
+			<div class="card">
+				<div class="row">
+					<div class="col-sm">
+						<h5 class="card-header">Lista de Tipos de Contatos</h5>
+					</div>
+					<div class="col-sm text-end" style="margin-top: 2%; margin-right: 3%;">
+						<a class="btn btn-sm btn-primary" role='button' asp-controller="TipoContato" asp-action="Criar">Adicionar</a>
+					</div>
+				</div>
+				<div class="table-responsive text-nowrap">
+					<table class="table table-striped">
+						<thead>
 							<tr>
-								<td><center><i class='@tipoContato.Icone'></i></center></td>
-								<td>@tipoContato.Descricao</td>
-								<td>
-									<center>
-										@if (tipoContato.DataAtualizacao == null)
-										{
-											@tipoContato.DataCriacao
-										}
-										else
-										{
-											@tipoContato.DataAtualizacao
-										}
-									</center>
-								</td>
-								<td>
-									<center>
-										<a role="button"
-								   asp-route-id="@tipoContato.Id"
-								   asp-controller="TipoContato"
-								   asp-action="Editar"
-								   data-bs-toggle="tooltip"
-								   data-bs-offset="0,4"
-								   data-bs-placement="top"
-								   data-bs-html="true"
-								   title="Editar">
-											<i class='bx bx-edit' style="margin-top: -2%;"></i>
-										</a>
-										<a role="button"
-								   asp-route-id="@tipoContato.Id"
-								   asp-controller="TipoContato"
-								   asp-action="ApagarConfirmacao"
-								   data-bs-toggle="tooltip"
-								   data-bs-offset="0,4"
-								   data-bs-placement="top"
-								   data-bs-html="true"
-								   title="Excluir">
-											<i class='bx bx-trash' style="margin-top: -2%;"></i>
-										</a>
-									</center>
-								</td>
+								<td><center>Ícone</center></td>
+								<td>Descrição</td>
+								<th scope="col"><center>Última Atualização</center></th>
+								<th scope="col"><center>Ações</center></th>
 							</tr>
-						}
-					}
+						</thead>
+						<tbody class="table-border-bottom-0">
+							@if (Model != null && Model.Any())
+							{
+								foreach (TipoContatoModel tipoContato in Model)
+								{
 
-				</tbody>
-			</table>
+									<tr>
+										<td><center><i class='@tipoContato.Icone'></i></center></td>
+										<td>@tipoContato.Descricao</td>
+										<td>
+											<center>
+												@if (tipoContato.DataAtualizacao == null)
+												{
+													@tipoContato.DataCriacao
+												}
+												else
+												{
+													@tipoContato.DataAtualizacao
+												}
+											</center>
+										</td>
+										<td>
+											<center>
+												<a role="button"
+										   asp-route-id="@tipoContato.Id"
+										   asp-controller="TipoContato"
+										   asp-action="Editar"
+										   data-bs-toggle="tooltip"
+										   data-bs-offset="0,4"
+										   data-bs-placement="top"
+										   data-bs-html="true"
+										   title="Editar">
+													<i class='bx bx-edit' style="margin-top: -2%;"></i>
+												</a>
+												<a role="button"
+										   asp-route-id="@tipoContato.Id"
+										   asp-controller="TipoContato"
+										   asp-action="ApagarConfirmacao"
+										   data-bs-toggle="tooltip"
+										   data-bs-offset="0,4"
+										   data-bs-placement="top"
+										   data-bs-html="true"
+										   title="Excluir">
+													<i class='bx bx-trash' style="margin-top: -2%;"></i>
+												</a>
+											</center>
+										</td>
+									</tr>
+									contador = contador + 1;
+
+								}
+							}
+
+							@if (contador == 0)
+							{
+								<tr>
+									<td colspan="4"><center>Não foram encontrados registros.</center></td>
+								</tr>
+							}
+						</tbody>
+					</table>
+				</div>
+			</div>
 		</div>
+		<!--/ Striped Rows -->
 	</div>
 </div>
-<!--/ Striped Rows -->

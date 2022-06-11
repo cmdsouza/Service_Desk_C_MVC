@@ -16,7 +16,7 @@ Cria a estrutura no banco: Update-Database -Context BancoContext
 - Criar
 
 ~ Contato ~
-- Pegar o usuário pela sessão
+- [certo]
 
 ~ Documentação ~
 - [certo]
@@ -25,6 +25,9 @@ Cria a estrutura no banco: Update-Database -Context BancoContext
 - [certo]
 
 ~ Tipo Contato ~
+- [certo]
+
+~ Usuário ~
 - [certo]
 
 ###### ADM #####

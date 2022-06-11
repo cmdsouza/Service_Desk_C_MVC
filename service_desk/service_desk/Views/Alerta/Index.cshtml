@@ -3,116 +3,143 @@
 @{
 	ViewData["Title"] = "[ADM] Gestão de Alertas";
 	Layout = "_LayoutAdministrador";
+	var contador = 0;
 }
 
-<!-- Striped Rows -->
-<div class="container">
-	@if (TempData["MensagemSucesso"] != null)
-	{
-		<div class="alert alert-success" role="alert">
-			@TempData["MensagemSucesso"]
-		</div>
-	}
+<div class="layout-page">
+	<div class="container-xxl container-p-y">
 
-	@if (TempData["MensagemErro"] != null)
-	{
-		<div class="alert alert-danger" role="alert">
-			@TempData["MensagemErro"]
-		</div>
-	}
-
-	<div class="card">
-		<div class="row">
-			<div class="col-sm">
-				<h5 class="card-header">Lista de Alertas</h5>
-			</div>
-			<div class="col-sm text-end" style="margin-top: 2%; margin-right: 3%;">
-				<a class="btn btn-sm btn-primary" role='button' asp-controller="Alerta" asp-action="Criar">Adicionar</a>
+		<div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+			<div class="row">
+				<a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)" style="margin-left: 1.5%;">
+					<i class="bx bx-menu bx-sm"></i>
+				</a>
 			</div>
 		</div>
-		<div class="table-responsive text-nowrap">
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						<th scope="col">Status</th>
-						<th scope="col">Título</th>
-						<th scope="col"><center>Cor</center></th>
-						<th scope="col"><center>Última Atualização</center></th>
-						<th scope="col"><center>Ações</center></th>
-					</tr>
-				</thead>
-				<tbody class="table-border-bottom-0">
-					@if (Model != null && Model.Any())
-					{
-						foreach (AlertaModel alerta in Model)
-						{
 
+		<!-- Striped Rows -->
+		<div class="container">
+			@if (TempData["MensagemSucesso"] != null)
+			{
+				<div class="alert alert-success" role="alert">
+					@TempData["MensagemSucesso"]
+				</div>
+			}
+
+			@if (TempData["MensagemErro"] != null)
+			{
+				<div class="alert alert-danger" role="alert">
+					@TempData["MensagemErro"]
+				</div>
+			}
+
+			<div class="card">
+				<div class="row">
+					<div class="col-sm">
+						<h5 class="card-header">Lista de Alertas</h5>
+					</div>
+					<div class="col-sm text-end" style="margin-top: 2%; margin-right: 3%;">
+						<a class="btn btn-sm btn-primary" role='button' asp-controller="Alerta" asp-action="Criar">Adicionar</a>
+					</div>
+				</div>
+				<div class="table-responsive text-nowrap">
+					<table class="table table-striped">
+						<thead>
 							<tr>
-								<td>
-									@if (alerta.Status == "Ativo")
-									{
-										<b style="color: #28a745">@alerta.Status</b>
-									}
-									else
-									{
-										<b style="color: #dc3545">@alerta.Status</b>
-									}
-								</td>
-								<td>@alerta.Titulo</td>
-								<td>
-									<center>
-										@if (alerta.Cor == "primary")
-										{
-											<div style="background-color: #007bff; width: 20px; height: 20px;"></div>
-										}  @if (alerta.Cor == "secondary")
-										{
-											<div style="background-color: #6c757d; width: 20px; height: 20px;"></div>
-										} @if (alerta.Cor == "success")
-										{
-											<div style="background-color: #28a745; width: 20px; height: 20px;"></div>
-										} @if (alerta.Cor == "danger")
-										{
-											<div style="background-color: #dc3545; width: 20px; height: 20px;"></div>
-										} @if (alerta.Cor == "warning")
-										{
-											<div style="background-color: #ffc107; width: 20px; height: 20px;"></div>
-										}
-									</center>
-								</td>
-								<td>
-									<center>
-										@if (alerta.DataAtualizacao == null)
-										{
-											@alerta.DataCriacao
-										}
-										else
-										{
-											@alerta.DataAtualizacao
-										}
-									</center>
-								</td>
-								<td>
-									<center>
-										<a asp-route-id="@alerta.Id" asp-controller="Alerta" asp-action="Editar" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Editar"><i class='bx bx-edit' style="margin-top: -2%;"></i></a>
-										<a asp-route-id="@alerta.Id" asp-controller="Alerta" asp-action="ApagarConfirmacao" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Excluir</span>"><i class='bx bx-trash' style="margin-top: -2%;"></i></a>
-
-										@if (alerta.Status == "Ativo")
-										{
-											<a asp-route-id="@alerta.Id" asp-controller="Alerta" asp-action="Desativar" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Desativar"><i class='bx bx-task-x' style="margin-top: -2%;"></i></a>
-										}
-										else
-										{
-											<a asp-route-id="@alerta.Id" asp-controller="Alerta" asp-action="Ativar" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Ativar</span>"><i class='bx bx-calendar-exclamation' style="margin-top: -2%;"></i></a>
-										}
-									</center>
-								</td>
+								<th scope="col">Status</th>
+								<th scope="col">Título</th>
+								<th scope="col"><center>Cor</center></th>
+								<th scope="col"><center>Última Atualização</center></th>
+								<th scope="col"><center>Ações</center></th>
 							</tr>
-						}
-					}
+						</thead>
+						<tbody class="table-border-bottom-0">
+							@if (Model != null && Model.Any())
+							{
+								
+								foreach (AlertaModel alerta in Model)
+								{
 
-				</tbody>
-			</table>
+									<tr>
+										<td>
+											@if (alerta.Status == "Ativo")
+											{
+												<b style="color: #28a745">@alerta.Status</b>
+											}
+											else
+											{
+												<b style="color: #dc3545">@alerta.Status</b>
+											}
+										</td>
+										<td>@alerta.Titulo</td>
+										<td>
+											<center>
+												@if (alerta.Cor == "primary")
+												{
+													<div style="background-color: #007bff; width: 20px; height: 20px;"></div>
+												}
+												@if (alerta.Cor == "secondary")
+												{
+													<div style="background-color: #6c757d; width: 20px; height: 20px;"></div>
+												}
+												@if (alerta.Cor == "success")
+												{
+													<div style="background-color: #28a745; width: 20px; height: 20px;"></div>
+												}
+												@if (alerta.Cor == "danger")
+												{
+													<div style="background-color: #dc3545; width: 20px; height: 20px;"></div>
+												}
+												@if (alerta.Cor == "warning")
+												{
+													<div style="background-color: #ffc107; width: 20px; height: 20px;"></div>
+												}
+											</center>
+										</td>
+										<td>
+											<center>
+												@if (alerta.DataAtualizacao == null)
+												{
+													@alerta.DataCriacao
+												}
+												else
+												{
+													@alerta.DataAtualizacao
+												}
+											</center>
+										</td>
+										<td>
+											<center>
+												<a asp-route-id="@alerta.Id" asp-controller="Alerta" asp-action="Editar" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Editar"><i class='bx bx-edit' style="margin-top: -2%;"></i></a>
+												<a asp-route-id="@alerta.Id" asp-controller="Alerta" asp-action="ApagarConfirmacao" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Excluir</span>"><i class='bx bx-trash' style="margin-top: -2%;"></i></a>
+
+												@if (alerta.Status == "Ativo")
+												{
+													<a asp-route-id="@alerta.Id" asp-controller="Alerta" asp-action="Desativar" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Desativar"><i class='bx bx-task-x' style="margin-top: -2%;"></i></a>
+												}
+												else
+												{
+													<a asp-route-id="@alerta.Id" asp-controller="Alerta" asp-action="Ativar" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Ativar</span>"><i class='bx bx-calendar-exclamation' style="margin-top: -2%;"></i></a>
+												}
+											</center>
+										</td>
+									</tr>
+
+									contador = contador + 1;
+
+								}
+							}
+
+							@if(contador == 0){
+								<tr>
+									<td colspan="5"><center>Não foram encontrados registros.</center></td>
+								</tr>
+							}
+						</tbody>
+					</table>
+				</div>
+			</div>
 		</div>
+		<!--/ Striped Rows -->
 	</div>
 </div>
-<!--/ Striped Rows -->

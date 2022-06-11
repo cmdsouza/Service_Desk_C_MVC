@@ -3,6 +3,7 @@
 @{
 	ViewData["Title"] = "Lista de Documentações";
 	Layout = "_LayoutAdministrador";
+	var contador = 0;
 
 	var cont = 0;
 	foreach (DocumentacaoModel documentacao in Model)
@@ -12,66 +13,76 @@
 	}
 }
 
-<!-- Striped Rows -->
-<div class="container">
-	@if (TempData["MensagemSucesso"] != null)
-	{
-		<div class="alert alert-success" role="alert">
-			@TempData["MensagemSucesso"]
-		</div>
-	}
+<div class="layout-page">
+	<div class="container-xxl container-p-y">
 
-	@if (TempData["MensagemErro"] != null)
-	{
-		<div class="alert alert-danger" role="alert">
-			@TempData["MensagemErro"]
-		</div>
-	}
-
-	<div class="card">
-		<div class="row">
-			<div class="col-sm">
-				<h5 class="card-header">Lista de Documentações</h5>
+		<div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+			<div class="row">
+				<a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)" style="margin-left: 1.5%;">
+					<i class="bx bx-menu bx-sm"></i>
+				</a>
 			</div>
-			@if (cont == 0)
+		</div>
+		<!-- Striped Rows -->
+		<div class="container">
+			@if (TempData["MensagemSucesso"] != null)
 			{
-				<div class="col-sm text-end" style="margin-top: 2%; margin-right: 3%;">
-					<a class="btn btn-sm btn-primary" role='button' asp-controller="Documentacao" asp-action="Criar">Adicionar</a>
+				<div class="alert alert-success" role="alert">
+					@TempData["MensagemSucesso"]
 				</div>
 			}
-			</div>
-			<div class="table-responsive text-nowrap">
-				<table class="table table-striped">
-					<thead>
-						<tr>
-							<th scope="col">Títulos e Links</th>
-							<th scope="col"><center>Última Atualização</center></th>
-							<th scope="col"><center>Ações</center></th>
-						</tr>
-					</thead>
-					<tbody class="table-border-bottom-0">
+
+			@if (TempData["MensagemErro"] != null)
+			{
+				<div class="alert alert-danger" role="alert">
+					@TempData["MensagemErro"]
+				</div>
+			}
+
+			<div class="card">
+				<div class="row">
+					<div class="col-sm">
+						<h5 class="card-header">Lista de Documentações</h5>
+					</div>
+					@if (cont == 0)
+					{
+						<div class="col-sm text-end" style="margin-top: 2%; margin-right: 3%;">
+							<a class="btn btn-sm btn-primary" role='button' asp-controller="Documentacao" asp-action="Criar">Adicionar</a>
+						</div>
+					}
+				</div>
+				<div class="table-responsive text-nowrap">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th scope="col">Títulos e Links</th>
+								<th scope="col"><center>Última Atualização</center></th>
+								<th scope="col"><center>Ações</center></th>
+							</tr>
+						</thead>
+						<tbody class="table-border-bottom-0">
 							@if (Model != null && Model.Any())
 							{
 								foreach (DocumentacaoModel documentacao in Model)
 								{
 
-								<tr>
-									<td>
-										<ul>
-										@{
-											var variavel = documentacao.TituloLink;
-											string[] A = variavel.Split(new char[] { '&' }, StringSplitOptions.RemoveEmptyEntries);
-											var quantidade = A.Length;
-											for (int i = 0; i < quantidade; i++)
-											{
-												string[] B = A[i].Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
-												<li><a href="https://@B[1]" target="_blank">@B[0]</a></li>
-											}
-											}
-										</ul>
-									</td>
-									<td>
-										<center>
+									<tr>
+										<td>
+											<ul>
+												@{
+													var variavel = documentacao.TituloLink;
+													string[] A = variavel.Split(new char[] { '&' }, StringSplitOptions.RemoveEmptyEntries);
+													var quantidade = A.Length;
+													for (int i = 0; i < quantidade; i++)
+													{
+														string[] B = A[i].Split(new char[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
+														<li><a href="https://@B[1]" target="_blank">@B[0]</a></li>
+													}
+												}
+											</ul>
+										</td>
+										<td>
+											<center>
 												@if (documentacao.DataAtualizacao == null)
 												{
 													@documentacao.DataCriacao
@@ -80,41 +91,51 @@
 												{
 													@documentacao.DataAtualizacao
 												}
-										</center>
-									</td>
-									<td>
-										<center>
-											<a role="button"
-								   asp-route-id="@documentacao.Id"
-								   asp-controller="Documentacao"
-								   asp-action="Editar"
-								   data-bs-toggle="tooltip"
-								   data-bs-offset="0,4"
-								   data-bs-placement="top"
-								   data-bs-html="true"
-								   title="Editar">
-												<i class='bx bx-edit' style="margin-top: -2%;"></i>
-											</a>
-											<a role="button"
-								   asp-route-id="@documentacao.Id"
-								   asp-controller="Documentacao"
-								   asp-action="ApagarConfirmacao"
-								   data-bs-toggle="tooltip"
-								   data-bs-offset="0,4"
-								   data-bs-placement="top"
-								   data-bs-html="true"
-								   title="Excluir">
-												<i class='bx bx-trash' style="margin-top: -2%;"></i>
-											</a>
-										</center>
-									</td>
-								</tr>
+											</center>
+										</td>
+										<td>
+											<center>
+												<a role="button"
+										   asp-route-id="@documentacao.Id"
+										   asp-controller="Documentacao"
+										   asp-action="Editar"
+										   data-bs-toggle="tooltip"
+										   data-bs-offset="0,4"
+										   data-bs-placement="top"
+										   data-bs-html="true"
+										   title="Editar">
+													<i class='bx bx-edit' style="margin-top: -2%;"></i>
+												</a>
+												<a role="button"
+										   asp-route-id="@documentacao.Id"
+										   asp-controller="Documentacao"
+										   asp-action="ApagarConfirmacao"
+										   data-bs-toggle="tooltip"
+										   data-bs-offset="0,4"
+										   data-bs-placement="top"
+										   data-bs-html="true"
+										   title="Excluir">
+													<i class='bx bx-trash' style="margin-top: -2%;"></i>
+												</a>
+											</center>
+										</td>
+									</tr>
+									contador = contador + 1;
+
 								}
 							}
 
-					</tbody>
-				</table>
+							@if (contador == 0)
+							{
+								<tr>
+									<td colspan="3"><center>Não foram encontrados registros.</center></td>
+								</tr>
+							}
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
+		<!--/ Striped Rows -->
 	</div>
-	<!--/ Striped Rows -->
+</div>

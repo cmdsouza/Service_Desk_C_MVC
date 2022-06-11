@@ -1,46 +1,58 @@
 ﻿@model ContatoModel;
 
 @{
-    ViewData["Title"] = "[ADM] Gestão de Contatos";
-    Layout = "_LayoutAdministrador";
+	ViewData["Title"] = "[ADM] Gestão de Contatos";
+	Layout = "_LayoutAdministrador";
 }
-    
-<form asp-controller="Contato" asp-action="Criar" method="post">
-	<div class="row">
-		<div class="col-sm-12">
-			<div class="card mb-4">
-				<p class="card-header" style="font-weight: bold; color: #1B5F9D; font-size: 16px; margin-bottom:-1%;">Criar alerta!</p>
-				<div class="card-body">
-					<div class="row">
-						<div class="row">
-							<div class="col-sm">
-								<div>
-									<label for="Descricao" class="form-label">Título</label>
-									<input type="text"
-										   class="form-control"
-										   id="defaultFormControlInput"
-										   placeholder="Título da categoria"
-										   aria-describedby="defaultFormControlHelp"
-										   asp-for="Descricao" />
+
+<div class="layout-page">
+	<div class="container-xxl container-p-y">
+
+		<div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+			<div class="row">
+				<a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)" style="margin-left: 1.5%;">
+					<i class="bx bx-menu bx-sm"></i>
+				</a>
+			</div>
+		</div>
+		<form asp-controller="Contato" asp-action="Criar" method="post">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="card mb-4">
+						<p class="card-header" style="font-weight: bold; color: #1B5F9D; font-size: 16px; margin-bottom:-1%;">Criar alerta!</p>
+						<div class="card-body">
+							<div class="row">
+								<div class="row">
+									<div class="col-sm">
+										<div>
+											<label for="Descricao" class="form-label">Título</label>
+											<input type="text"
+												   class="form-control"
+												   id="defaultFormControlInput"
+												   placeholder="Título da categoria"
+												   aria-describedby="defaultFormControlHelp"
+												   asp-for="Descricao" />
+										</div>
+										@Html.ValidationMessageFor(x => x.Descricao)
+									</div>
 								</div>
-								@Html.ValidationMessageFor(x => x.Descricao)
+								<div class="row" style="margin-top:2%;">
+									<div class="col-sm">
+										<div>
+											<label for="IdTipoContato" class="form-label">Tipo de Contato</label>
+											@Html.DropDownListFor(m => m.IdTipoContato, (List<SelectListItem>)ViewBag.TipoContato, "", new {@class = "form-control"})
+										</div>
+									</div>
+								</div>
 							</div>
 						</div>
-						<div class="row" style="margin-top:2%;">
-							<div class="col-sm">
-								<div>
-									<label for="IdTipoContato" class="form-label">Tipo de Contato</label>
-									@Html.DropDownListFor(m => m.IdTipoContato, (List<SelectListItem>)ViewBag.TipoContato, "", new {@class = "form-control"})
-								</div>
-							</div>
+						<div class="col-sm" style="margin-bottom: 3%; margin-left: -1%;">
+							<button type="submit" class="btn btn-primary" style="margin-left: 2%;">Criar</button>
+							<a class="btn btn-secondary" asp-controller="Contato" asp-action="Index" role="button">Voltar</a>
 						</div>
 					</div>
 				</div>
-				<div class="col-sm" style="margin-bottom: 3%; margin-left: -1%;">
-					<button type="submit" class="btn btn-primary" style="margin-left: 2%;">Criar</button>
-					<a class="btn btn-secondary" asp-controller="Contato" asp-action="Index" role="button">Voltar</a>
-				</div>
 			</div>
-		</div>
+		</form>
 	</div>
-</form>
+</div>

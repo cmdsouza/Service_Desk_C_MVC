@@ -5,68 +5,80 @@
 	Layout = "_LayoutAdministrador";
 }
 
-<div class="row">
-	<div class="col-sm-12">
-		<div class="card mb-4">
-			<p class="card-header" style="font-weight: bold; color: #1B5F9D; font-size: 16px; margin-bottom:-1%;">Excluir tipos de Contato!</p>
-			<div class="card-body">
-				<p>Você tem certeza que deseja excluir o tipo de contato abaixo?</p>
-				<div class="row">
-					<div class="row">
-						<div class="col-sm">
-							<div>
-								<label for="Descricao" class="form-label">Ícone</label>
-								<input type="text"
-									   class="form-control"
-									   id="defaultFormControlInput"
-									   aria-describedby="defaultFormControlHelp"
-									   asp-for="Icone" disabled>
-								<div class="form-text">Referência de Class: <a href="https://boxicons.com/" target="_blank">BoxIcons</a></div>
+<div class="layout-page">
+	<div class="container-xxl container-p-y">
+
+		<div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+			<div class="row">
+				<a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)" style="margin-left: 1.5%;">
+					<i class="bx bx-menu bx-sm"></i>
+				</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="card mb-4">
+					<p class="card-header" style="font-weight: bold; color: #1B5F9D; font-size: 16px; margin-bottom:-1%;">Excluir tipos de Contato!</p>
+					<div class="card-body">
+						<p>Você tem certeza que deseja excluir o tipo de contato abaixo?</p>
+						<div class="row">
+							<div class="row">
+								<div class="col-sm">
+									<div>
+										<label for="Descricao" class="form-label">Ícone</label>
+										<input type="text"
+											   class="form-control"
+											   id="defaultFormControlInput"
+											   aria-describedby="defaultFormControlHelp"
+											   asp-for="Icone" disabled>
+										<div class="form-text">Referência de Class: <a href="https://boxicons.com/" target="_blank">BoxIcons</a></div>
+									</div>
+									@Html.ValidationMessageFor(x => x.Icone)
+								</div>
+								<div class="col-sm">
+									<div>
+										<label for="Descricao" class="form-label">Descrição</label>
+										<input type="text"
+											   class="form-control"
+											   id="defaultFormControlInput"
+											   aria-describedby="defaultFormControlHelp"
+											   asp-for="Descricao" disabled>
+									</div>
+									@Html.ValidationMessageFor(x => x.Descricao)
+								</div>
 							</div>
-							@Html.ValidationMessageFor(x => x.Icone)
-						</div>
-						<div class="col-sm">
-							<div>
-								<label for="Descricao" class="form-label">Descrição</label>
-								<input type="text"
-									   class="form-control"
-									   id="defaultFormControlInput"
-									   aria-describedby="defaultFormControlHelp"
-									   asp-for="Descricao" disabled>
+
+							<div class="row" style="margin-top: 2%;">
+								<div class="col-sm">
+									<div>
+										<label for="Titulo" class="form-label">Criação</label>
+										<input type="text"
+											   class="form-control"
+											   id="defaultFormControlInput"
+											   placeholder="Título do alerta"
+											   aria-describedby="defaultFormControlHelp"
+											   asp-for="DataCriacao" disabled />
+									</div>
+								</div>
+								<div class="col-sm">
+									<div>
+										<label for="Titulo" class="form-label">Última Atualização</label>
+										<input type="text"
+											   class="form-control"
+											   id="defaultFormControlInput"
+											   placeholder=""
+											   aria-describedby="defaultFormControlHelp"
+											   asp-for="DataAtualizacao" disabled />
+									</div>
+								</div>
 							</div>
-							@Html.ValidationMessageFor(x => x.Descricao)
 						</div>
 					</div>
-
-					<div class="row" style="margin-top: 2%;">
-						<div class="col-sm">
-							<div>
-								<label for="Titulo" class="form-label">Criação</label>
-								<input type="text"
-									   class="form-control"
-									   id="defaultFormControlInput"
-									   placeholder="Título do alerta"
-									   aria-describedby="defaultFormControlHelp"
-									   asp-for="DataCriacao" disabled />
-							</div>
-						</div>
-						<div class="col-sm">
-							<div>
-								<label for="Titulo" class="form-label">Última Atualização</label>
-								<input type="text"
-									   class="form-control"
-									   id="defaultFormControlInput"
-									   placeholder=""
-									   aria-describedby="defaultFormControlHelp"
-									   asp-for="DataAtualizacao" disabled />
-							</div>
-						</div>
+					<div class="col-sm" style="margin-bottom: 3%; margin-left: -1%;">
+						<a class="btn btn-danger" role="button" asp-controller="TipoContato" asp-action="Apagar" asp-route-id="@Model.Id" style="margin-left:2%;">Confirmar exclusão</a>
+						<a class="btn btn-secondary" asp-controller="TipoContato" asp-action="Index" role="button">Voltar</a>
 					</div>
 				</div>
-			</div>
-			<div class="col-sm" style="margin-bottom: 3%; margin-left: -1%;">
-				<a class="btn btn-danger" role="button" asp-controller="TipoContato" asp-action="Apagar" asp-route-id="@Model.Id" style="margin-left:2%;">Confirmar exclusão</a>
-				<a class="btn btn-secondary" asp-controller="TipoContato" asp-action="Index" role="button">Voltar</a>
 			</div>
 		</div>
 	</div>
