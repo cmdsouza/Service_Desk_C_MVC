@@ -1,17 +1,21 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using service_desk.Models;
 using service_desk.Repositorio;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace service_desk.Controllers
 {
     public class ContatoController : Controller
     {
         private readonly IContatoRepositorio _contatoRepositorio;
+        private readonly ITipoContatoRepositorio _tipoContatoRepositorio;
 
-        public ContatoController(IContatoRepositorio contatoRepositorio)
+        public ContatoController(IContatoRepositorio contatoRepositorio, ITipoContatoRepositorio tipoContatoRepositorio)
         {
             _contatoRepositorio = contatoRepositorio;
+            _tipoContatoRepositorio = tipoContatoRepositorio;
         }
 
         public IActionResult Index()
@@ -22,6 +26,8 @@ namespace service_desk.Controllers
 
         public IActionResult Criar()
         {
+            ViewBag.TipoContato = _tipoContatoRepositorio.BuscarTodos().Select(b => new SelectListItem {Value = b.Id.ToString(), Text = b.Descricao}).ToList();
+
             return View();
         }
 

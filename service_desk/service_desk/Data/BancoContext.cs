@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using service_desk.Data.Configuration;
 using service_desk.Models;
 
 namespace service_desk.Data
@@ -7,7 +8,17 @@ namespace service_desk.Data
     {
         public BancoContext(DbContextOptions<BancoContext> options) : base(options)
         {
-
+            
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(AlertaConfiguration).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(CategoriaConfiguration).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ContatoConfiguration).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(DocumentacaoConfiguration).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ContatoConfiguration).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(LocalizacaoConfiguration).Assembly);
+            base.OnModelCreating(modelBuilder);
         }
 
         public DbSet<AlertaModel> Alertas { get; set; }

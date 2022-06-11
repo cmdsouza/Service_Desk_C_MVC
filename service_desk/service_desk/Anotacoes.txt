@@ -1,4 +1,4 @@
-﻿Criar migrations: Add-Migration AtualizandoTabelas -Context BancoContext
+﻿Criar migrations: Add-Migration TabelasAtt -Context BancoContext
 Cria a estrutura no banco: Update-Database -Context BancoContext
 
 ### Pendências ###
@@ -11,19 +11,25 @@ Cria a estrutura no banco: Update-Database -Context BancoContext
 ###### ADM #####
 ~ Alerta ~
 - Ativar/desativar alerta
-- Pegar o usuário pela sessão
+
+~ Categoria ~
+- Criar
 
 ~ Contato ~
 - Pegar o usuário pela sessão
 
 ~ Documentação ~
-- Pegar o usuário pela sessão
-- Select com os tipos contato
+- [certo]
 
 ~ Localização ~
-- Pegar o usuário pela sessão
+- [certo]
+
+~ Tipo Contato ~
+- [certo]
 
 ###### ADM #####
+- Consumo da API
+
 ~ Página inicial ~
 - % de chamados resolvidos
 - Contagem de chamados abertos e solucionados

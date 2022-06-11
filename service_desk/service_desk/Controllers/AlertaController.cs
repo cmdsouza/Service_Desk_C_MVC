@@ -1,15 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using service_desk.Helper;
 using service_desk.Models;
 using service_desk.Repositorio;
 using System.Collections.Generic;
 
 namespace service_desk.Controllers
 {
-    public class AlertaController : Controller
+    public class AlertaController : GenericoController
     {
         private readonly IAlertaRepositorio _alertaRepositorio;
 
-        public AlertaController(IAlertaRepositorio alertaRepositorio)
+        public AlertaController(IAlertaRepositorio alertaRepositorio, ISessao sessao) : base(sessao)
         {
             _alertaRepositorio = alertaRepositorio;
         }
@@ -66,6 +67,7 @@ namespace service_desk.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    
                     _alertaRepositorio.Adicionar(alerta);
                     TempData["MensagemSucesso"] = "Alerta cadastrado com sucesso!";
                     return RedirectToAction("Index");

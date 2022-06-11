@@ -10,10 +10,12 @@ namespace service_desk.Models
         [Required(ErrorMessage = "Campo 'Lugar' obrigatório!")]
         public string Lugar { get; set; }
 
-        public string IdUsuario { get; set; }
+        public int IdUsuario { get; set; }
 
         public DateTime DataCriacao { get; set; }
 
         public DateTime? DataAtualizacao { get; set; }
+
+        public virtual UsuarioModel Usuario { get; set; }
     }
 }

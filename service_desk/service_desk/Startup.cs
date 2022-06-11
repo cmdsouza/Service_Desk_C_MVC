@@ -43,6 +43,9 @@ namespace service_desk
             services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
             services.AddScoped<ISessao, Sessao>();
 
+            services.AddHttpClient();
+            services.AddScoped<GLPI>();
+
             services.AddSession(o =>
 			{
                 o.Cookie.HttpOnly = true;

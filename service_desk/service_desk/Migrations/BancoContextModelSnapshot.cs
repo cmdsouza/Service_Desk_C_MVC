@@ -53,6 +53,8 @@ namespace service_desk.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("IdUsuario");
+
                     b.ToTable("Alertas");
                 });
 
@@ -78,6 +80,8 @@ namespace service_desk.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("IdUsuario");
+
                     b.ToTable("Categorias");
                 });
 
@@ -98,14 +102,17 @@ namespace service_desk.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("IdTipoContato")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("IdTipoContato")
+                        .HasColumnType("int");
 
                     b.Property<int>("IdUsuario")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("IdTipoContato");
+
+                    b.HasIndex("IdUsuario");
 
                     b.ToTable("Contatos");
                 });
@@ -132,6 +139,8 @@ namespace service_desk.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("IdUsuario");
+
                     b.ToTable("Documentacaos");
                 });
 
@@ -148,14 +157,16 @@ namespace service_desk.Migrations
                     b.Property<DateTime>("DataCriacao")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("IdUsuario")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("IdUsuario")
+                        .HasColumnType("int");
 
                     b.Property<string>("Lugar")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("IdUsuario");
 
                     b.ToTable("Localizacaos");
                 });
@@ -226,6 +237,87 @@ namespace service_desk.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Usuarios");
+                });
+
+            modelBuilder.Entity("service_desk.Models.AlertaModel", b =>
+                {
+                    b.HasOne("service_desk.Models.UsuarioModel", "Usuario")
+                        .WithMany("Alertas")
+                        .HasForeignKey("IdUsuario")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("service_desk.Models.CategoriaModel", b =>
+                {
+                    b.HasOne("service_desk.Models.UsuarioModel", "Usuario")
+                        .WithMany("Categorias")
+                        .HasForeignKey("IdUsuario")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("service_desk.Models.ContatoModel", b =>
+                {
+                    b.HasOne("service_desk.Models.TipoContatoModel", "TipoContato")
+                        .WithMany("Contatos")
+                        .HasForeignKey("IdTipoContato")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("service_desk.Models.UsuarioModel", "Usuario")
+                        .WithMany("Contatos")
+                        .HasForeignKey("IdUsuario")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("TipoContato");
+
+                    b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("service_desk.Models.DocumentacaoModel", b =>
+                {
+                    b.HasOne("service_desk.Models.UsuarioModel", "Usuario")
+                        .WithMany("Documentacaos")
+                        .HasForeignKey("IdUsuario")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("service_desk.Models.LocalizacaoModel", b =>
+                {
+                    b.HasOne("service_desk.Models.UsuarioModel", "Usuario")
+                        .WithMany("Localizacaos")
+                        .HasForeignKey("IdUsuario")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("service_desk.Models.TipoContatoModel", b =>
+                {
+                    b.Navigation("Contatos");
+                });
+
+            modelBuilder.Entity("service_desk.Models.UsuarioModel", b =>
+                {
+                    b.Navigation("Alertas");
+
+                    b.Navigation("Categorias");
+
+                    b.Navigation("Contatos");
+
+                    b.Navigation("Documentacaos");
+
+                    b.Navigation("Localizacaos");
                 });
 #pragma warning restore 612, 618
         }

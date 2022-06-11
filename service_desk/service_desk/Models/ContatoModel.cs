@@ -10,12 +10,16 @@ namespace service_desk.Models
         [Required(ErrorMessage = "Campo 'Contato' obrigatório!")]
         public string Descricao { get; set; }
 
-        public string IdTipoContato { get; set; }
+        public int IdTipoContato { get; set; }
 
         public int IdUsuario { get; set; }
 
         public DateTime DataCriacao { get; set; }
 
         public DateTime? DataAtualizacao { get; set; }
+
+        public virtual UsuarioModel Usuario { get; set; }
+
+        public virtual TipoContatoModel TipoContato { get; set; }
     }
 }

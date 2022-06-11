@@ -15,5 +15,7 @@ namespace service_desk.Models
         public DateTime DataCriacao { get; set; }
 
         public DateTime? DataAtualizacao { get; set; }
+
+        public virtual UsuarioModel Usuario { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using service_desk.Data;
+using service_desk.Helper;
 using service_desk.Models;
 using System;
 using System.Collections.Generic;
@@ -6,19 +7,17 @@ using System.Linq;
 
 namespace service_desk.Repositorio
 {
-    public class CategoriaRepositorio : ICategoriaRepositorio
+    public class CategoriaRepositorio : Repositorio, ICategoriaRepositorio
     {
-        private readonly BancoContext _bancoContext;
-
-        public CategoriaRepositorio(BancoContext bancoContext)
+        public CategoriaRepositorio(BancoContext bancoContext, ISessao sessao) : base(bancoContext, sessao)
         {
-            _bancoContext = bancoContext;
         }
 
         public CategoriaModel Adicionar(CategoriaModel categoria)
         {
             // gravar no banco de dados
             categoria.DataCriacao = System.DateTime.Now;
+            categoria.IdUsuario = _usuario.Id;
             _bancoContext.Categorias.Add(categoria);
             _bancoContext.SaveChanges();
 

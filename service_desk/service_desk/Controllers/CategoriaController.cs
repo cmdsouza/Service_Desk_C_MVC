@@ -1,15 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using service_desk.Helper;
 using service_desk.Models;
 using service_desk.Repositorio;
 using System.Collections.Generic;
 
 namespace service_desk.Controllers
 {
-    public class CategoriaController : Controller
+    public class CategoriaController : GenericoController
     {
         private readonly ICategoriaRepositorio _categoriaRepositorio;
 
-        public CategoriaController(ICategoriaRepositorio categoriaRepositorio)
+        public CategoriaController(ICategoriaRepositorio categoriaRepositorio, ISessao sessao) : base(sessao)
         {
             _categoriaRepositorio = categoriaRepositorio;
         }

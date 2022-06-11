@@ -1,4 +1,5 @@
 ﻿using service_desk.Data;
+using service_desk.Helper;
 using service_desk.Models;
 using System;
 using System.Collections.Generic;
@@ -6,19 +7,17 @@ using System.Linq;
 
 namespace service_desk.Repositorio
 {
-    public class AlertaRepositorio : IAlertaRepositorio
+    public class AlertaRepositorio : Repositorio, IAlertaRepositorio
     {
-        private readonly BancoContext _bancoContext;
-
-        public AlertaRepositorio(BancoContext bancoContext)
+        public AlertaRepositorio(BancoContext bancoContext, ISessao sessao) : base(bancoContext, sessao)
         {
-            _bancoContext = bancoContext;
         }
 
         public AlertaModel Adicionar(AlertaModel alerta)
         {
             // gravar no banco de dados
             alerta.DataCriacao = System.DateTime.Now;
+            alerta.IdUsuario = _usuario.Id;
             _bancoContext.Alertas.Add(alerta);
             _bancoContext.SaveChanges();
 

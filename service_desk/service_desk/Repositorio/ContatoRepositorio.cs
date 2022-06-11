@@ -1,4 +1,5 @@
 ﻿using service_desk.Data;
+using service_desk.Helper;
 using service_desk.Models;
 using System;
 using System.Collections.Generic;
@@ -6,22 +7,19 @@ using System.Linq;
 
 namespace service_desk.Repositorio
 {
-    public class ContatoRepositorio : IContatoRepositorio
+    public class ContatoRepositorio : Repositorio, IContatoRepositorio
     {
-        private readonly BancoContext _bancoContext;
-
-        public ContatoRepositorio(BancoContext bancoContext)
+        public ContatoRepositorio(BancoContext bancoContext, ISessao sessao) : base(bancoContext, sessao)
         {
-            _bancoContext = bancoContext;
         }
 
         public ContatoModel Adicionar(ContatoModel contato)
         {
             // gravar no banco de dados
             contato.DataCriacao = System.DateTime.Now;
+            contato.IdUsuario = _usuario.Id;
             _bancoContext.Contatos.Add(contato);
             _bancoContext.SaveChanges();
-
             return contato;
         }
 
