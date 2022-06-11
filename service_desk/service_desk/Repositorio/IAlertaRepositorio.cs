@@ -9,10 +9,16 @@ namespace service_desk.Repositorio
 
         List<AlertaModel> BuscarTodos();
 
+        List<AlertaModel> ListarAtivo();
+
         AlertaModel Adicionar(AlertaModel alerta);
 
         AlertaModel Atualizar(AlertaModel alerta);
 
+        AlertaModel AtivarStatus(AlertaModel alerta);
+
+        AlertaModel DesativarStatus(AlertaModel alerta);
+        
         bool Apagar(int id);
     }
 }

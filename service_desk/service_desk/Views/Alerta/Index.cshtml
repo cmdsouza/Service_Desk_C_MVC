@@ -115,11 +115,11 @@
 
 												@if (alerta.Status == "Ativo")
 												{
-													<a asp-route-id="@alerta.Id" asp-controller="Alerta" asp-action="Desativar" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Desativar"><i class='bx bx-task-x' style="margin-top: -2%;"></i></a>
+													<a asp-route-id="@alerta.Id" asp-controller="Alerta" asp-action="DesativarConfirmacao" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Desativar"><i class='bx bx-task-x' style="margin-top: -2%;"></i></a>
 												}
 												else
 												{
-													<a asp-route-id="@alerta.Id" asp-controller="Alerta" asp-action="Ativar" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Ativar</span>"><i class='bx bx-calendar-exclamation' style="margin-top: -2%;"></i></a>
+													<a asp-route-id="@alerta.Id" asp-controller="Alerta" asp-action="AtivarConfirmacao" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Ativar</span>"><i class='bx bx-calendar-exclamation' style="margin-top: -2%;"></i></a>
 												}
 											</center>
 										</td>

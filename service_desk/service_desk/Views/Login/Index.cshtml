@@ -56,10 +56,13 @@
 	</div>
 </form>
 
-<div class="alert alert-primary" id="alert-primary" role="alert" style="">
-	<span id="alert-primary-titulo">Indisponibilidade do sistema</span>
-	<br>
-	<span id="alert-primary-conteudo">
-	  O Portal Insitucional ficará indisponível no dia 31/03/2022 por aproximadamente 2 horas. A manutenção evolutiva será iniciada às 19 horas.
-	</span>
-</div>
+@if (TempData["AlertaTitulo"] != null)
+{
+	<div class="alert alert-@TempData["AlertaCor"]" id="alert-@TempData["AlertaCor"]" role="alert" style="">
+		<span id="alert-@TempData["AlertaCor"]-titulo">@TempData["AlertaTitulo"]</span>
+		<br>
+		<span id="alert-@TempData["AlertaCor"]-conteudo">
+			@TempData["AlertaDescricao"]
+		</span>
+	</div>
+}

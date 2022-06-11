@@ -60,6 +60,60 @@ namespace service_desk.Controllers
             }
         }
 
+        public IActionResult AtivarConfirmacao(int id)
+        {
+            AlertaModel alerta = _alertaRepositorio.ListarPorId(id);
+            return View(alerta);
+        }
+
+        [HttpPost]
+        public IActionResult StatusAtivar(AlertaModel alerta)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _alertaRepositorio.AtivarStatus(alerta);
+                    TempData["MensagemSucesso"] = "Alerta ativado com sucesso!";
+                    return RedirectToAction("Index");
+                }
+
+                return View("Index", alerta);
+            }
+            catch (System.Exception erro)
+            {
+                TempData["MensagemErro"] = $"Erro ao ativar o alerta. Detalhes do erro {erro.Message}";
+                return View("Index", alerta);
+            }
+        }
+
+        public IActionResult DesativarConfirmacao(int id)
+        {
+            AlertaModel alerta = _alertaRepositorio.ListarPorId(id);
+            return View(alerta);
+        }
+
+        [HttpPost]
+        public IActionResult StatusDesativar(AlertaModel alerta)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _alertaRepositorio.AtivarStatus(alerta);
+                    TempData["MensagemSucesso"] = "Alerta desativado com sucesso!";
+                    return RedirectToAction("Index");
+                }
+
+                return View("Index", alerta);
+            }
+            catch (System.Exception erro)
+            {
+                TempData["MensagemErro"] = $"Erro ao desativar o alerta. Detalhes do erro {erro.Message}";
+                return View("Index", alerta);
+            }
+        }
+
         [HttpPost]
         public IActionResult Criar(AlertaModel alerta)
         {

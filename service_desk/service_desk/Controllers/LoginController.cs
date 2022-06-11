@@ -10,24 +10,32 @@ namespace service_desk.Controllers
     {
 		private readonly IUsuarioRepositorio _usuarioRepositorio;
 		private readonly ISessao _sessao;
+		private readonly IAlertaRepositorio _alertaRepositorio;
 
-		public LoginController(IUsuarioRepositorio usuarioRepositorio, ISessao sessao)
+		public LoginController(IUsuarioRepositorio usuarioRepositorio, IAlertaRepositorio alertaRepositorio, ISessao sessao)
 		{
 			_usuarioRepositorio = usuarioRepositorio;
 			_sessao = sessao;
+			_alertaRepositorio = alertaRepositorio;
 		}
 
 		public IActionResult Index()
         {
 			if (_sessao.BuscarSessaoDoUsuario() != null) return RedirectToAction("Index", "Home");
-			
+
+			var resultado = _alertaRepositorio.ListarAtivo();
+			if (resultado != null)
+			{
+				foreach (AlertaModel elemento in resultado)
+				{
+					TempData["AlertaTitulo"] = elemento.Titulo;
+					TempData["AlertaDescricao"] = elemento.Descricao;
+					TempData["AlertaCor"] = elemento.Cor;
+				}
+			}
+				
 			return View();
         }
-
-		public IActionResult RedefinirSenha()
-		{
-			return View();
-		}
 
 		public IActionResult Sair()
 		{

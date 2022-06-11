@@ -419,3 +419,5 @@ C:\Users\Carlos Matheus\Desktop\TCC\Service_Desk_C_MVC\service_desk\service_desk
 C:\Users\Carlos Matheus\Desktop\TCC\Service_Desk_C_MVC\service_desk\service_desk\obj\Debug\net5.0\Razor\Views\Shared\Components\MenuUsuario\Default.cshtml.g.cs
 C:\Users\Carlos Matheus\Desktop\TCC\Service_Desk_C_MVC\service_desk\service_desk\obj\Debug\net5.0\Razor\Views\Documentacao\ListaUsuario.cshtml.g.cs
 C:\Users\Carlos Matheus\Desktop\TCC\Service_Desk_C_MVC\service_desk\service_desk\bin\Debug\net5.0\RestSharp.dll
+C:\Users\Carlos Matheus\Desktop\TCC\Service_Desk_C_MVC\service_desk\service_desk\obj\Debug\net5.0\Razor\Views\Alerta\AtivarConfirmacao.cshtml.g.cs
+C:\Users\Carlos Matheus\Desktop\TCC\Service_Desk_C_MVC\service_desk\service_desk\obj\Debug\net5.0\Razor\Views\Alerta\DesativarConfirmacao.cshtml.g.cs

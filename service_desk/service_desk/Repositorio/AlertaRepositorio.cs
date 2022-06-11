@@ -35,6 +35,34 @@ namespace service_desk.Repositorio
             return true;
         }
 
+        public AlertaModel AtivarStatus(AlertaModel alerta)
+        {
+            AlertaModel alertaDB = ListarPorId(alerta.Id);
+            if (alertaDB == null) throw new System.Exception("Erro: não foi possível ativar, pois o alerta não existe no banco de dados");
+
+            alertaDB.Status = alerta.Status;
+            alertaDB.DataAtualizacao = System.DateTime.Now;
+
+            _bancoContext.Alertas.Update(alertaDB);
+            _bancoContext.SaveChanges();
+
+            return alertaDB;
+        }
+
+        public AlertaModel DesativarStatus(AlertaModel alerta)
+        {
+            AlertaModel alertaDB = ListarPorId(alerta.Id);
+            if (alertaDB == null) throw new System.Exception("Erro: não foi possível desativar, pois o alerta não existe no banco de dados");
+
+            alertaDB.Status = alerta.Status;
+            alertaDB.DataAtualizacao = System.DateTime.Now;
+
+            _bancoContext.Alertas.Update(alertaDB);
+            _bancoContext.SaveChanges();
+
+            return alertaDB;
+        }
+
         public AlertaModel Atualizar(AlertaModel alerta)
         {
             AlertaModel alertaDB = ListarPorId(alerta.Id);
@@ -45,7 +73,7 @@ namespace service_desk.Repositorio
             alertaDB.Status = alerta.Status;
             alertaDB.Cor = alerta.Cor;
             alertaDB.DataAtualizacao = System.DateTime.Now;
-            
+
             _bancoContext.Alertas.Update(alertaDB);
             _bancoContext.SaveChanges();
 
@@ -61,5 +89,19 @@ namespace service_desk.Repositorio
         {
             return _bancoContext.Alertas.FirstOrDefault(x => x.Id == id);
         }
+
+        public List<AlertaModel> ListarAtivo()
+        {
+            IEnumerable<AlertaModel> alertasAtivos =
+                from alerta in BuscarTodos()
+                where alerta.Status == "Ativo"
+                orderby alerta.DataAtualizacao descending
+                select alerta;
+
+            List<AlertaModel> alertaAtivo = alertasAtivos.Take(1).ToList();
+
+            return alertaAtivo;
+        }
+
     }
 }

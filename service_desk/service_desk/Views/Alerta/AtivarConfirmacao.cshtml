@@ -1,0 +1,49 @@
+﻿@model AlertaModel;
+
+@{
+	ViewData["Title"] = "[ADM] Gestão de Alertas";
+	Layout = "_LayoutAdministrador";
+}
+
+<div class="layout-page">
+	<div class="container-xxl container-p-y">
+
+		<div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+			<div class="row">
+				<a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)" style="margin-left: 1.5%;">
+					<i class="bx bx-menu bx-sm"></i>
+				</a>
+			</div>
+		</div>
+
+		<form asp-controller="Alerta" asp-action="StatusAtivar" method="post">
+			<input type="hidden" asp-for="Id" />
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="card mb-4">
+						<p class="card-header" style="font-weight: bold; color: #1B5F9D; font-size: 16px; margin-bottom:-1%;">Ativar alerta!</p>
+						<div class="card-body">
+							<p>Você tem certeza que deseja ativar o alerta abaixo?</p>
+							<input type="hidden" asp-for="Titulo" />
+							<input type="hidden" asp-for="Descricao" />
+							<input type="hidden" asp-for="Cor" />
+							<input type="hidden" asp-for="Status" value="Ativo">
+							<div class="alert alert-@Model.Cor" id="alert-@Model.Cor" role="alert" style="">
+								<span id="alert-@Model.Cor-titulo">@Model.Titulo</span>
+								<br>
+								<span id="alert-@Model.Cor-conteudo">
+									@Model.Descricao
+								</span>
+							</div>
+						</div>
+						<div class="col-sm" style="margin-bottom: 3%; margin-left: -1%;">
+							<button type="submit" class="btn btn-primary" style="margin-left: 2%;">Confirmar ativação</button>
+							<a class="btn btn-secondary" asp-controller="Alerta" asp-action="Index" role="button">Voltar</a>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</form>
+	</div>
+</div>
