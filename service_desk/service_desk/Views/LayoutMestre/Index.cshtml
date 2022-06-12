@@ -1,0 +1,773 @@
+﻿@{
+	Layout = "";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>[Layout Mestre] GLPI: Abertura de Chamados</title>
+	<link rel="icon" type="image/x-icon" href="~/assets/img/favicon/favicon.ico" />
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+		  rel="stylesheet" />
+	<!-- Icons. Uncomment required icon fonts -->
+	<link rel="stylesheet" href="~/assets/vendor/fonts/boxicons.css" />
+
+	<!-- Core CSS -->
+	<link rel="stylesheet" href="~/assets/vendor/css/core.css" class="template-customizer-core-css" />
+	<link rel="stylesheet" href="~/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+	<link rel="stylesheet" href="~/assets/css/demo.css" />
+
+	<!-- Vendors CSS -->
+	<link rel="stylesheet" href="~/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+
+	<!-- Page CSS -->
+	<!-- Page -->
+	<link rel="stylesheet" href="~/assets/vendor/css/pages/page-auth.css" />
+	<!-- Helpers -->
+	<script src="~/assets/vendor/js/helpers.js"></script>
+
+	<script src="~/assets/js/config.js"></script>
+
+	<link rel="stylesheet" href="~/css/site.css" />
+	<link rel="stylesheet" href="~/js/site.js" />
+</head>
+<body>
+	<!-- Layout wrapper -->
+	<div class="layout-wrapper layout-content-navbar">
+		<div class="layout-container">
+			<!-- Menu -->
+			<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+				<div class="app-brand demo" style="margin-bottom:5%; margin-top:10%;">
+					<a href="#" class="app-brand-link">
+						<center>
+							<img style="width:90%;" src="~/assets/img/logo.svg">
+						</center>
+					</a>
+
+					<a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+						<i class="bx bx-chevron-left bx-sm align-middle"></i>
+					</a>
+				</div>
+
+				<div class="menu-inner-shadow"></div>
+
+				<center>
+					<span style="color: #1B5F9D; font-weight: bold; margin-top: 3%;">Olá, {Nome do Usuário}!</span>
+				</center>
+
+				<ul class="menu-inner py-1">
+					<li class="menu-item active" id='pagina-inicial'>
+						<a asp-controller="Home" asp-action="Index" class="menu-link" style="text-decoration: none;">
+							<i class="menu-icon tf-icons bx bx-home-circle"></i>
+							<div data-i18n="Analytics">Layout Mestre</div>
+						</a>
+					</li>
+
+					<li class="menu-item" style="text-decoration: none;">
+						<a asp-controller="Login" asp-action="Sair" class="menu-link" style="text-decoration: none;">
+							<i class="menu-icon tf-icons bx bx-log-out"></i>
+							<div data-i18n="Analytics">Sair</div>
+						</a>
+					</li>
+				</ul>
+			</aside>
+			<!-- / Menu -->
+			<div class="layout-page">
+				<!-- Content wrapper -->
+				<div class="content-wrapper" style="margin-top:0%;">
+					<!-- Content -->
+					<div class="container-xxl flex-grow-1 container-p-y">
+						<div class="row">
+							<div class="layout-page">
+								<div class="container-xxl container-p-y">
+									<div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
+										<div class="row">
+											<a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)" style="margin-left: 1.5%;">
+												<i class="bx bx-menu bx-sm"></i>
+											</a>
+										</div>
+									</div>
+								</div>
+								<!-- Content wrapper -->
+								<div class="content-wrapper" style="margin-top:-4%;">
+									<div class="container-xxl flex-grow-1 container-p-y">
+										<div class="row">
+
+											<h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Layout Mestre /</span> Tipografia</h4>
+											<table class="table table-borderless" style="margin-top:-3%;">
+												<tbody>
+													<tr>
+														<td class="align-middle"><small class="text-light fw-semibold">Título 1</small></td>
+														<td class="py-3">
+															<h1 class="mb-0">Cras vel felis in diam.</h1>
+														</td>
+													</tr>
+													<tr>
+														<td class="align-middle"><small class="text-light fw-semibold">Título 2</small></td>
+														<td class="py-3">
+															<h2 class="mb-0">Nam accumsan nunc.</h2>
+														</td>
+													</tr>
+													<tr>
+														<td><small class="text-light fw-semibold">Título 3</small></td>
+														<td class="py-3">
+															<h3 class="mb-0">Sed malesuada lectus.</h3>
+														</td>
+													</tr>
+													<tr>
+														<td><small class="text-light fw-semibold">Título 4</small></td>
+														<td class="py-3">
+															<h4 class="mb-0">Mauris tellus ex.</h4>
+														</td>
+													</tr>
+													<tr>
+														<td><small class="text-light fw-semibold">Título 5</small></td>
+														<td class="py-3">
+															<h5 class="mb-0">Vivamus faucibus.</h5>
+														</td>
+													</tr>
+													<tr>
+														<td><small class="text-light fw-semibold">Título 6</small></td>
+														<td class="py-3">
+															<h6 class="mb-0">Sed purus magna.</h6>
+														</td>
+													</tr>
+													<tr>
+														<td><small class="text-light fw-semibold">Parágrafo</small></td>
+														<td class="py-3">
+															<p class="mb-0">
+																Sed venenatis rhoncus imperdiet. Duis ullamcorper nibh massa, sit amet mattis ipsum sodales quis. Aenean euismod ante eu sodales porta. In ut libero accumsan, porttitor nunc ac, varius ante. Nunc rhoncus, ipsum eu egestas vulputate, nunc sapien cursus lacus, quis fringilla ligula leo eu nunc. Vivamus nunc risus, efficitur sit amet urna id, eleifend semper est. Curabitur imperdiet vitae metus ut pulvinar. Fusce in diam a sem elementum malesuada eu nec velit. Aenean varius, neque sit amet tincidunt feugiat, risus metus feugiat quam, eu dignissim diam metus vel felis. Curabitur mattis mauris ex, et facilisis turpis pellentesque eget.
+															</p>
+														</td>
+													</tr>
+												</tbody>
+											</table>
+
+											<h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Layout Mestre /</span> Cores</h4>
+											<div class="row" style="margin-top: -1%; margin-bottom:2%;">
+												<div class="col-sm">
+													<center>
+														<div style="width: 120px; height: 70px; color: white; background-color: #1B5F9D; border-radius: 6px; padding-top: 25px;">
+															<center>#1B5F9D</center>
+														</div>
+													</center>
+												</div>
+												<div class="col-sm">
+													<center>
+														<div style="width: 120px; height: 70px; color: white; background-color: #007FBE; border-radius: 6px; padding-top: 25px;">
+															<center>#007FBE</center>
+														</div>
+													</center>
+												</div>
+												<div class="col-sm">
+													<center>
+														<div style="width: 120px; height: 70px; color: white; background-color: #E5CB6D; border-radius: 6px; padding-top: 25px;">
+															<center>#E5CB6D</center>
+														</div>
+													</center>
+												</div>
+												<div class="col-sm">
+													<center>
+														<div style="width: 120px; height: 70px; color: white; background-color: #3A3A3A; border-radius: 6px; padding-top: 25px;">
+															<center>#3A3A3A</center>
+														</div>
+													</center>
+												</div>
+												<div class="col-sm">
+													<center>
+														<div style="width: 120px; height: 70px; color: white; background-color: #AFAFAF; border-radius: 6px; padding-top: 25px;">
+															<center>#AFAFAF</center>
+														</div>
+													</center>
+												</div>
+											</div>
+
+											<h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Layout Mestre /</span> Elementos</h4>
+											<h5 class="card-header" style="margin-left: -1%; margin-top: -3%; margin-bottom: -5%">Card</h5>
+											<div class="row row-cols-1 row-cols-md-3 g-4 mb-5" style="margin-top:1%;">
+												<div class="col">
+													<div class="card h-100">
+														<img class="card-img-top" src="~/assets/img/Card - Layout Mestre 01.svg" alt="Card image cap" />
+														<div class="card-body">
+															<h5 class="card-title">Título</h5>
+															<p class="card-text">
+																Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ultricies pharetra diam id fermentum. Integer eleifend feugiat ante, quis interdum dolor vulputate sit amet.
+															</p>
+														</div>
+													</div>
+												</div>
+												<div class="col">
+													<div class="card h-100">
+														<img class="card-img-top" src="~/assets/img/Card - Layout Mestre 02.svg" alt="Card image cap" />
+														<div class="card-body">
+															<h5 class="card-title">Título</h5>
+															<p class="card-text">
+																Mauris porttitor, arcu at elementum consectetur, magna ligula aliquam nisi, sit amet varius erat quam non ligula.
+															</p>
+														</div>
+													</div>
+												</div>
+												<div class="col">
+													<div class="card h-100">
+														<img class="card-img-top" src="~/assets/img/Card - Layout Mestre 03.svg" alt="Card image cap" />
+														<div class="card-body">
+															<h5 class="card-title">Título</h5>
+															<p class="card-text">
+																Fusce congue erat tortor. Nulla suscipit est nisl. Praesent pretium metus vitae nisl posuere, et sagittis dui pharetra. Nunc facilisis lacus eget magna tristique, eu suscipit purus malesuada.
+															</p>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<h5 class="card-header" style="margin-left: -1%; margin-top: -3%; margin-bottom: -1%">Accordion</h5>
+											<div class="accordion mt-3" id="accordionExample">
+												<div class="card accordion-item active">
+													<h2 class="accordion-header" id="headingOne">
+														<button type="button"
+																class="accordion-button"
+																data-bs-toggle="collapse"
+																data-bs-target="#accordionOne"
+																aria-expanded="true"
+																aria-controls="accordionOne">
+															Proin bibendum consectetur quam at ullamcorper
+														</button>
+													</h2>
+
+													<div id="accordionOne"
+														 class="accordion-collapse collapse show"
+														 data-bs-parent="#accordionExample">
+														<div class="accordion-body">
+															In porttitor sapien eget sem sollicitudin, et consectetur nulla vehicula. Praesent viverra tortor sapien, vel fermentum mauris convallis non.
+														</div>
+													</div>
+												</div>
+												<div class="card accordion-item">
+													<h2 class="accordion-header" id="headingTwo">
+														<button type="button"
+																class="accordion-button collapsed"
+																data-bs-toggle="collapse"
+																data-bs-target="#accordionTwo"
+																aria-expanded="false"
+																aria-controls="accordionTwo">
+															Nunc cursus egestas lacus ac placerat
+														</button>
+													</h2>
+													<div id="accordionTwo"
+														 class="accordion-collapse collapse"
+														 aria-labelledby="headingTwo"
+														 data-bs-parent="#accordionExample">
+														<div class="accordion-body">
+															Sed sagittis erat in tempus rutrum. Vivamus condimentum ornare accumsan. Maecenas at metus eget nibh pretium faucibus eget scelerisque elit. Morbi dignissim quis orci quis lobortis. Morbi eu enim magna. Maecenas et erat sit amet nisl fermentum tempus. Fusce varius risus a nulla tristique malesuada.
+														</div>
+													</div>
+												</div>
+												<div class="card accordion-item">
+													<h2 class="accordion-header" id="headingThree">
+														<button type="button"
+																class="accordion-button collapsed"
+																data-bs-toggle="collapse"
+																data-bs-target="#accordionThree"
+																aria-expanded="false"
+																aria-controls="accordionThree">
+															Maecenas pulvinar sit amet erat bibendum suscipit
+														</button>
+													</h2>
+													<div id="accordionThree"
+														 class="accordion-collapse collapse"
+														 aria-labelledby="headingThree"
+														 data-bs-parent="#accordionExample">
+														<div class="accordion-body">
+															Ut nec ligula massa. Nam sed mattis turpis. Ut nisl arcu, placerat eu pulvinar nec, convallis nec massa. Donec congue massa in sodales mollis. Nullam sed sapien risus. Aliquam volutpat augue et est tempor lobortis. Fusce placerat a eros sit amet tincidunt. Quisque at tortor molestie, mollis metus sit amet, dignissim sapien. Ut id leo condimentum, fringilla purus et, finibus turpis.
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<h5 class="card-header" style="margin-left: -1%; margin-top: 1%; margin-bottom: 1%">Alerts</h5>
+											<div class="col-md mb-4 mb-md-0">
+												<div class="card">
+													<h5 class="card-header">Alerts básicos</h5>
+													<div class="card-body">
+														<div class="alert alert-primary" role="alert">Alert primário!</div>
+
+														<div class="alert alert-secondary" role="alert">Alert secundário!</div>
+
+														<div class="alert alert-success" role="alert">Alert de sucesso!</div>
+
+														<div class="alert alert-danger" role="alert">Alert de perigo!</div>
+
+														<div class="alert alert-warning" role="alert">Alert de atenção!</div>
+
+														<div class="alert alert-info" role="alert">Alert de informação!</div>
+
+														<div class="alert alert-dark mb-0" role="alert">Alert escuro!</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-md">
+												<div class="card">
+													<h5 class="card-header">Alerts com fechamento</h5>
+													<div class="card-body">
+														<div class="alert alert-primary alert-dismissible" role="alert">
+															Alert primário!
+															<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+														</div>
+
+														<div class="alert alert-secondary alert-dismissible" role="alert">
+															Alert secundário!
+															<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+														</div>
+
+														<div class="alert alert-success alert-dismissible" role="alert">
+															Alert de sucesso!
+															<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+														</div>
+
+														<div class="alert alert-danger alert-dismissible" role="alert">
+															Alert de perigo!
+															<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+														</div>
+
+														<div class="alert alert-warning alert-dismissible" role="alert">
+															Alert de atenção!
+															<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+														</div>
+
+														<div class="alert alert-info alert-dismissible" role="alert">
+															Alert de informação!
+															<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+														</div>
+
+														<div class="alert alert-dark alert-dismissible mb-0" role="alert">
+															Alert escuro!
+															<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<h5 class="card-header" style="margin-left: -1%; margin-top: 1%; margin-bottom: 1%">Badges</h5>
+											<div class="demo-inline-spacing" style="margin-top:-3%;">
+												<span class="badge bg-primary" style="padding:10px 12px 10px 10px;">Primary</span>
+												<span class="badge bg-secondary" style="padding:10px 12px 10px 10px;">Secondary</span>
+												<span class="badge bg-success" style="padding:10px 12px 10px 10px;">Success</span>
+												<span class="badge bg-danger" style="padding:10px 12px 10px 10px;">Danger</span>
+												<span class="badge bg-warning" style="padding:10px 12px 10px 10px;">Warning</span>
+												<span class="badge bg-info" style="padding:10px 12px 10px 10px;">Info</span>
+												<span class="badge bg-dark" style="padding:10px 12px 10px 10px;">Dark</span>
+											</div>
+
+											<h5 class="card-header" style="margin-left: -1%; margin-top: 1%; margin-bottom: 1%">Botões</h5>
+											<small class="text-light fw-semibold" style="margin-top:-2%;">Default</small>
+											<div class="demo-inline-spacing">
+												<button type="button" class="btn btn-primary">Primary</button>
+												<button type="button" class="btn btn-secondary">Secondary</button>
+												<button type="button" class="btn btn-success">Success</button>
+												<button type="button" class="btn btn-danger">Danger</button>
+												<button type="button" class="btn btn-warning">Warning</button>
+												<button type="button" class="btn btn-info">Info</button>
+												<button type="button" class="btn btn-dark">Dark</button>
+											</div>
+											<small class="text-light fw-semibold" style="margin-top:2%;">Arredondado</small>
+											<div class="demo-inline-spacing">
+												<button type="button" class="btn rounded-pill btn-primary">Primary</button>
+												<button type="button" class="btn rounded-pill btn-secondary">Secondary</button>
+												<button type="button" class="btn rounded-pill btn-success">Success</button>
+												<button type="button" class="btn rounded-pill btn-danger">Danger</button>
+												<button type="button" class="btn rounded-pill btn-warning">Warning</button>
+												<button type="button" class="btn rounded-pill btn-info">Info</button>
+												<button type="button" class="btn rounded-pill btn-dark">Dark</button>
+											</div>
+
+
+											<small class="text-light fw-semibold" style="margin-top:2%;">Default - Sem preenchimento</small>
+											<div class="demo-inline-spacing">
+												<button type="button" class="btn btn-outline-primary">Primary</button>
+												<button type="button" class="btn btn-outline-secondary">Secondary</button>
+												<button type="button" class="btn btn-outline-success">Success</button>
+												<button type="button" class="btn btn-outline-danger">Danger</button>
+												<button type="button" class="btn btn-outline-warning">Warning</button>
+												<button type="button" class="btn btn-outline-info">Info</button>
+												<button type="button" class="btn btn-outline-dark">Dark</button>
+											</div>
+
+
+											<small class="text-light fw-semibold" style="margin-top:2%;">Arredondado - Sem preenchimento</small>
+											<div class="demo-inline-spacing">
+												<button type="button" class="btn rounded-pill btn-outline-primary">Primary</button>
+												<button type="button" class="btn rounded-pill btn-outline-secondary">Secondary</button>
+												<button type="button" class="btn rounded-pill btn-outline-success">Success</button>
+												<button type="button" class="btn rounded-pill btn-outline-danger">Danger</button>
+												<button type="button" class="btn rounded-pill btn-outline-warning">Warning</button>
+												<button type="button" class="btn rounded-pill btn-outline-info">Info</button>
+												<button type="button" class="btn rounded-pill btn-outline-dark">Dark</button>
+											</div>
+
+
+
+											<h5 class="card-header" style="margin-left: -1%; margin-top: 1%; margin-bottom: -1%">List group</h5>
+											<div class="list-group list-group-flush">
+												<a href="javascript:void(0);" class="list-group-item list-group-item-action">Donec bibendum sapien ante, eget faucibus nunc tristique ac.</a>
+												<a href="javascript:void(0);" class="list-group-item list-group-item-action">Donec mi nibh, mattis id semper sed, dignissim sit amet ipsum</a>
+												<a href="javascript:void(0);" class="list-group-item list-group-item-action">Mauris urna tortor, laoreet et maximus sit amet, porttitor ut erat.</a>
+												<a href="javascript:void(0);" class="list-group-item list-group-item-action">Curabitur maximus, elit vitae accumsan venenatis.</a>
+												<a href="javascript:void(0);" class="list-group-item list-group-item-action">Aliquam feugiat congue nisl, non fringilla orci aliquet vitae.</a>
+											</div>
+
+											<h5 class="card-header" style="margin-left: -1%; margin-top: 1%; margin-bottom: -1%">Progress bar</h5>
+											<div class="demo-vertical-spacing">
+												<div class="progress" style="height: 28%;">
+													<div class="progress-bar"
+														 role="progressbar"
+														 style="width: 25%;"
+														 aria-valuenow="25"
+														 aria-valuemin="0"
+														 aria-valuemax="100">
+														25% dos chamados resolvidos
+													</div>
+												</div>
+												<div class="progress" style="height: 28%;">
+													<div class="progress-bar"
+														 role="progressbar"
+														 style="width: 75%"
+														 aria-valuenow="75"
+														 aria-valuemin="0"
+														 aria-valuemax="100">
+														75%
+													</div>
+												</div>
+											</div>
+
+											<h5 class="card-header" style="margin-left: -1%; margin-top: 1%; margin-bottom: 1%">Ícones / Boxicons</h5>
+											<div class="d-flex justify-content-center mx-auto gap-3" id="icons-container">
+												<div class="card icon-card cursor-pointer text-center mb-5 mx-2">
+													<div class="card-body">
+														<i class="bx bx-git-merge mb-2" style="font-size:24px; margin-top:10px;"></i>
+													</div>
+												</div>
+												<div class="card icon-card cursor-pointer text-center mb-5 mx-2">
+													<div class="card-body">
+														<i class="bx bx-rss mb-2" style="font-size:24px; margin-top:10px;"></i>
+													</div>
+												</div>
+												<div class="card icon-card cursor-pointer text-center mb-5 mx-2">
+													<div class="card-body">
+														<i class="bx bxs-caret-up-circle mb-2" style="font-size:24px; margin-top:10px;"></i>
+													</div>
+												</div>
+												<div class="card icon-card cursor-pointer text-center mb-5 mx-2">
+													<div class="card-body">
+														<i class="bx bxs-briefcase-alt-2 mb-2" style="font-size:24px; margin-top:10px;"></i>
+													</div>
+												</div>
+												<div class="card icon-card cursor-pointer text-center mb-5 mx-2">
+													<div class="card-body">
+														<i class="bx bx-log-out-circle mb-2" style="font-size:24px; margin-top:10px;"></i>
+													</div>
+												</div>
+												<div class="card icon-card cursor-pointer text-center mb-5 mx-2">
+													<div class="card-body">
+														<i class="bx bxs-search-alt-2 mb-2" style="font-size:24px; margin-top:10px;"></i>
+													</div>
+												</div>
+												<div class="card icon-card cursor-pointer text-center mb-5 mx-2">
+													<div class="card-body">
+														<i class="bx bxs-comment mb-2" style="font-size:24px; margin-top:10px;"></i>
+													</div>
+												</div>
+												<div class="card icon-card cursor-pointer text-center mb-5 mx-2">
+													<div class="card-body">
+														<i class="bx bxs-notepad mb-2" style="font-size:24px; margin-top:10px;"></i>
+													</div>
+												</div>
+												<div class="card icon-card cursor-pointer text-center mb-5 mx-2">
+													<div class="card-body">
+														<i class="bx bxs-message-rounded-dots mb-2" style="font-size:24px; margin-top:10px;"></i>
+													</div>
+												</div>
+												<div class="card icon-card cursor-pointer text-center mb-5 mx-2">
+													<div class="card-body">
+														<i class="bx bxs-store-alt mb-2" style="font-size:24px; margin-top:10px;"></i>
+													</div>
+												</div>
+											</div>
+
+											<div class="d-flex mx-auto gap-3" style="margin-top:-2%; margin-left:3%;">
+												<a href="https://boxicons.com/" target="_blank" class="btn btn-primary">Boxicons</a>
+											</div>
+										</div>
+
+										<h5 class="card-header" style="margin-left: -2%; margin-top: 1%; margin-bottom: 1%">Form</h5>
+										<div class="row">
+
+											<!-- Form controls -->
+											<div class="col-md-6">
+												<div class="card mb-4">
+													<div class="card-body">
+														<div class="mb-3">
+															<label for="exampleFormControlInput1" class="form-label">Input</label>
+															<input type="text"
+																   class="form-control"
+																   id="exampleFormControlInput1"
+																   placeholder="Digite o texto aqui..." />
+														</div>
+														<div class="mb-3">
+															<label for="exampleFormControlReadOnlyInput1" class="form-label">Read only</label>
+															<input class="form-control"
+																   type="text"
+																   id="exampleFormControlReadOnlyInput1"
+																   placeholder="O texto aqui..."
+																   readonly />
+														</div>
+														<div class="mb-3">
+															<label for="exampleFormControlSelect1" class="form-label">Select</label>
+															<select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
+																<option selected>Escolha uma opção</option>
+																<option value="1">One</option>
+																<option value="2">Two</option>
+																<option value="3">Three</option>
+															</select>
+														</div>
+														<div>
+															<label for="exampleFormControlTextarea1" class="form-label">Textarea</label>
+															<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="col-xl-6">
+												<div class="card mb-4">
+													<!-- Checkboxes and Radios -->
+													<div class="card-body">
+														<div class="row gy-3">
+															<div class="col-md">
+																<small class="text-light fw-semibold">Checkboxes</small>
+																<div class="form-check mt-3">
+																	<input class="form-check-input" type="checkbox" value="" id="defaultCheck1" />
+																	<label class="form-check-label" for="defaultCheck1"> Unchecked </label>
+																</div>
+																<div class="form-check">
+																	<input class="form-check-input" type="checkbox" value="" id="defaultCheck3" checked />
+																	<label class="form-check-label" for="defaultCheck3"> Checked </label>
+																</div>
+																<div class="form-check">
+																	<input class="form-check-input" type="checkbox" value="" id="disabledCheck1" disabled />
+																	<label class="form-check-label" for="disabledCheck1"> Disabled Unchecked </label>
+																</div>
+																<div class="form-check">
+																	<input class="form-check-input"
+																		   type="checkbox"
+																		   value=""
+																		   id="disabledCheck2"
+																		   disabled
+																		   checked />
+																	<label class="form-check-label" for="disabledCheck2"> Disabled Checked </label>
+																</div>
+															</div>
+															<div class="col-md">
+																<small class="text-light fw-semibold">Radio</small>
+																<div class="form-check mt-3">
+																	<input name="default-radio-1"
+																		   class="form-check-input"
+																		   type="radio"
+																		   value=""
+																		   id="defaultRadio1" />
+																	<label class="form-check-label" for="defaultRadio1"> Unchecked </label>
+																</div>
+																<div class="form-check">
+																	<input name="default-radio-1"
+																		   class="form-check-input"
+																		   type="radio"
+																		   value=""
+																		   id="defaultRadio2"
+																		   checked />
+																	<label class="form-check-label" for="defaultRadio2"> Checked </label>
+																</div>
+																<div class="form-check">
+																	<input class="form-check-input" type="radio" value="" id="disabledRadio1" disabled />
+																	<label class="form-check-label" for="disabledRadio1"> Disabled unchecked </label>
+																</div>
+																<div class="form-check">
+																	<input class="form-check-input"
+																		   type="radio"
+																		   value=""
+																		   id="disabledRadio2"
+																		   disabled
+																		   checked />
+																	<label class="form-check-label" for="disabledRadio2"> Disabled checkbox </label>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+
+												<!-- Switches -->
+												<div class="card mb-4">
+													<h5 class="card-header">Switches</h5>
+													<div class="card-body">
+														<div class="form-check form-switch mb-2">
+															<input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
+															<label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+														</div>
+														<div class="form-check form-switch mb-2">
+															<input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked />
+															<label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label>
+														</div>
+														<div class="form-check form-switch mb-2">
+															<input class="form-check-input" type="checkbox" id="flexSwitchCheckDisabled" disabled />
+															<label class="form-check-label" for="flexSwitchCheckDisabled">Disabled switch checkbox input</label>
+														</div>
+														<div class="form-check form-switch">
+															<input class="form-check-input"
+																   type="checkbox"
+																   id="flexSwitchCheckCheckedDisabled"
+																   checked
+																   disabled />
+															<label class="form-check-label" for="flexSwitchCheckCheckedDisabled">Disabled checked switch checkbox input</label>
+														</div>
+													</div>
+												</div>
+											</div>
+
+											<!-- File input -->
+											<div class="card" style="margin-left:1.2%; width:97.5%;">
+												<div class="card-body">
+													<div class="mb-3">
+														<label for="formFile" class="form-label">Upload de arquivos</label>
+														<input class="form-control" type="file" id="formFile" />
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<h5 class="card-header" style="margin-left: 0.5%; margin-top: -1%; margin-bottom: 1%">Tabela</h5>
+									<div class="col-lg-12 mb-4 order-0">
+										<div class="card">
+											<div class="row">
+												<div class="col-sm">
+													<h5 class="card-header">Tabela</h5>
+												</div>
+											</div>
+											<div class="table-responsive text-nowrap" style="margin-left:1.2%; width:97.5%;">
+												<table class="table table-striped">
+													<thead>
+														<tr>
+															<th scope="col"><center>#</center></th>
+															<th scope="col">Título</th>
+															<th scope="col"><center>Status</center></th>
+															<th scope="col"><center>Data de Abertura</center></th>
+															<th scope="col"><center>Última Atualização</center></th>
+														</tr>
+													</thead>
+													<tbody class="table-border-bottom-0">
+														<tr>
+															<td>
+																<center>
+																	<a role="button" href="#">12345</a>
+																</center>
+															</td>
+															<td>Meu computador não liga!</td>
+															<td>
+																<center>
+																	<span class="badge bg-primary" style="padding:10px 12px 10px 10px;">Novo</span>
+																</center>
+															</td>
+															<td><center>05/06/2022 13:28:05</center></td>
+															<td><center>05/06/2022 13:28:05</center></td>
+														</tr>
+														<tr>
+															<td>
+																<center>
+																	<a role="button" href="#">67891</a>
+																</center>
+															</td>
+															<td>Permissão no e-TCEES</td>
+															<td>
+																<center>
+																	<span class="badge bg-primary" style="padding:10px 12px 10px 10px;">Novo</span>
+																</center>
+															</td>
+															<td><center>05/06/2022 14:18:05</center></td>
+															<td><center>05/06/2022 14:58:05</center></td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+
+									<!--
+									<h5 class="card-header" style="margin-left: -1%; margin-top: 1%; margin-bottom: 1%">Offcanvas</h5>
+
+									<div class="col-lg-12 mb-4 order-0">
+										<div class="card">
+
+
+											<div class="row">
+												<div class="col-sm">
+													<h5 class="card-header">Form</h5>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-sm" style="margin-left: 2.3%;">
+													<p>Elementos</p>
+												</div>
+											</div>
+										</div>
+									</div>
+
+
+									-->
+								</div>
+							</div>
+							<div class="content-backdrop fade"></div>
+							<!-- / Layout page -->
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<!-- / Content -->
+			<div class="content-backdrop fade"></div>
+		</div>
+		<!-- Content wrapper -->
+	</div>
+	<!-- / Layout page -->
+	</div>
+
+	<!-- Overlay -->
+	<div class="layout-overlay layout-menu-toggle"></div>
+	</div>
+	<!-- / Layout wrapper -->
+
+
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+
+	<!-- Core JS -->
+	<!-- build:js assets/vendor/js/core.js -->
+	<script src="~/assets/vendor/libs/jquery/jquery.js"></script>
+	<script src="~/assets/vendor/libs/popper/popper.js"></script>
+	<script src="~/assets/vendor/js/bootstrap.js"></script>
+	<script src="~/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+
+	<script src="~/assets/vendor/js/menu.js"></script>
+	<!-- endbuild -->
+	<!-- Vendors JS -->
+	<!-- Main JS -->
+	<script src="~/assets/js/main.js"></script>
+
+	<!-- Page JS -->
+	<!-- Place this tag in your head or just before your close body tag. -->
+	<script async defer src="https://buttons.github.io/buttons.js"></script>
+</body>
+</html>

@@ -11,7 +11,7 @@
 
 		<div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0 d-xl-none">
 			<div class="row">
-				<a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)" style="margin-left: 1.5%;">
+				<a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)" id='menu-toggle'>
 					<i class="bx bx-menu bx-sm"></i>
 				</a>
 			</div>
@@ -38,7 +38,7 @@
 					<div class="col-sm">
 						<h5 class="card-header">Lista de Alertas</h5>
 					</div>
-					<div class="col-sm text-end" style="margin-top: 2%; margin-right: 3%;">
+					<div class="col-sm text-end" id="botao-adicionar">
 						<a class="btn btn-sm btn-primary" role='button' asp-controller="Alerta" asp-action="Criar">Adicionar</a>
 					</div>
 				</div>
@@ -110,16 +110,16 @@
 										</td>
 										<td>
 											<center>
-												<a asp-route-id="@alerta.Id" asp-controller="Alerta" asp-action="Editar" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Editar"><i class='bx bx-edit' style="margin-top: -2%;"></i></a>
-												<a asp-route-id="@alerta.Id" asp-controller="Alerta" asp-action="ApagarConfirmacao" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Excluir</span>"><i class='bx bx-trash' style="margin-top: -2%;"></i></a>
+												<a asp-route-id="@alerta.Id" asp-controller="Alerta" asp-action="Editar" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Editar"><i class='bx bx-edit' id="icones-acoes"></i></a>
+												<a asp-route-id="@alerta.Id" asp-controller="Alerta" asp-action="ApagarConfirmacao" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Excluir</span>"><i class='bx bx-trash' id="icones-acoes"></i></a>
 
 												@if (alerta.Status == "Ativo")
 												{
-													<a asp-route-id="@alerta.Id" asp-controller="Alerta" asp-action="DesativarConfirmacao" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Desativar"><i class='bx bx-task-x' style="margin-top: -2%;"></i></a>
+													<a asp-route-id="@alerta.Id" asp-controller="Alerta" asp-action="DesativarConfirmacao" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Desativar"><i class='bx bx-task-x' id="icones-acoes"></i></a>
 												}
 												else
 												{
-													<a asp-route-id="@alerta.Id" asp-controller="Alerta" asp-action="AtivarConfirmacao" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Ativar</span>"><i class='bx bx-calendar-exclamation' style="margin-top: -2%;"></i></a>
+													<a asp-route-id="@alerta.Id" asp-controller="Alerta" asp-action="AtivarConfirmacao" data-bs-toggle="tooltip" data-bs-offset="0,4" data-bs-placement="top" data-bs-html="true" title="Ativar</span>"><i class='bx bx-calendar-exclamation' id="icones-acoes"></i></a>
 												}
 											</center>
 										</td>
