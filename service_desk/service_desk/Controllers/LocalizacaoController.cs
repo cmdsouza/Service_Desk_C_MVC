@@ -44,17 +44,17 @@ namespace service_desk.Controllers
                 bool apagado = _localizacaoRepositorio.Apagar(id);
                 if (apagado)
                 {
-                    TempData["MensagemSucesso"] = "Localizacao excluído com sucesso!";
+                    TempData["MensagemSucesso"] = "Localização excluída com sucesso!";
                 }
                 else
                 {
-                    TempData["MensagemErro"] = "Erro ao excluir a localizacao.";
+                    TempData["MensagemErro"] = "Erro ao excluir a localização.";
                 }
                 return RedirectToAction("Index");
             }
             catch (System.Exception erro)
             {
-                TempData["MensagemErro"] = $"Erro ao excluir a localizacao. Detalhes do erro {erro.Message}";
+                TempData["MensagemErro"] = $"Erro ao excluir a localização. Detalhes do erro: {erro.Message}";
                 return RedirectToAction("Index");
             }
         }
@@ -67,7 +67,7 @@ namespace service_desk.Controllers
                 if (ModelState.IsValid)
                 {
                     _localizacaoRepositorio.Adicionar(localizacao);
-                    TempData["MensagemSucesso"] = "Localizacao cadastrado com sucesso!";
+                    TempData["MensagemSucesso"] = "localização cadastrada com sucesso!";
                     return RedirectToAction("Index");
                 }
 
@@ -75,7 +75,7 @@ namespace service_desk.Controllers
             }
             catch (System.Exception erro)
             {
-                TempData["MensagemErro"] = $"Erro ao cadastrar o localizacao. Detalhes do erro {erro.Message}";
+                TempData["MensagemErro"] = $"Erro ao cadastrar a localização. Detalhes do erro: {erro.Message}";
                 return RedirectToAction("Index");
             }
 
@@ -89,7 +89,7 @@ namespace service_desk.Controllers
                 if (ModelState.IsValid)
                 {
                     _localizacaoRepositorio.Atualizar(localizacao);
-                    TempData["MensagemSucesso"] = "Localizacao atualizado com sucesso!";
+                    TempData["MensagemSucesso"] = "localização atualizada com sucesso!";
                     return RedirectToAction("Index");
                 }
 
@@ -97,7 +97,7 @@ namespace service_desk.Controllers
             }
             catch (System.Exception erro)
             {
-                TempData["MensagemErro"] = $"Erro ao editar o localizacao. Detalhes do erro {erro.Message}";
+                TempData["MensagemErro"] = $"Erro ao editar a localização. Detalhes do erro: {erro.Message}";
                 return View("Editar", localizacao);
             }
         }

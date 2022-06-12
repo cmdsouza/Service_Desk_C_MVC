@@ -55,7 +55,7 @@ namespace service_desk.Controllers
             }
             catch (System.Exception erro)
             {
-                TempData["MensagemErro"] = $"Erro ao excluir o alerta. Detalhes do erro {erro.Message}";
+                TempData["MensagemErro"] = $"Erro ao excluir o alerta. Detalhes do erro: {erro.Message}";
                 return RedirectToAction("Index");
             }
         }
@@ -82,7 +82,7 @@ namespace service_desk.Controllers
             }
             catch (System.Exception erro)
             {
-                TempData["MensagemErro"] = $"Erro ao ativar o alerta. Detalhes do erro {erro.Message}";
+                TempData["MensagemErro"] = $"Erro ao ativar o alerta. Detalhes do erro: {erro.Message}";
                 return View("Index", alerta);
             }
         }
@@ -109,7 +109,7 @@ namespace service_desk.Controllers
             }
             catch (System.Exception erro)
             {
-                TempData["MensagemErro"] = $"Erro ao desativar o alerta. Detalhes do erro {erro.Message}";
+                TempData["MensagemErro"] = $"Erro ao desativar o alerta. Detalhes do erro: {erro.Message}";
                 return View("Index", alerta);
             }
         }
@@ -131,7 +131,7 @@ namespace service_desk.Controllers
             }
             catch (System.Exception erro)
             {
-                TempData["MensagemErro"] = $"Erro ao cadastrar o alerta. Detalhes do erro {erro.Message}";
+                TempData["MensagemErro"] = $"Erro ao cadastrar o alerta. Detalhes do erro: {erro.Message}";
                 return RedirectToAction("Index");
             }
 
@@ -153,7 +153,7 @@ namespace service_desk.Controllers
             }
             catch (System.Exception erro)
             {
-                TempData["MensagemErro"] = $"Erro ao editar o alerta. Detalhes do erro {erro.Message}";
+                TempData["MensagemErro"] = $"Erro ao editar o alerta. Detalhes do erro: {erro.Message}";
                 return View("Editar", alerta);
             }
         }

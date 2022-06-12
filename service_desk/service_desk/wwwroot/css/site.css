@@ -103,7 +103,7 @@ for details on configuring this project to bundle and minify static web assets. 
 
 #espaco-botoes {
     margin-bottom: 3%;
-    margin-left: 1%;
+    margin-left: -1%;
 }
 
 #espaco-botoes-excluir {

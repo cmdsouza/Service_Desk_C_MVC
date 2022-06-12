@@ -45,17 +45,17 @@ namespace service_desk.Controllers
                 bool apagado = _categoriaRepositorio.Apagar(id);
                 if (apagado)
                 {
-                    TempData["MensagemSucesso"] = "Categoria excluído com sucesso!";
+                    TempData["MensagemSucesso"] = "Categoria excluída com sucesso!";
                 }
                 else
                 {
-                    TempData["MensagemErro"] = "Erro ao excluir o categoria.";
+                    TempData["MensagemErro"] = "Erro ao excluir a categoria.";
                 }
                 return RedirectToAction("Index");
             }
             catch (System.Exception erro)
             {
-                TempData["MensagemErro"] = $"Erro ao excluir o categoria. Detalhes do erro {erro.Message}";
+                TempData["MensagemErro"] = $"Erro ao excluir a categoria. Detalhes do erro: {erro.Message}";
                 return RedirectToAction("Index");
             }
         }
@@ -68,7 +68,7 @@ namespace service_desk.Controllers
                 if (ModelState.IsValid)
                 {
                     _categoriaRepositorio.Adicionar(categoria);
-                    TempData["MensagemSucesso"] = "Categoria cadastrado com sucesso!";
+                    TempData["MensagemSucesso"] = "Categoria cadastrada com sucesso!";
                     return RedirectToAction("Index");
                 }
 
@@ -76,7 +76,7 @@ namespace service_desk.Controllers
             }
             catch (System.Exception erro)
             {
-                TempData["MensagemErro"] = $"Erro ao cadastrar o categoria. Detalhes do erro {erro.Message}";
+                TempData["MensagemErro"] = $"Erro ao cadastrar a categoria. Detalhes do erro: {erro.Message}";
                 return RedirectToAction("Index");
             }
 
@@ -90,7 +90,7 @@ namespace service_desk.Controllers
                 if (ModelState.IsValid)
                 {
                     _categoriaRepositorio.Atualizar(categoria);
-                    TempData["MensagemSucesso"] = "Categoria atualizado com sucesso!";
+                    TempData["MensagemSucesso"] = "Categoria atualizada com sucesso!";
                     return RedirectToAction("Index");
                 }
 
@@ -98,7 +98,7 @@ namespace service_desk.Controllers
             }
             catch (System.Exception erro)
             {
-                TempData["MensagemErro"] = $"Erro ao editar o categoria. Detalhes do erro {erro.Message}";
+                TempData["MensagemErro"] = $"Erro ao editar a categoria. Detalhes do erro: {erro.Message}";
                 return View("Editar", categoria);
             }
         }

@@ -50,17 +50,17 @@ namespace service_desk.Controllers
                 bool apagado = _documentacaoRepositorio.Apagar(id);
                 if (apagado)
                 {
-                    TempData["MensagemSucesso"] = "Documentacao excluído com sucesso!";
+                    TempData["MensagemSucesso"] = "Documentação excluída com sucesso!";
                 }
                 else
                 {
-                    TempData["MensagemErro"] = "Erro ao excluir a documentacao.";
+                    TempData["MensagemErro"] = "Erro ao excluir a documentação.";
                 }
                 return RedirectToAction("Index");
             }
             catch (System.Exception erro)
             {
-                TempData["MensagemErro"] = $"Erro ao excluir a documentacao. Detalhes do erro {erro.Message}";
+                TempData["MensagemErro"] = $"Erro ao excluir a documentação. Detalhes do erro: {erro.Message}";
                 return RedirectToAction("Index");
             }
         }
@@ -73,7 +73,7 @@ namespace service_desk.Controllers
                 if (ModelState.IsValid)
                 {
                     _documentacaoRepositorio.Adicionar(documentacao);
-                    TempData["MensagemSucesso"] = "Documentacao cadastrado com sucesso!";
+                    TempData["MensagemSucesso"] = "Documentação cadastrada com sucesso!";
                     return RedirectToAction("Index");
                 }
 
@@ -81,7 +81,7 @@ namespace service_desk.Controllers
             }
             catch (System.Exception erro)
             {
-                TempData["MensagemErro"] = $"Erro ao cadastrar o documentacao. Detalhes do erro {erro.Message}";
+                TempData["MensagemErro"] = $"Erro ao cadastrar a documentação. Detalhes do erro: {erro.Message}";
                 return RedirectToAction("Index");
             }
 
@@ -95,7 +95,7 @@ namespace service_desk.Controllers
                 if (ModelState.IsValid)
                 {
                     _documentacaoRepositorio.Atualizar(documentacao);
-                    TempData["MensagemSucesso"] = "Documentacao atualizado com sucesso!";
+                    TempData["MensagemSucesso"] = "Documentação atualizada com sucesso!";
                     return RedirectToAction("Index");
                 }
 
@@ -103,7 +103,7 @@ namespace service_desk.Controllers
             }
             catch (System.Exception erro)
             {
-                TempData["MensagemErro"] = $"Erro ao editar o documentacao. Detalhes do erro {erro.Message}";
+                TempData["MensagemErro"] = $"Erro ao editar a documentação. Detalhes do erro: {erro.Message}";
                 return View("Editar", documentacao);
             }
         }

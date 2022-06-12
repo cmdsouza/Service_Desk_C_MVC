@@ -60,7 +60,7 @@ namespace service_desk.Controllers
             }
             catch (System.Exception erro)
             {
-                TempData["MensagemErro"] = $"Erro ao excluir o contato. Detalhes do erro {erro.Message}";
+                TempData["MensagemErro"] = $"Erro ao excluir o contato. Detalhes do erro: {erro.Message}";
                 return RedirectToAction("Index");
             }
         }
@@ -81,7 +81,7 @@ namespace service_desk.Controllers
             }
             catch (System.Exception erro)
             {
-                TempData["MensagemErro"] = $"Erro ao cadastrar o contato. Detalhes do erro {erro.Message}";
+                TempData["MensagemErro"] = $"Erro ao cadastrar o contato. Detalhes do erro: {erro.Message}";
                 return RedirectToAction("Index");
             }
 
@@ -103,7 +103,7 @@ namespace service_desk.Controllers
             }
             catch (System.Exception erro)
             {
-                TempData["MensagemErro"] = $"Erro ao editar o contato. Detalhes do erro {erro.Message}";
+                TempData["MensagemErro"] = $"Erro ao editar o contato. Detalhes do erro: {erro.Message}";
                 return View("Editar", contato);
             }
         }

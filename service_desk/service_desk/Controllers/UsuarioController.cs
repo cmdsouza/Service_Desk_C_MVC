@@ -44,17 +44,17 @@ namespace service_desk.Controllers
                 bool apagado = _usuarioRepositorio.Apagar(id);
                 if (apagado)
                 {
-                    TempData["MensagemSucesso"] = "Usuario excluído com sucesso!";
+                    TempData["MensagemSucesso"] = "Usuário excluído com sucesso!";
                 }
                 else
                 {
-                    TempData["MensagemErro"] = "Erro ao excluir a usuario.";
+                    TempData["MensagemErro"] = "Erro ao excluir o usuário.";
                 }
                 return RedirectToAction("Index");
             }
             catch (System.Exception erro)
             {
-                TempData["MensagemErro"] = $"Erro ao excluir a usuario. Detalhes do erro {erro.Message}";
+                TempData["MensagemErro"] = $"Erro ao excluir o usuário. Detalhes do erro: {erro.Message}";
                 return RedirectToAction("Index");
             }
         }
@@ -67,7 +67,7 @@ namespace service_desk.Controllers
                 if (ModelState.IsValid)
                 {
                     _usuarioRepositorio.Adicionar(usuario);
-                    TempData["MensagemSucesso"] = "Usuario cadastrado com sucesso!";
+                    TempData["MensagemSucesso"] = "Usuário cadastrado com sucesso!";
                     return RedirectToAction("Index");
                 }
 
@@ -75,7 +75,7 @@ namespace service_desk.Controllers
             }
             catch (System.Exception erro)
             {
-                TempData["MensagemErro"] = $"Erro ao cadastrar o usuario. Detalhes do erro {erro.Message}";
+                TempData["MensagemErro"] = $"Erro ao cadastrar o usuário. Detalhes do erro: {erro.Message}";
                 return RedirectToAction("Index");
             }
 
@@ -89,7 +89,7 @@ namespace service_desk.Controllers
                 if (ModelState.IsValid)
                 {
                     _usuarioRepositorio.Atualizar(usuario);
-                    TempData["MensagemSucesso"] = "Usuario atualizado com sucesso!";
+                    TempData["MensagemSucesso"] = "Usuário atualizado com sucesso!";
                     return RedirectToAction("Index");
                 }
 
@@ -97,7 +97,7 @@ namespace service_desk.Controllers
             }
             catch (System.Exception erro)
             {
-                TempData["MensagemErro"] = $"Erro ao editar o usuario. Detalhes do erro {erro.Message}";
+                TempData["MensagemErro"] = $"Erro ao editar o usuário. Detalhes do erro: {erro.Message}";
                 return View("Editar", usuario);
             }
         }

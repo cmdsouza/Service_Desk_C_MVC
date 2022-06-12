@@ -44,17 +44,17 @@ namespace service_desk.Controllers
                 bool apagado = _tipoContatoRepositorio.Apagar(id);
                 if (apagado)
                 {
-                    TempData["MensagemSucesso"] = "TipoContato excluído com sucesso!";
+                    TempData["MensagemSucesso"] = "Tipo de contato excluído com sucesso!";
                 }
                 else
                 {
-                    TempData["MensagemErro"] = "Erro ao excluir o tipoContato.";
+                    TempData["MensagemErro"] = "Erro ao excluir o tipo de contato.";
                 }
                 return RedirectToAction("Index");
             }
             catch (System.Exception erro)
             {
-                TempData["MensagemErro"] = $"Erro ao excluir o tipoContato. Detalhes do erro {erro.Message}";
+                TempData["MensagemErro"] = $"Erro ao excluir o tipo de contato. Detalhes do erro: {erro.Message}";
                 return RedirectToAction("Index");
             }
         }
@@ -67,7 +67,7 @@ namespace service_desk.Controllers
                 if (ModelState.IsValid)
                 {
                     _tipoContatoRepositorio.Adicionar(tipoContatoControl);
-                    TempData["MensagemSucesso"] = "TipoContato cadastrado com sucesso!";
+                    TempData["MensagemSucesso"] = "Tipo de contato cadastrado com sucesso!";
                     return RedirectToAction("Index");
                 }
 
@@ -75,7 +75,7 @@ namespace service_desk.Controllers
             }
             catch (System.Exception erro)
             {
-                TempData["MensagemErro"] = $"Erro ao cadastrar o tipoContato. Detalhes do erro {erro.Message}";
+                TempData["MensagemErro"] = $"Erro ao cadastrar o tipo de contato. Detalhes do erro: {erro.Message}";
                 return RedirectToAction("Index");
             }
 
@@ -89,7 +89,7 @@ namespace service_desk.Controllers
                 if (ModelState.IsValid)
                 {
                     _tipoContatoRepositorio.Atualizar(tipoContatoControl);
-                    TempData["MensagemSucesso"] = "TipoContato atualizado com sucesso!";
+                    TempData["MensagemSucesso"] = "Tipo de contato atualizado com sucesso!";
                     return RedirectToAction("Index");
                 }
 
@@ -97,7 +97,7 @@ namespace service_desk.Controllers
             }
             catch (System.Exception erro)
             {
-                TempData["MensagemErro"] = $"Erro ao editar o tipoContato. Detalhes do erro {erro.Message}";
+                TempData["MensagemErro"] = $"Erro ao editar o tipo de contato. Detalhes do erro: {erro.Message}";
                 return View("Editar", tipoContatoControl);
             }
         }
