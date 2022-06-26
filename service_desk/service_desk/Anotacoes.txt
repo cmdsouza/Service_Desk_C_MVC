@@ -29,9 +29,9 @@ Cria a estrutura no banco: Update-Database -Context BancoContext
 - [certo]
 
 ###### Usuário #####
-- Consumo da API
 
 ~ Página inicial ~
+- Listar os contatos cadastrados no banco
 - % de chamados resolvidos
 - Contagem de chamados abertos e solucionados
 - Lista dos últimos 10 chamados

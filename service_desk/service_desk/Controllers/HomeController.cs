@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using service_desk.Helper;
 using service_desk.Models;
+using service_desk.Repositorio;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -9,17 +11,46 @@ using System.Threading.Tasks;
 
 namespace service_desk.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : GenericoController
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly GLPI _glpi;
+        private readonly IAlertaRepositorio _alertaRepositorio;
+        private readonly IContatoRepositorio _contatoRepositorio;
+        private readonly ISessao _sessao;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(GLPI glpiRepositorio, IAlertaRepositorio alertaRepositorio, IContatoRepositorio contatoRepositorio, ISessao sessao) : base(sessao)
         {
-            _logger = logger;
+            _glpi = glpiRepositorio;
+            _sessao = sessao;
+            _alertaRepositorio = alertaRepositorio;
+            _contatoRepositorio = contatoRepositorio;
         }
 
         public IActionResult Index()
         {
+            //var token = _glpi.RecuperarSessionToken();
+
+            var resultadoAlerta = _alertaRepositorio.ListarAtivo();
+            if (resultadoAlerta != null)
+            {
+                foreach (AlertaModel elemento in resultadoAlerta)
+                {
+                    TempData["AlertaTitulo"] = elemento.Titulo;
+                    TempData["AlertaDescricao"] = elemento.Descricao;
+                    TempData["AlertaCor"] = elemento.Cor;
+                }
+            }
+
+            List<ContatoModel> contatos = _contatoRepositorio.BuscarTodos();
+            if (contatos != null)
+            {
+                foreach (ContatoModel contato in contatos)
+                {
+                    TempData["ListaContatos"] = "Aqui";
+                    TempData["ListaContatos"] = contato.Descricao;
+                }
+            }
+
             return View();
         }
 

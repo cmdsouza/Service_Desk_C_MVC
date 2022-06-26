@@ -1,4 +1,6 @@
-﻿<html lang="en"
+﻿@model List<ContatoModel>;
+
+<html lang="en"
 	  class="light-style layout-menu-fixed"
 	  dir="ltr"
 	  data-theme="theme-default"
@@ -51,11 +53,10 @@
 	<!-- Layout wrapper -->
 	<div class="layout-wrapper layout-content-navbar">
 		<div class="layout-container">
-			
+
 			<!-- Menu -->
 			@await Component.InvokeAsync("MenuUsuario")
 			<!-- / Menu -->
-
 			<!--  Body -->
 			@RenderBody()
 			<!-- / Body -->
@@ -102,22 +103,36 @@
 		</div>
 		<div class="offcanvas-body">
 			<div class="demo-inline-spacing">
-				<div class="list-group list-group-flush">
-					<a href="https://www.atendimento.tcees.tc.br" class="list-group-item list-group-item-action"><i class="bx bx-desktop me-2" style="margin-top: -1%"></i>atendimento.tcees.tc.br</a>
-					<a href="mailto:atendimento@tcees.tc.br" class="list-group-item list-group-item-action"><i class="bx bx-envelope me-2" style="margin-top: -1%"></i>atendimento@tcees.tc.br</a>
-					<a href="tel:02733347709" class="list-group-item list-group-item-action"><i class="bx bx-phone me-2" style="margin-top: -1%"></i>(27) 3334-7709</a>
-					<a href="tel:027000000000" class="list-group-item list-group-item-action"><i class="bx bxl-whatsapp me-2" style="margin-top: -1%"></i>(27) 00000-0000</a>
-				</div>
 
-				<br>
-				<h5 id="offcanvasEndLabel" class="offcanvas-title">Atenção!</h5>
-				<div class="alert alert-primary" id="alert-primary" role="alert" style="">
-					<span id="alert-primary-titulo">Indisponibilidade do sistema</span>
-					<br>
-					<span id="alert-primary-conteudo">
-					  O Portal Insitucional ficará indisponível no dia 31/03/2022 por aproximadamente 2 horas. A manutenção evolutiva será iniciada às 19 horas.
+
+				@if (TempData["ListaContatos"] != null)
+				{
+					<span>
+						@TempData["ListaContatos"]
 					</span>
-				</div>
+
+					<hr />
+
+					<div class="list-group list-group-flush">
+						<a href="https://www.atendimento.tcees.tc.br" class="list-group-item list-group-item-action"><i class="bx bx-desktop me-2" style="margin-top: -1%"></i>atendimento.tcees.tc.br</a>
+						<a href="mailto:atendimento@tcees.tc.br" class="list-group-item list-group-item-action"><i class="bx bx-envelope me-2" style="margin-top: -1%"></i>atendimento@tcees.tc.br</a>
+						<a href="tel:02733347709" class="list-group-item list-group-item-action"><i class="bx bx-phone me-2" style="margin-top: -1%"></i>(27) 3334-7709</a>
+						<a href="tel:027000000000" class="list-group-item list-group-item-action"><i class="bx bxl-whatsapp me-2" style="margin-top: -1%"></i>(27) 00000-0000</a>
+					</div>
+				}
+
+				@if (TempData["AlertaTitulo"] != null)
+				{
+					<br>
+					<h5 id="offcanvasEndLabel" class="offcanvas-title">Atenção!</h5>
+					<div class="alert alert-@TempData["AlertaCor"]" id="alert-@TempData["AlertaCor"]" role="alert" style="">
+						<span id="alert-@TempData["AlertaCor"]-titulo">@TempData["AlertaTitulo"]</span>
+						<br>
+						<span id="alert-@TempData["AlertaCor"]-conteudo">
+							@TempData["AlertaDescricao"]
+						</span>
+					</div>
+				}
 			</div>
 		</div>
 	</div>

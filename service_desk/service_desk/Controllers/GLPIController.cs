@@ -15,6 +15,12 @@ namespace service_desk.Controllers
         public IActionResult Index()
         {
             _glpi.RecuperarSessionToken();
+            _glpi.ObterDadosUsuarioPelaMatricula();
+            _glpi.ObterDadosIdChamado();
+            _glpi.ObterChamadosPorUsuario();
+            _glpi.ObterAcompanhamentosDoChamado();
+            _glpi.ObterSolucaoDoChamado();
+            _glpi.ObterSatisfacaoDoChamado();
             return RedirectToAction("Index", "Home");
         }
     }
