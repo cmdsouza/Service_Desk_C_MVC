@@ -7,7 +7,7 @@ namespace service_desk.Models
 	{
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Campo 'Contato' obrigatório!")]
+        [Required(ErrorMessage = "Campo 'Descrição' obrigatório!")]
         public string Descricao { get; set; }
 
         public int IdTipoContato { get; set; }

@@ -28,7 +28,20 @@ namespace service_desk.Controllers
 
         public IActionResult Index()
         {
-            //var token = _glpi.RecuperarSessionToken();
+            var token = _glpi.RecuperarSessionToken().Result;
+            TempData["token"] = token.session_token;
+
+            var matricula = _sessao.BuscarSessaoDoUsuario().Matricula;
+
+            var dadosUsuario = _glpi.ObterDadosUsuarioPelaMatricula(matricula).Result;
+            var idUsuario = dadosUsuario.data.Select(a => a.id).FirstOrDefault();
+            
+            var dadosChamados = _glpi.ObterChamadosPorUsuario(idUsuario).Result;
+            TempData["quantChamados"] = dadosChamados.totalcount;
+            TempData["listaChamados"] = dadosChamados.data.ToList(); // pegar a lista de chamados
+
+            var chamadosAbertos = _glpi.QuantidadeChamadosSolucionados(272).Result;
+            TempData["quantChamadosSolucionados"] = chamadosAbertos.totalcount;
 
             var resultadoAlerta = _alertaRepositorio.ListarAtivo();
             if (resultadoAlerta != null)
@@ -41,21 +54,6 @@ namespace service_desk.Controllers
                 }
             }
 
-            List<ContatoModel> contatos = _contatoRepositorio.BuscarTodos();
-            if (contatos != null)
-            {
-                foreach (ContatoModel contato in contatos)
-                {
-                    TempData["ListaContatos"] = "Aqui";
-                    TempData["ListaContatos"] = contato.Descricao;
-                }
-            }
-
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
             return View();
         }
 

@@ -14,14 +14,15 @@ namespace service_desk.Controllers
 
         public IActionResult Index()
         {
-            _glpi.RecuperarSessionToken();
-            _glpi.ObterDadosUsuarioPelaMatricula();
-            _glpi.ObterDadosIdChamado();
-            _glpi.ObterChamadosPorUsuario();
-            _glpi.ObterAcompanhamentosDoChamado();
-            _glpi.ObterSolucaoDoChamado();
-            _glpi.ObterSatisfacaoDoChamado();
-            return RedirectToAction("Index", "Home");
+            //var teste = _glpi.RecuperarSessionToken().Result; // ####### Ok!
+            //_glpi.CriarChamado(); // ####### Olhar o body, var objetivoEnviado
+            var teste = _glpi.QuantidadeChamadosSolucionados(272).Result;
+            //_glpi.ObterDadosIdChamado();
+            //_glpi.ObterChamadosPorUsuario();
+            //_glpi.ObterAcompanhamentosDoChamado();
+            //_glpi.ObterSolucaoDoChamado();
+            //_glpi.ObterSatisfacaoDoChamado();
+            return View(teste);
         }
     }
 }
