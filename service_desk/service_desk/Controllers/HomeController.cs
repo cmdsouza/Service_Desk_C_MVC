@@ -38,7 +38,9 @@ namespace service_desk.Controllers
             
             var dadosChamados = _glpi.ObterChamadosPorUsuario(idUsuario).Result;
             TempData["quantChamados"] = dadosChamados.totalcount;
-            TempData["listaChamados"] = dadosChamados.data.ToList(); // pegar a lista de chamados
+
+
+            var chamados = dadosChamados.data.ToList();
 
             var chamadosAbertos = _glpi.QuantidadeChamadosSolucionados(272).Result;
             TempData["quantChamadosSolucionados"] = chamadosAbertos.totalcount;
@@ -54,7 +56,7 @@ namespace service_desk.Controllers
                 }
             }
 
-            return View();
+            return View(chamados);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

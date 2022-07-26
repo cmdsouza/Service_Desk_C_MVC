@@ -44,10 +44,12 @@ namespace service_desk.Repositorio
 
         public async Task<DadosUsuario> ObterDadosUsuarioPelaMatricula(string matricula)
         {
+            var sessionToken = RecuperarSessionToken().Result;
+
             var httpClient = _httpClientFactory.CreateClient();
             var request = new HttpRequestMessage(HttpMethod.Get, $"{_configuration["URLGLPI"]}/search/User?criteria[0][link]=AND&criteria[0][field]=1&criteria[0][searchtype]=contains&forcedisplay[0]=2&criteria[0][value]={matricula}");
             request.Headers.Add("App-Token", "43GWHcxGtagItPsUJy5bGCzVsMIJgq1rWhsd99Y3");
-            request.Headers.Add("Session-Token", "tn5mhgf2l9bnfa2ci6muo3f9qq");
+            request.Headers.Add("Session-Token", sessionToken.session_token);
             var response = await httpClient.SendAsync(request);
 
             var dadosUsuario = await response.Content.ReadAsStringAsync();
@@ -61,10 +63,12 @@ namespace service_desk.Repositorio
 
         public async void CriarChamado()
         {
+            var sessionToken = RecuperarSessionToken().Result;
+
             var httpClient = _httpClientFactory.CreateClient();
             var request = new HttpRequestMessage(HttpMethod.Post, _configuration["URLGLPI"] + "/Ticket");
             request.Headers.Add("App-Token", "43GWHcxGtagItPsUJy5bGCzVsMIJgq1rWhsd99Y3");
-            request.Headers.Add("Session-Token", "tn5mhgf2l9bnfa2ci6muo3f9qq");
+            request.Headers.Add("Session-Token", sessionToken.session_token);
 
             request.Content = JsonContent.Create(new { input = new [] { new { name = "Chamado de teste " + DateTime.Now.ToLongDateString(), content = "Descrição do teste", status = 1, urgency = 3, priority = 2, _users_id_requester = "227", users_id_recipient = "227" } } });
 
@@ -74,10 +78,12 @@ namespace service_desk.Repositorio
 
         public async Task<DadosChamadoModel> ObterDadosIdChamado(int idChamado)
         {
+            var sessionToken = RecuperarSessionToken().Result;
+
             var httpClient = _httpClientFactory.CreateClient();
             var request = new HttpRequestMessage(HttpMethod.Get, $"{_configuration["URLGLPI"]}/ticket/{idChamado}");
             request.Headers.Add("App-Token", "43GWHcxGtagItPsUJy5bGCzVsMIJgq1rWhsd99Y3");
-            request.Headers.Add("Session-Token", "tn5mhgf2l9bnfa2ci6muo3f9qq");
+            request.Headers.Add("Session-Token", sessionToken.session_token);
             var response = await httpClient.SendAsync(request);
 
             var dadosChamado = await response.Content.ReadAsStringAsync();
@@ -91,10 +97,12 @@ namespace service_desk.Repositorio
 
         public async Task<ChamadosUsuario> ObterChamadosPorUsuario(int idUsuario)
         {
+            var sessionToken = RecuperarSessionToken().Result;
+
             var httpClient = _httpClientFactory.CreateClient();
             var request = new HttpRequestMessage(HttpMethod.Get, $"{_configuration["URLGLPI"]}/search/Ticket?criteria[0][field]=4&criteria[0][searchtype]=equals&criteria[0][value]={idUsuario}&order=ASC");
             request.Headers.Add("App-Token", "43GWHcxGtagItPsUJy5bGCzVsMIJgq1rWhsd99Y3");
-            request.Headers.Add("Session-Token", "tn5mhgf2l9bnfa2ci6muo3f9qq");
+            request.Headers.Add("Session-Token", sessionToken.session_token);
             var response = await httpClient.SendAsync(request);
 
             var usuarioChamados = await response.Content.ReadAsStringAsync();
@@ -108,10 +116,12 @@ namespace service_desk.Repositorio
 
         public async Task<DadosAcompanhamentoModel> ObterAcompanhamentosDoChamado(int idChamado)
         {
+            var sessionToken = RecuperarSessionToken().Result;
+
             var httpClient = _httpClientFactory.CreateClient();
             var request = new HttpRequestMessage(HttpMethod.Get, $"{_configuration["URLGLPI"]}/Ticket/{idChamado}/TicketFollowUp");
             request.Headers.Add("App-Token", "43GWHcxGtagItPsUJy5bGCzVsMIJgq1rWhsd99Y3");
-            request.Headers.Add("Session-Token", "tn5mhgf2l9bnfa2ci6muo3f9qq");
+            request.Headers.Add("Session-Token", sessionToken.session_token);
             var response = await httpClient.SendAsync(request);
 
             var dadosAcompanhamento = await response.Content.ReadAsStringAsync();
@@ -125,10 +135,12 @@ namespace service_desk.Repositorio
 
         public async Task<DadosSolucaoModel> ObterSolucaoDoChamado(int idChamado)
         {
+            var sessionToken = RecuperarSessionToken().Result;
+
             var httpClient = _httpClientFactory.CreateClient();
             var request = new HttpRequestMessage(HttpMethod.Get, $"{_configuration["URLGLPI"]}/Ticket/{idChamado}/ITILSolution");
             request.Headers.Add("App-Token", "43GWHcxGtagItPsUJy5bGCzVsMIJgq1rWhsd99Y3");
-            request.Headers.Add("Session-Token", "tn5mhgf2l9bnfa2ci6muo3f9qq");
+            request.Headers.Add("Session-Token", sessionToken.session_token);
             var response = await httpClient.SendAsync(request);
 
             var dadosSolucao = await response.Content.ReadAsStringAsync();
@@ -142,10 +154,12 @@ namespace service_desk.Repositorio
 
         public async Task<DadosSatisfacaoModel> ObterSatisfacaoDoChamado(int idChamado)
         {
+            var sessionToken = RecuperarSessionToken().Result;
+
             var httpClient = _httpClientFactory.CreateClient();
             var request = new HttpRequestMessage(HttpMethod.Get, $"{_configuration["URLGLPI"]}/Ticket/{idChamado}/TicketSatisfaction");
             request.Headers.Add("App-Token", "43GWHcxGtagItPsUJy5bGCzVsMIJgq1rWhsd99Y3");
-            request.Headers.Add("Session-Token", "tn5mhgf2l9bnfa2ci6muo3f9qq");
+            request.Headers.Add("Session-Token", sessionToken.session_token);
             var response = await httpClient.SendAsync(request);
 
             var dadosSatisfacao = await response.Content.ReadAsStringAsync();
@@ -159,10 +173,12 @@ namespace service_desk.Repositorio
 
         public async void InserirAcompanhamento(int idChamado)
         {
+            var sessionToken = RecuperarSessionToken().Result;
+
             var httpClient = _httpClientFactory.CreateClient();
             var request = new HttpRequestMessage(HttpMethod.Post, $"{_configuration["URLGLPI"]}/Ticket/{idChamado}/ITILFollowup");
             request.Headers.Add("App-Token", "43GWHcxGtagItPsUJy5bGCzVsMIJgq1rWhsd99Y3");
-            request.Headers.Add("Session-Token", "tn5mhgf2l9bnfa2ci6muo3f9qq");
+            request.Headers.Add("Session-Token", sessionToken.session_token);
 
             request.Content = JsonContent.Create(new { input = new[] { new { itemtype = "Ticket", items_id = "18025", is_private = "0", requesttypes_id = "1", content = "Followup contents" + DateTime.Now.ToLongDateString() } } });
 
@@ -172,10 +188,12 @@ namespace service_desk.Repositorio
 
         public async Task<ChamadosSolucionadosUsuario> QuantidadeChamadosSolucionados(int idUsuario)
         {
+            var sessionToken = RecuperarSessionToken().Result;
+
             var httpClient = _httpClientFactory.CreateClient();
             var request = new HttpRequestMessage(HttpMethod.Get, $"{_configuration["URLGLPI"]}/search/Ticket?is_deleted=0&as_map=0&criteria[0][link]=AND&criteria[0][field]=4&criteria[0][searchtype]=equals&criteria[0][value]={idUsuario}&criteria[1][link]=AND&criteria[1][criteria][0][link]=AND&criteria[1][criteria][0][field]=12&criteria[1][criteria][0][searchtype]=equals&criteria[1][criteria][0][value]=5&criteria[1][criteria][1][link]=OR&criteria[1][criteria][1][field]=12&criteria[1][criteria][1][searchtype]=equals&criteria[1][criteria][1][value]=6&criteria[1][criteria][2][link]=OR&criteria[1][criteria][2][field]=12&criteria[1][criteria][2][searchtype]=equals&criteria[1][criteria][2][value]=old");
             request.Headers.Add("App-Token", "43GWHcxGtagItPsUJy5bGCzVsMIJgq1rWhsd99Y3");
-            request.Headers.Add("Session-Token", "tn5mhgf2l9bnfa2ci6muo3f9qq");
+            request.Headers.Add("Session-Token", sessionToken.session_token);
             var response = await httpClient.SendAsync(request);
 
             var dadosChamados = await response.Content.ReadAsStringAsync();

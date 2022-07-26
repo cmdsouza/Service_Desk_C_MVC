@@ -1,4 +1,7 @@
-﻿@{
+﻿@using static service_desk.Models.ChamadosUsuarioModel;
+@model List<Informacoes>;
+
+@{
 	ViewData["Title"] = "Página Inicial";
 	Layout = "_Layout";
 }
@@ -143,36 +146,59 @@
 									</tr>
 								</thead>
 								<tbody class="table-border-bottom-0">
-									<tr>
-										<td>
-											<center>
-												<a role="button" asp-route-id="Id" asp-controller="Usuario" asp-action="ApagarConfirmacao">12345</a>
-											</center>
-										</td>
-										<td>Meu computador não liga!</td>
-										<td>
-											<center>
-												<span class="badge bg-label-primary" style="padding-top: 10px; padding-bottom: 10px; padding-left: 10px; padding-right: 12px;">Primary</span>
-											</center>
-										</td>
-										<td><center>05/06/2022 13:28:05</center></td>
-										<td><center>05/06/2022 13:28:05</center></td>
-									</tr>
-									<tr>
-										<td>
-											<center>
-												<a role="button" asp-route-id="Id" asp-controller="Usuario" asp-action="ApagarConfirmacao">67891</a>
-											</center>
-										</td>
-										<td>Permissão no e-TCEES</td>
-										<td>
-											<center>
-												<span class="badge bg-label-primary" style="padding-top: 10px; padding-bottom: 10px; padding-left: 10px; padding-right: 12px;">Primary</span>
-											</center>
-										</td>
-										<td><center>05/06/2022 14:18:05</center></td>
-										<td><center>05/06/2022 14:58:05</center></td>
-									</tr>
+
+									@if (Model != null && Model.Any())
+									{
+										foreach (var chamado in Model)
+										{
+
+											<tr>
+												<td>
+													<center>
+														<a href="#" role="button">@chamado.id</a>
+													</center>
+												</td>
+												<td>@chamado.titulo</td>
+												<td>
+													<center>
+														
+														@if (chamado.status == 1)
+														{
+															<span class="badge bg-primary" style="padding:10px 12px 10px 10px;">Novo</span>
+														}
+
+														@if (chamado.status == 2)
+														{
+															<span class="badge bg-secondary" style="padding:10px 12px 10px 10px;">Processando (atribuído)</span>
+														}
+
+														@if (chamado.status == 3)
+														{
+															<span class="badge bg-secondary" style="padding:10px 12px 10px 10px;">Processando (planejado)</span>
+														}
+
+														@if (chamado.status == 4)
+														{
+															<span class="badge bg-warning" style="padding:10px 12px 10px 10px;">Pendente</span>
+														}
+
+														@if (chamado.status == 5)
+														{
+															<span class="badge bg-info" style="padding:10px 12px 10px 10px;">Solucionado</span>
+														}
+
+														@if (chamado.status == 6)
+														{
+															<span class="badge bg-dark" style="padding:10px 12px 10px 10px;">Fechado</span>
+														}
+
+													</center>
+												</td>
+												<td><center>@chamado.dataAbertura</center></td>
+												<td><center>@chamado.dataAtualizacao</center></td>
+											</tr>
+										}
+									}
 								</tbody>
 							</table>
 						</div>
@@ -184,11 +210,11 @@
 
 		<!-- Footer -->
 		<footer class="text-center text-lg-start bg-light text-muted">
-		  <!-- Copyright -->
-		  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-			© @DateTime.Now.Year | <a href="https://github.com/cmdsouza/cmdsouza">Desenvolvido por Carlos Matheus</a> | Token: @TempData["token"]
-		  </div>
-		  <!-- Copyright -->
+			<!-- Copyright -->
+			<div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+				© @DateTime.Now.Year | <a href="https://github.com/cmdsouza/cmdsouza">Desenvolvido por Carlos Matheus</a> | Token: @TempData["token"]
+			</div>
+			<!-- Copyright -->
 		</footer>
 		<!-- Footer -->
 
